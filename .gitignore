@@ -1,0 +1,39 @@
+# 가상환경 폴더 (venv, virtualenv)
+venv/
+env/
+.venv/
+
+# Python 캐시 파일
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 환경 변수 파일 (보안 정보 포함)
+.env
+*.env
+
+# 로그 파일
+logs/
+*.log
+
+# 데이터베이스 파일 (SQLite 등)
+*.sqlite3
+*.db
+
+# IDE 관련 파일 (VSCode, PyCharm 등)
+.vscode/
+.idea/
+*.iml
+
+# Docker 관련 파일
+docker-compose.override.yml
+.dockerignore
+
+# Jupyter Notebook 체크포인트
+.ipynb_checkpoints/
+
+# FastAPI 실행 관련 파일
+instance/
+
+..github/
