@@ -1,17 +1,22 @@
 # AI
 SKT FLY AI Challenger 6기 패기반 TEAM3 AI 개발
-![Image](https://github.com/user-attachments/assets/ff530c91-6f84-476a-be09-519cb90bf350)
+<!-- ![Image](https://github.com/user-attachments/assets/ff530c91-6f84-476a-be09-519cb90bf350)
+![Image](https://github.com/user-attachments/assets/68401134-f84c-4a15-aa11-1dbdcd791f1a) -->
 
-  
+<!-- <img src="https://github.com/user-attachments/assets/ff530c91-6f84-476a-be09-519cb90bf350" alt="Image" width="300"> -->
+<img src="https://github.com/user-attachments/assets/68401134-f84c-4a15-aa11-1dbdcd791f1a" alt="Image" width="800">
+
+
 [서비스 링크(배포 예정)](http://127.0.0.1:8000/)  
   
   
 [Git Hub 링크](https://github.com/SKT-FLY-AI-project)  
-  
+<br/>
+<br/>
 
 # 0\. Getting Started (시작하기)
 
-```
+```bash
 # << Back-End >>
 
 # +) application.properties에 key 값들 넣어주기
@@ -51,7 +56,8 @@ SKT FLY AI Challenger 6기 패기반 TEAM3 AI 개발
 $ 
 ```
 
-  
+<br/>
+<br/>
   
 
 # 1\. Project Overview (프로젝트 개요)
@@ -65,7 +71,8 @@ $
     - **기존 해설 서비스의 한계:** 기존 음성 해설 서비스는 제한된 작품만을 대상으로 하며, 미리 준비된 해설문만 제공됩니다.
     - **맞춤형 설명의 필요성:** AI 기반의 맞춤형 설명으로 각 사용자의 관심사나 설명 난이도를 조절해 더욱 깊이 있는 감상 경험을 제공할 수 있습니다.
 
-  
+<br/>
+<br/>
 
 # 2\. Team Members (팀원 및 팀 소개)
 
@@ -76,7 +83,8 @@ $
 | [GitHub](https://github.com/doraemon49) | [GitHub](https://github.com/minkim507) | [GitHub](https://github.com/kwakrhkr59) | [GitHub](https://github.com/KooWihC) | [GitHub](https://github.com/hrl090512) | [GitHub](https://github.com/zzunni) |
 
   
-  
+<br/>
+<br/> 
 
 # 3\. Key Features (주요 기능)
 
@@ -84,20 +92,22 @@ $
 - AI 설명
 - 마이페이지 (이미지와 설명 내역 확인)
 - 회원가입
-  
+<br/>
+<br/>
 
 # 4\. Tasks & Responsibilities (작업 및 역할 분담)
 
-|   |   |   |   |
-| --- | --- | --- | --- |
-| 김민 | ![김민](https://avatars.githubusercontent.com/u/59240554?v=4) |  - AI - CNN 그림 탐지지   |
-| 김민수 | ![김민수](https://avatars.githubusercontent.com/u/45546892?v=4) |   -   AI - LLM 그림 설명 생성   |
-| 곽현정 | ![곽현정](https://avatars.githubusercontent.com/u/89788679?v=4) |   -   백엔드 개발    |
-| 안치욱 | ![안치욱](https://avatars.githubusercontent.com/u/124045490?v=4) |   -   백앤드 개발   |
-| 이형록 | ![이형록](https://avatars.githubusercontent.com/u/195076095?v=4) |   -   프론트 개발 -   디자인    |
-| 최예준 | ![최예준](https://avatars.githubusercontent.com/u/144091030?v=4) |   -   프론트엔드 개발 -   디자인  |
+|   |   |   |
+| --- | --- | --- |
+| 김민 | <img src="https://avatars.githubusercontent.com/u/59240554?v=4" alt="김민" width="100"> |  <ul><li>AI 개발</li><li>CNN 작품 탐지</li></ul>   |
+| 김민수 | <img src="https://avatars.githubusercontent.com/u/45546892?v=4" alt="김민수" width="100"> |   <ul><li>프로젝트 계획 및 관리</li><li>AI 개발</li><li>LLM 그림 설명 생성</li></ul>   |
+| 곽현정 | <img src="https://avatars.githubusercontent.com/u/89788679?v=4" alt="곽현정" width="100"> |   <ul><li>백엔드 개발</li></ul>     |
+| 안치욱 | <img src="https://avatars.githubusercontent.com/u/124045490?v=4" alt="안치욱" width="100"> |   <ul><li>백엔드 개발</li></ul>    |
+| 이형록 | <img src="https://avatars.githubusercontent.com/u/195076095?v=4" alt="이형록" width="100"> |   <ul><li>프론트엔드 개발</li><li>디자인</li></ul>     |
+| 최예준 | <img src="https://avatars.githubusercontent.com/u/144091030?v=4" alt="최예준" width="100"> |   <ul><li>프론트엔드 개발</li><li>디자인</li></ul>  |
   
-  
+<br/>
+<br/>
 
 # 5\. Technology Stack (기술 스택)
 
@@ -113,6 +123,8 @@ $
 
 [![My Skills](https://skillicons.dev/icons?i=git,notion,discord&theme=light)](https://skillicons.dev)
 
+<br/>
+<br/>
 # 6\. Project Structure (프로젝트 구조)
 
 ```
