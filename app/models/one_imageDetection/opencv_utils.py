@@ -3,6 +3,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 
 # 이미지 로드 및 전처리
 def load_and_preprocess_image(image_path):
@@ -11,27 +12,37 @@ def load_and_preprocess_image(image_path):
     return image
 
 # # 그림 영역 탐지 (Contour Detection)
-def detect_painting_region(image):
+def detect_painting_region(image, min_area_ratio=0.2):
+    """
+    그림이 너무 작은 영역으로 잘려 어두워지는 문제를 방지하기 위해,
+    최소 면적 비율을 설정하여 너무 작은 영역은 무시하고 원본을 유지하도록 한다.
+    """
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     blurred = cv2.GaussianBlur(gray, (5, 5), 0)
     thresh = cv2.adaptiveThreshold(blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
                                    cv2.THRESH_BINARY_INV, 11, 2)
 
     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    detected_regions = [
+        cv2.boundingRect(cv2.approxPolyDP(cnt, 0.02 * cv2.arcLength(cnt, True), True)) 
+        for cnt in contours 
+        if len(cv2.approxPolyDP(cnt, 0.02 * cv2.arcLength(cnt, True), True)) == 4
+    ]
     
-    # 가장 큰 사각형 또는 근사한 사각형 찾기
-    detected_regions = []
-    for contour in contours:
-        approx = cv2.approxPolyDP(contour, 0.02 * cv2.arcLength(contour, True), True)
-        if len(approx) == 4:  # 사각형만 고려
-            detected_regions.append(cv2.boundingRect(approx))
-    
-    # 가장 큰 사각형을 선택 (여러 후보가 있을 경우)
     if detected_regions:
-        x, y, w, h = max(detected_regions, key=lambda r: r[2] * r[3])  # 영역 크기 기준
+        # 가장 큰 사각형 영역 선택
+        x, y, w, h = max(detected_regions, key=lambda r: r[2] * r[3])
+        
+        # 전체 이미지 대비 크롭된 영역이 너무 작으면 원본 반환
+        img_area = image.shape[0] * image.shape[1]
+        cropped_area = w * h
+        if cropped_area < min_area_ratio * img_area:
+            print("⚠️ 그림 영역이 너무 작아 원본 이미지를 반환합니다.")
+            return image
+        
         return image[y:y+h, x:x+w]
-    else:
-        return image  # 탐지 실패 시 원본 반환
+    
+    return image
 
 
 # 주요 객체 검출 (Edge Detection 사용)
@@ -52,10 +63,26 @@ def extract_dominant_colors(image, k=5):
     dominant_colors = palette[np.argsort(-counts)]
     return dominant_colors.astype(int)
 
+def get_color_name(rgb):
+    """ RGB 값을 가장 가까운 색상명으로 변환 """
+    min_dist = float('inf')
+    closest_color = "알 수 없는 색"
+    
+    for name, hex in mcolors.CSS4_COLORS.items():
+        r, g, b = mcolors.hex2color(hex)
+        r, g, b = int(r * 255), int(g * 255), int(b * 255)
+        dist = np.sqrt((r - rgb[0]) ** 2 + (g - rgb[1]) ** 2 + (b - rgb[2]) ** 2)
+        
+        if dist < min_dist:
+            min_dist = dist
+            closest_color = name
+
+    return closest_color
+
 # 결과 시각화
 def display_results(image_path):
     image = load_and_preprocess_image(image_path)
-    painting_region = detect_painting_region(image)
+    painting_region = detect_painting_region(image)  # 밝기 조정 없이 원본 그대로 사용
     edges = detect_edges(image)
     dominant_colors = extract_dominant_colors(painting_region)
     
@@ -74,28 +101,10 @@ def display_results(image_path):
     plt.subplot(1, 4, 3)
     plt.imshow(edges, cmap='gray')
     plt.title("Edge Detection")
-    print("edges 결과 값 : ",edges)
-    """
-    [[0 0 0 ... 0 0 0]
-     [0 0 0 ... 0 0 0]
-     [0 0 0 ... 0 0 0]
-     ...
-     [0 0 0 ... 0 0 0]
-     [0 0 0 ... 0 0 0]
-     [0 0 0 ... 0 0 0]]
-    """
     
     plt.subplot(1, 4, 4)
     plt.imshow([dominant_colors / 255])
-    plt.title("Dominant Colors (Painting Only)")
-    print("dominant_colors 결과 값 : ",dominant_colors)
-    """
-    [[ 47 103 161]
-     [ 98 154 200]
-     [ 21  42  70]
-     [174 198 189]
-     [159 132  83]]
-    """
+    plt.title("Dominant Colors (Original)")
 
-    
     plt.show()
+    return edges, dominant_colors
