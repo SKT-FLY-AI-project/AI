@@ -9,6 +9,11 @@ from dotenv import load_dotenv
 from groq import Groq
 from langchain.prompts import PromptTemplate
 import numpy as np
+import torch
+from PIL import Image
+
+from transformers import BlipProcessor, BlipForConditionalGeneration
+from one_imageDetection.opencv_utils import get_color_name
 
 # DeepSeek API 키를 환경 변수로 설정
 client = Groq(api_key="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")
@@ -17,63 +22,60 @@ client = Groq(api_key="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"
 # # OpenAI API 키 설정 (자신의 API 키 입력)
 # openai.api_key = "YOUR_API_KEY"
 
-def generate_description(dominant_colors, edges):
-    """
-    OpenCV 분석 결과를 기반으로 자연어 설명을 생성하는 함수.
+def generate_blip_description(image_path):
+    processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
+    model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large").to("cuda" if torch.cuda.is_available() else "cpu")
+
+    image = Image.open(image_path).convert("RGB")
+    inputs = processor(images=image, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
+
+    prompt = "Describe this painting's scene, colors, composition, and mood in detail."
     
-    Parameters:
-        dominant_colors (np.ndarray): 대표 색상 목록 (RGB 형식)
-        edges (np.ndarray): Edge Detection 결과 이미지
+    # 🔹 프롬프트를 input_ids로 변환
+    prompt_inputs = processor.tokenizer(prompt, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
     
-    Returns:
-        str: 생성된 설명 문장
-    """
-    
-    # 대표 색상을 텍스트로 변환
-    color_names = [f"RGB({int(c[0])}, {int(c[1])}, {int(c[2])})" for c in dominant_colors[:5]]
+    with torch.no_grad():
+        output_with_prompt = model.generate(**inputs, input_ids=prompt_inputs.input_ids, max_length=150)
+        caption_with_prompt = processor.batch_decode(output_with_prompt, skip_special_tokens=True)[0]
+
+    print(f"🔹 **BLIP Prompt-Based Caption:** {caption_with_prompt}")
+
+    return caption_with_prompt
+
+def generate_rich_description(title, blip_desc, dominant_colors, edges):
+    color_names = [get_color_name(c) for c in dominant_colors[:5]]
     dominant_colors_text = ", ".join(color_names)
-    
-    # Edge Detection 결과 분석
     edges_detected = "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
 
-
-
-    # 프롬프트 템플릿 생성
     prompt_template = PromptTemplate(
-        input_variables=["dominant_colors", "edges_detected"],
-        template="""
-        다음은 그림에 대한 설명을 생성하는 작업입니다.
-        - 대표 색상은 다음과 같습니다: {dominant_colors}.
-        - 이 그림의 경계는 {edges_detected}.
-        
-        이 정보를 바탕으로 시각장애인에게 이 그림을 설명하는 문장을 만들어주세요.
-        감성적이면서 직관적으로 설명해주세요.
-        한국어로 답변해주세요.
+        input_variables=["title", "blip_desc", "dominant_colors", "edges_detected"],
+        template=f"""
+        Please generate a detailed description of the painting titled **"{title}"**.  
+
+        - **Painting description (BLIP):** {blip_desc}  
+        - **Dominant Colors (Natural Language):** {dominant_colors_text}  
+        - **Edge Detection Analysis:** {edges_detected}  
+
+        The text **must consist ONLY of Korean Hangul syllables (가-힣), without any exceptions**.  
         """
     )
-    
-    # 프롬프트 포맷팅
+
     formatted_prompt = prompt_template.format(
+        title=title,
+        blip_desc=blip_desc,
         dominant_colors=dominant_colors_text,
         edges_detected=edges_detected
     )
-
-    # Groq DeepSeek API 호출
+    
     completion = client.chat.completions.create(
-        model="deepseek-r1-distill-llama-70b",  # Groq의 Mixtral 모델 사용
+        model="qwen-2.5-coder-32b",
         messages=[{"role": "user", "content": formatted_prompt}],
-        temperature=0.6,
-        max_tokens=512,
+        temperature=0.5,
+        max_tokens=1024,
         top_p=0.95
     )
-
-    response_text = completion.choices[0].message.content.strip()
-
-    # # '<think>'가 있는 경우 해당 부분을 제거
-    # if "<think>" in response_text:
-    #     response_text = response_text.split("</think>")[-1].strip()
-
-    return response_text
+    
+    return completion.choices[0].message.content.strip()
 
 
 ########################### SETP 3 : TTS #####################################
