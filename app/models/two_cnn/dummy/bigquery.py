@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+
+# Copyright 2016 Google Inc. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+""" Query the BigQuery public table for the Metropolitan Art. """
+
+import uuid, os
+
+from google.cloud import bigquery
+
+# Specify path to generated environment variable json for project 
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "#path_to_json_credential_file"
+
+def query_metart():
+    # Specify your Google Cloud project to connect to
+    client = bigquery.Client(project="profound-ship-403907")
+
+    query_job = client.query("""
+        #standardSQL
+        SELECT object_number, title, department, culture, period, object_date, link_resource
+        FROM `bigquery-public-data.the_met.objects`
+        WHERE is_highlight = TRUE            -- Boolean 타입 비교 시 문자열 없이 TRUE로 작성
+        AND link_resource IS NOT NULL      -- 이미지 URL이 있는 데이터만 포함
+        AND title IS NOT NULL
+        AND (classification = "Prints"     --  19개. 
+            OR classification = "Drawings"   --  78개.
+            OR classification = "Paintings") -- 231개.
+        ; -- 총 328개. """)
+
+    results = query_job.result()  # Waits for job to complete.
+
+    for row in results:
+        # print(row[0:3]) # 첫 3개의 필드만 출력 # row[0:3]는 department, culture, link_resource만 출력
+        print(f"( u'{row['object_number']}', u'{row['title']}', u'{row['department']}', u'{row['culture']}', u'{row['period']}',u'{row['object_date']}', u'{row['link_resource']}' )")
+
+
+
+if __name__ == '__main__':
+    query_metart()
+# [END all]
