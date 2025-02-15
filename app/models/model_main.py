@@ -24,7 +24,7 @@ import sys
 import os
 
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
-from three_llm.llm import generate_blip_description, generate_rich_description, text_to_speech
+from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech # generate_blip_description
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     dominant_colors = extract_dominant_colors(image)
     
     
-    blip_desc = generate_blip_description(image_path)
+    blip_desc = generate_vlm_description_qwen(image_path)
     edges, dominant_colors = display_results(image_path)
     rich_description = generate_rich_description(painting_title, blip_desc, dominant_colors, edges)
 
