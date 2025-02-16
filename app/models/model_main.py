@@ -20,36 +20,49 @@
 # image_path = "app\models\London_CourtauldGallery_Manet'sABar.jpg"
 
 # main.py
+# model_main.py
 import sys
 import os
-
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
-from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech # generate_blip_description
+from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech
+
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("사용법: python main.py <이미지 경로>")
-        sys.exit(1)
-        
-    painting_title = "폴리 베르제르 바" # 임시로 지정했다 치고
-    
-    # one : openCV 실행
-    image_path = sys.argv[1]  # 터미널에서 입력받은 이미지 경로
-    display_results(image_path)
+    # 🔹 테스트할 이미지 리스트
+    test_images = [
+        "app/models/one_imageDetection/London_CourtauldGallery_Cezanne's.png",
+        "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg",
+        "app/models/one_imageDetection/Van Gogh's The Starry Night.png",
+    ]
 
-    # three : LLM으로 넘기기
-    image = load_and_preprocess_image(image_path)
-    edges = detect_edges(image)
-    dominant_colors = extract_dominant_colors(image)
-    
-    
-    blip_desc = generate_vlm_description_qwen(image_path)
-    edges, dominant_colors = display_results(image_path)
-    rich_description = generate_rich_description(painting_title, blip_desc, dominant_colors, edges)
+    for image_path in test_images:
+        print(f"\n🔎 테스트 중: {image_path}")
+        display_results(image_path)
 
-    print("생성된 설명:", rich_description)
+        # 🔹 OpenCV 분석 실행
+        image = load_and_preprocess_image(image_path)
+        edges = detect_edges(image)
+        dominant_colors = extract_dominant_colors(image)
 
-    # 텍스트를 음성으로 변환 및 실행
-    text_to_speech(rich_description, output_file="description_audio.mp3")
-    
-    
+       # ✅ Qwen2.5-VL 실행
+        print("\n🎨 Qwen2.5-VL 모델 실행 중...")
+        vlm_descriptions = generate_vlm_description_qwen(image_path)
+
+        # ✅ 결과가 문자열이면 리스트로 변환
+        if isinstance(vlm_descriptions, str):
+            vlm_descriptions = [vlm_descriptions]
+
+        # ✅ 결과가 None이면 기본값 설정
+        if vlm_descriptions is None:
+            vlm_descriptions = ["설명을 생성할 수 없습니다."]
+
+        # ✅ 리스트를 줄바꿈으로 연결하여 출력
+        print("\n".join(vlm_descriptions))
+
+        # 🔹 LLM을 활용한 설명 생성
+        rich_description = generate_rich_description("테스트 그림", vlm_descriptions[0], dominant_colors, edges)
+        print("\n📜 생성된 설명:")
+        print(rich_description)
+
+        # 🔹 음성 변환 실행
+        text_to_speech(rich_description, output_file=f"output_{os.path.basename(image_path)}.mp3")
