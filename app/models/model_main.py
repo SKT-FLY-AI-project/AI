@@ -9,6 +9,12 @@
 # pip install langchain langchain-openai openai
 # pip install python-dotenv groq
 # pip install gTTS
+# pip install --upgrade torch accelerate
+# pip install qwen-vl-utils[decord]==0.0.8
+# pip install --upgrade transformers
+# pip show qwen-vl-utils
+# pip install bitsandbytes # 이건 결국 못썼음.
+# pip install git+https://github.com/huggingface/transformers accelerate
 
 
 # PS C:\Users\007\Documents\TEAM3_GITHUB\AI> venv\Scripts\activate
@@ -24,7 +30,7 @@
 import sys
 import os
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
-from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech
+from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, answer_user_question, start_vts_conversation
 
 
 if __name__ == "__main__":
@@ -66,3 +72,11 @@ if __name__ == "__main__":
 
         # 🔹 음성 변환 실행
         text_to_speech(rich_description, output_file=f"output_{os.path.basename(image_path)}.mp3")
+        
+        ################################# 여기는 추후 상황에 따라 밑의 함수를 돌릴 수 있도록 해야 한다고 생각함. ##########################
+        
+        # 🔹 4번: 사용자 질문 답변 처리
+        answer_user_question("테스트 그림", vlm_descriptions[0], dominant_colors, edges)
+
+        # 🔹 5번: VTS 방식 감상 지원
+        start_vts_conversation("테스트 그림", vlm_descriptions[0])

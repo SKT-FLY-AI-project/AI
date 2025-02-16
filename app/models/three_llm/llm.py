@@ -37,6 +37,7 @@ processor = AutoProcessor.from_pretrained(model_name)
 
 import re
 
+# 정제 코드
 def clean_and_restore_spacing(text):
     """
     Qwen2.5-VL의 출력에서 시스템 메시지를 제거하고 띄어쓰기를 복원하는 함수.
@@ -57,10 +58,11 @@ def clean_and_restore_spacing(text):
 
     return text
 
+# 이미지 설명 VLM
 def generate_vlm_description_qwen(image_path):
     # ✅ 이미지 로드 및 리사이징 (512x512)
     image = Image.open(image_path).convert("RGB")
-    image = image.resize((512, 512))
+    image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
 
@@ -156,3 +158,57 @@ def text_to_speech(text, output_file="output.mp3"):
         os.system(f"start {output_file}")  # Windows (macOS: open, Linux: xdg-open)
     except Exception as e:
         print(f"음성 변환 중 오류 발생: {e}")
+
+
+########################### STEP 4 : 질문 답변 모드를 진행하는 함수 ###############################        
+def answer_user_question(image_title, vlm_description, dominant_colors, edges):
+    """사용자의 질문을 받아 LLM을 통해 답변을 생성하는 함수"""
+    while True:
+        user_question = input("\n❓ 추가 질문 (종료하려면 'exit' 입력): ")
+        if user_question.lower() == "exit":
+            print("📢 질문 모드 종료.")
+            break
+        
+        # LLM에 전달할 프롬프트 생성
+        prompt = f"""
+        사용자는 '{image_title}' 작품에 대해 질문하고 있습니다.
+        작품 설명: {vlm_description}
+        주요 색상: {dominant_colors}
+        엣지 감지 결과: {edges}
+        
+        사용자의 질문: "{user_question}"
+        
+        위 정보를 기반으로 사용자의 질문에 대해 상세하고 유익한 답변을 제공하세요.
+        """
+        
+        # LLM을 이용한 답변 생성
+        answer = generate_rich_description(image_title, prompt, dominant_colors, edges)
+        print("\n💬 AI의 답변:")
+        print(answer)
+
+        # 음성 변환
+        text_to_speech(answer, output_file=f"answer_{image_title}.mp3")
+        
+########################### STEP 5 : 질문 답변 모드를 진행하는 함수 ###############################
+def start_vts_conversation(image_title, vlm_description): # 아직 RAG는 진행하지 않았습니다.
+    """VTS 방식의 감상 대화를 진행하는 함수"""
+    print("\n🖼️ VTS 감상 모드 시작!")
+    
+    while True:
+        # LLM에 전달할 프롬프트 생성
+        prompt = f"""
+        사용자가 '{image_title}' 작품을 감상하고 있습니다.
+        작품 설명: {vlm_description}
+
+        사용자가 더 깊이 감상할 수 있도록 VTS(Visual Thinking Strategies) 방식의 질문을 하나씩 제공하세요.
+        이전 질문과 연관되도록 새로운 질문을 제시하고, 감상자가 생각을 확장할 수 있도록 유도하세요.
+        """
+        
+        # LLM을 이용한 VTS 질문 생성
+        vts_question = generate_rich_description(image_title, prompt, [], [])
+        
+        # 사용자 입력 받기
+        user_response = input(f"\n🎨 {vts_question} (종료하려면 'exit' 입력): ")
+        if user_response.lower() == "exit":
+            print("📢 VTS 감상 모드 종료.")
+            break
