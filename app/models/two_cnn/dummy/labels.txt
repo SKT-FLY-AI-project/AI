@@ -1,0 +1,317 @@
+0:A Basket of Clams
+1:A Bear Walking
+2:A Giant Seated in a Landscape, sometimes called 'The Colossus'
+3:A Goldsmith in his Shop
+4:A Gorge in the Mountains (Kauterskill Clove)
+5:A Hunting Scene
+6:A Rose
+7:Adam and Eve
+8:Allan Melville
+9:Allegory of the Planets and Continents
+10:Aman-Jean (Portrait of Edmond François Aman-Jean)
+11:Antoine-Laurent Lavoisier (1743–1794) and His Wife (Marie-Anne-Pierrette Paulze, 1758–1836)
+12:Apple Blossoms
+13:Approach to a Mountain Village with Horsemen on the Road
+14:Approaching Thunder Storm
+15:Archangel Gabriel; The Virgin Annunciate
+16:Aristotle with a Bust of Homer
+17:Arrangement in Flesh Colour and Black: Portrait of Theodore Duret
+18:At the Circus: The Spanish Walk (Au Cirque: Le Pas espagnol)
+19:At the Seaside
+20:Autumn Oaks
+21:Bacchanal
+22:Bacchanal with a Wine Vat
+23:Bacchus and Ariadne
+24:Bashi-Bazouk
+25:Blind Orion Searching for the Rising Sun
+26:Boating
+27:Boys in a Dory
+28:Broken Eggs
+29:Burgomaster Jan van Duren (1613–1687)
+30:Bust of Pseudo-Seneca
+31:Bust of a Man in a Hat Gazing Upward
+32:Captain George K. H. Coussmaker (1759–1801)
+33:Cardinal Fernando Niño de Guevara (1541–1609)
+34:Celia Thaxter's Garden, Isles of Shoals, Maine
+35:Central Park, Winter
+36:Christ Carrying the Cross
+37:Christ Carrying the Cross, with the Crucifixion; The Resurrection, with the Pilgrims of Emmaus
+38:Christ Crucified between the Two Thieves: The Three Crosses
+39:Cider Making
+40:Circus Sideshow (Parade de cirque)
+41:Clothing the Naked
+42:Compositional Sketches for the Virgin Adoring the Christ Child, with and without the Infant St. John the Baptist; Diagram of a Perspectival Projection (recto); Slight Doodles (verso)
+43:Condesa de Altamira and Her Daughter, María Agustina
+44:Coronation of the Virgin
+45:Corridor in the Asylum
+46:Cottage among Trees
+47:Cottage near the Entrance to a Wood
+48:Cypresses
+49:Daniel Crommelin Verplanck
+50:Design for a Wall Monument
+51:Diana and Actaeon
+52:Diana and Actaeon (Diana Surprised in Her Bath)
+53:Dune Landscape with Oak Tree
+54:Ecstatic Christ
+55:Elijah Boardman
+56:Elizabeth Farren (born about 1759, died 1829), Later Countess of Derby
+57:Erasmus of Rotterdam
+58:Ernesta (Child with Nurse)
+59:Euphemia White Van Rensselaer
+60:Evening Calm, Concarneau, Opus 220 (Allegro Maestoso)
+61:Evening: Landscape with an Aqueduct
+62:Fishing Boats, Key West
+63:Flight Into Egypt
+64:Francesco d'Este (born about 1430, died after 1475)
+65:Francis Brinley
+66:Fur Traders Descending the Missouri
+67:Garden at Sainte-Adresse
+68:George Washington
+69:Great Indian Fruit Bat
+70:Head of a Man
+71:Head of a Young Woman
+72:Heart of the Andes
+73:Hercules chasing Avarice from the Temple of the Muses
+74:Hermann von Wedigh III (died 1560)
+75:Horatio Gates
+76:Houses on the Achterzaan
+77:Hugh Hall
+78:I Saw the Figure 5 in Gold
+79:Ia Orana Maria (Hail Mary)
+80:Imaginary View of Venice (undivided plate)
+81:Improvisation 27 (Garden of Love II)
+82:Island of the Dead
+83:Joan of Arc
+84:Joseph-Antoine Moltedo (born 1775)
+85:Joséphine-Éléonore-Marie-Pauline de Galard de Brassac de Béarn (1825–1860), Princesse de Broglie
+86:Juan de Pareja (1606–1670)
+87:Jupiter and Juno: Study for the 'Furti di Giove' Tapestries
+88:Lady Lilith
+89:Lady at the Tea Table
+90:Lady of the Lake
+91:Lady with Her Pets (Molly Wales Fobes)
+92:Lake George
+93:Landscape with Stars
+94:Landscape with a Double Spruce in the Foreground
+95:Landscape—Scene from "Thanatopsis"
+96:Large Boston Public Garden Sketchbook: The Huntington Avenue Streetcar
+97:Leisure Time in an Elegant Setting
+98:Leonidas at Thermopylae
+99:Lucas van Uffel (died 1637)
+100:Lucretia
+101:Lute Player
+102:Madame Félix Gallois
+103:Madame Georges Charpentier (Marguérite-Louise Lemonnier, 1848–1904) and Her Children, Georgette-Berthe (1872–1945) and Paul-Émile-Charles (1875–1895)
+104:Madame Jacques-Louis Leblanc (Françoise Poncelle, 1788–1839)
+105:Madame Roulin and Her Baby
+106:Madame X (Madame Pierre Gautreau)
+107:Mademoiselle V. . . in the Costume of an Espada
+108:Madonna and Child
+109:Madonna and Child Enthroned with Saints
+110:Manuel Osorio Manrique de Zuñiga (1784–1792)
+111:Margaret of Austria
+112:Margaretha van Haexbergen (1614–1676)
+113:Mars and Venus United by Love
+114:Mary Sylvester
+115:Maternity
+116:May Picture
+117:Melencolia I
+118:Men Shoveling Chairs (Scupstoel)
+119:Merry Company on a Terrace
+120:Merrymakers at Shrovetide
+121:Mezzetin
+122:Michael Angelo and Emma Clara Peale
+123:Midshipman Augustus Brine
+124:Mme Vuillard Sewing by the Window, rue Truffaut
+125:Moonlight on Mount Lafayette, New Hampshire
+126:Mountain Stream
+127:Mr. and Mrs. Daniel Otis and Child
+128:Mrs. Francis Brinley and Her Son Francis
+129:Mrs. Grace Dalrymple Elliott (1754?–1823)
+130:Mrs. Hugh Hammersley
+131:Mrs. John Winthrop
+132:Mt. Katahdin (Maine), Autumn #2
+133:Mäda Primavesi (1903–2000)
+134:Nocturne (Nocturne: The Thames at Battersea)
+135:Northeaster
+136:Note in Pink and Brown
+137:Otto, Count of Nassau and his Wife Adelheid van Vianen
+138:Panaromic View of the Bacino di San Marco, Looking up the Giudecca Canal
+139:Panoramic View of the Palace and Gardens of Versailles
+140:Perseus and the Origin of Coral
+141:Piazza San Marco
+142:Portrait of Alvise Contarini(?); (verso) A Tethered Roebuck
+143:Portrait of Gerard de Lairesse
+144:Portrait of Monsieur Aublet
+145:Portrait of Nicolas Trigault in Chinese Costume
+146:Portrait of a Carthusian
+147:Portrait of a Gentleman
+148:Portrait of a German Officer
+149:Portrait of a Lady
+150:Portrait of a Man, possibly Matteo di Sebastiano di Bernardino Gozzadini
+151:Portrait of a Woman with a Man at a Casement
+152:Portrait of a Woman, Possibly a Nun of San Secondo; (verso) Scene in Grisaille
+153:Portrait of a Woman, possibly Ginevra d'Antonio Lupari Gozzadini
+154:Portrait of a Young Man
+155:Portrait of an Ecclesiastic
+156:Portrait of the Artist
+157:Portrait of the Painter
+158:Prisoners from the Front
+159:Queen Esther Approaching the Palace of Ahasuerus
+160:Queen Victoria
+161:Reading the News at the Weavers' Cottage
+162:Reclining Female Nude
+163:Reclining Nude
+164:Road in Etten
+165:Rubens, His Wife Helena Fourment (1614–1673), and Their Son Frans (1633–1678)
+166:Saada, the Wife of Abraham Ben-Chimol, and Préciada, One of Their Daughters
+167:Saint Andrew
+168:Saint Anthony the Abbot in the Wilderness
+169:Saint Jerome as Scholar
+170:Saint John on Patmos
+171:Saints Bartholomew and Simon
+172:Salisbury Cathedral from the Bishop's Grounds
+173:Samson Captured by the Philistines
+174:Samson and Delilah
+175:Satire on Art Criticism
+176:Scalinata della Trinità dei Monti
+177:Seated Woman
+178:Seated Woman, Back View
+179:Self-Portrait
+180:Self-Portrait, from The Iconography
+181:Sibylle
+182:Soap Bubbles
+183:Spring Blossoms, Montclair, New Jersey
+184:Stage Fort across Gloucester Harbor
+185:Still Life with Apples and a Pot of Primroses
+186:Still Life with Cake
+187:Still Life with Jar, Cup, and Apples
+188:Still Life: Balsam Apple and Vegetables
+189:Street Scene in Paris (Coin de rue à Paris)
+190:Studies for the Libyan Sibyl (recto); Studies for the Libyan Sibyl and a small Sketch for a Seated Figure (verso)
+191:Study for "Poseuses"
+192:Study for the Equestrian Monument to Francesco Sforza
+193:Study of a Young Woman
+194:Summer Morning
+195:Surf, Isles of Shoals
+196:Susan Walker Morse (The Muse)
+197:Tahitian Faces (Frontal View and Profiles)
+198:Temple Gardens
+199:Tennis at Newport
+200:The Abduction of Rebecca
+201:The Abduction of the Sabine Women
+202:The Adoration of the Magi
+203:The Adoration of the Shepherds
+204:The American School
+205:The Annunciation
+206:The Annunciation to Zacharias; (verso) The Angel of the Annunciation
+207:The Assumption of the Virgin
+208:The Beeches
+209:The Betrothal of the Virgin
+210:The Burial of Punchinello
+211:The Card Players
+212:The Champion Single Sculls (Max Schmitt in a Single Scull)
+213:The Connoisseur
+214:The Contest for the Bouquet: The Family of Robert Gordon in Their New York Dining-Room
+215:The Coronation of the Virgin
+216:The Creation of the World and the Expulsion from Paradise
+217:The Crucifixion
+218:The Crucifixion with the Virgin and Saint John
+219:The Crucifixion; The Last Judgment
+220:The Cup of Tea
+221:The Dance Class
+222:The Death of Socrates
+223:The Denial of Saint Peter
+224:The Dining Room
+225:The Doorway
+226:The Entombment of Christ
+227:The Entrance Hall of the Regensburg Synagogue
+228:The Falls of Niagara
+229:The Feast of Herod and the Beheading of the Baptist
+230:The Flower Girl
+231:The Fortune-Teller
+232:The Genius of Castiglione
+233:The Great Statue of Amida Buddha at Kamakura, Known as the Daibutsu, from the Priest's Garden
+234:The Gulf Stream
+235:The Harvesters
+236:The Hatch Family
+237:The Head of the Virgin in Three-Quarter View Facing Right
+238:The Holy Family with Saints Anne and Catherine of Alexandria
+239:The Holy Family with the Young Saint John the Baptist
+240:The Horse Fair
+241:The Judgment of Paris
+242:The Judgment of Paris; he is sitting at left with Venus, Juno and Pallas Athena, a winged victory above; in the upper section the Sun in his chariot preceeded by Castor and Pollux on horseback; at lower right two river gods and a naiad above whom Jupiter, an eagle, Ganymede, Diana and another Goddess
+243:The Kaunitz Sisters (Leopoldine, Caroline, and Ferdinandine)
+244:The Lake of Zug
+245:The Last Communion of Saint Jerome
+246:The Last Supper
+247:The Last Supper, after Leonardo da Vinci
+248:The Love Letter
+249:The Love Song
+250:The Martyrdom of Saint Paul
+251:The Meditation on the Passion
+252:The Musicians
+253:The Nativity
+254:The New Bonnet
+255:The Parthenon
+256:The Penitence of Saint Jerome
+257:The Repast of the Lion
+258:The Rest on the Flight into Egypt
+259:The Rocky Mountains, Lander's Peak
+260:The Round Tower, from 'Carceri d'invenzione' (Imaginary Prisons)
+261:The Sofa
+262:The Sortie Made by the Garrison of Gibraltar
+263:The Thinker: Portrait of Louis N. Kenton
+264:The Third-Class Carriage
+265:The Titan's Goblet
+266:The Toilette of Venus
+267:The Trojan Women Setting Fire to Their Fleet
+268:The Trout Pool
+269:The Valley of Wyoming
+270:The Virgin of Guadalupe with the Four Apparitions
+271:The Young Virgin
+272:Three Standing Figures (recto); Seated Woman and a Male Hermit in Half-length (verso)
+273:Three Virtues (Temperance, Hope, and Fortitude or Justice) and Studies of a Seated Man
+274:Tommaso di Folco Portinari (1428–1501); Maria Portinari (Maria Maddalena Baroncelli, born 1456)
+275:Trees and Houses Near the Jas de Bouffan
+276:Twilight on the Sound, Darien, Connecticut
+277:Two Men Contemplating the Moon
+278:Two Young Girls at the Piano
+279:Variations in Violet and Grey—Market Place, Dieppe
+280:Venice, from the Porch of Madonna della Salute
+281:Venus and Adonis
+282:Venus and Cupid
+283:View from Mount Holyoke, Northampton, Massachusetts, after a Thunderstorm—The Oxbow
+284:View of Heidelberg
+285:View of Toledo
+286:Virgin and Child
+287:Virgin and Child with Saint Anne
+288:Warwick Castle: The East Front
+289:Washington Crossing the Delaware
+290:Whalers
+291:Wheat Field with Cypresses
+292:Wheat Fields
+293:Winter Scene in Moonlight
+294:Wisconsin Landscape
+295:Woman Bathing (La Toilette)
+296:Woman in a Blue Dress
+297:Woman with a Parrot
+298:Young Girl Bathing
+299:Young Man and Woman in an Inn ("Yonker Ramp and His Sweetheart")
+300:Young Woman with a Water Pitcher
+301:Youth Playing a Pipe for a Satyr
+302:Édouard Manet, Seated, Holding His Hat
+303:元   錢選   王羲之觀鵝圖   卷|Wang Xizhi watching geese
+304:北宋    郭熙    樹色平遠圖    卷  |Old Trees, Level Distance
+305:北宋   徽宗   竹禽圖   卷|Finches and bamboo
+306:北宋 傳屈鼎 夏山圖 卷|Summer Mountains
+307:北野天神縁起絵巻|Illustrated Legends of the Kitano Tenjin Shrine (Kitano Tenjin engi emaki)
+308:南宋 佚名 明皇幸蜀圖 軸|Emperor Xuanzong's Flight to Shu
+309:唐 韓幹 照夜白圖 卷|Night-Shining White
+310:明  吳彬  十六羅漢圖  卷|The Sixteen Luohans
+311:春屋妙葩像 自賛|Portrait of Shun'oku Myōha (1311–1388)
+312:清   王翬 等   康熙南巡圖  （卷三: 濟南至泰山）   卷|The Kangxi Emperor's Southern Inspection Tour, Scroll Three: Ji'nan to Mount Tai
+313:清   龔賢   自題 山水十六開   冊|Ink Landscapes with Poems
+314:老梅図襖|Old Plum
+315:薬師佛|Buddha of Medicine Bhaishajyaguru (Yaoshi fo)
+316:수월관음도 고려|水月觀音圖 高麗|Water-moon Avalokiteshvara
