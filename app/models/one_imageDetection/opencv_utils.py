@@ -29,7 +29,11 @@ def detect_painting_region(image, min_area_ratio=0.2, aspect_ratio_range=(0.75, 
     최소 면적 비율을 설정하여 너무 작은 영역은 무시하고 원본을 유지하도록 한다.
     """
     
-    edge = detect_edges(image)
+    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+                                   cv2.THRESH_BINARY_INV, 11, 2)
+    edges = cv2.Canny(gray, 100, 200)
+    edge = cv2.bitwise_or(thresh, edges)
 
     # Contour Detection 적용
     contours, _ = cv2.findContours(edge, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -61,7 +65,7 @@ def detect_painting_region(image, min_area_ratio=0.2, aspect_ratio_range=(0.75, 
         
         # 전체 이미지 대비 크롭된 영역이 너무 작으면 원본 반환
         img_area = image.shape[0] * image.shape[1]
-        cropped_area = w * h
+        cropped_area = width * height
         if cropped_area < min_area_ratio * img_area:
             print("⚠️ 그림 영역이 너무 작아 원본 이미지를 반환합니다.")
             return image
@@ -84,6 +88,7 @@ def detect_painting_region(image, min_area_ratio=0.2, aspect_ratio_range=(0.75, 
 
 # 주요 객체 검출 (Edge Detection 사용)
 def detect_edges(image):
+    image = detect_painting_region(image)
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     # Adaptive Thresholding 적용하여 대비 강화 
     # # Canny(100, 200) 만으로도 대부분의 경우 잘 작동하지만, 배경과 작품의 명암 차이가 적은 경우 문제가 발생할 수 있다.
@@ -154,3 +159,8 @@ def display_results(image_path):
 
     plt.show()
     return edges, dominant_colors
+
+if __name__ == "__main__":
+    image_path = r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png"
+    # 🔹 OpenCV 분석 실행
+    display_results(image_path)
