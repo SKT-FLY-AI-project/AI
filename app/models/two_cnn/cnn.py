@@ -29,19 +29,65 @@ validation_generator = validation_datagen.flow_from_directory(
 )
 
 # CNN 모델 구축
-# cnn_model_250216_3.h5 
-# 사전 학습된 모델(Pre-trained Models) VGG16 사용.
-from tensorflow.keras.applications import VGG16
-base_model = VGG16(weights='imagenet', include_top=False, input_shape=(150, 150, 3))
-base_model.trainable = False  # 사전 학습된 가중치 고정
 
+# cnn_model_250217_1.h5
+# CNN + VGG16 융합 모델 
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras import layers, models
+
+# CNN 모델 (Feature Extractor 역할)
+cnn_model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', padding='same', input_shape=(150, 150, 3)),
+    layers.BatchNormalization(),  # (150, 150, 32) # Parameters 896
+    layers.MaxPooling2D((2, 2)),  # (75, 75, 32)
+
+    layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+    layers.BatchNormalization(),  # (75, 75, 64) # Parameters 18496
+    layers.MaxPooling2D((2, 2)),  # (37, 37, 64)
+
+    # VGG16 입력 크기 맞추기 위해 UpSampling + Padding 추가
+    layers.UpSampling2D(size=(2, 2)),  # (74, 74, 64)
+    layers.ZeroPadding2D(((1, 0), (1, 0))),  # (75, 75, 64)
+
+    layers.Conv2D(3, (1, 1), activation='relu', padding='same')  # (75, 75, 3) # Parameters 195
+]) # 총 CNN 파라미터 수: 19,971
+
+# VGG16 로드 (Feature Extractor / 복잡한 패턴(모양, 사물, 구조 등) 인식 역할) # 입력: (75, 75, 3) → 출력: (2, 2, 512)
+base_model = VGG16(weights='imagenet', include_top=False, input_shape=(75, 75, 3))  # 3채널 입력
+base_model.trainable = False  # VGG16의 가중치는 고정
+
+# 모델 연결
 model = models.Sequential([
-    base_model,
-    layers.Flatten(),
-    layers.Dense(512, activation='relu'),
-    layers.Dropout(0.5),
-    layers.Dense(len(train_generator.class_indices), activation='softmax')
+    cnn_model,     # CNN 모델 적용
+    base_model,    # VGG16 Feature Extractor 연결
+    layers.Flatten(), # 출력: (2,2,512) → (2048,) # 2D Feature Map을 1D 벡터로 변환 (MLP Fully Connected Layer에 입력하기 위해)
+    layers.Dense(512, activation='relu'), # 출력: (2048,) → (512,) # 파라미터 수: 1,049,088
+    layers.Dropout(0.5), # 출력: (512,) → (512,) # 과적합 방지를 위해 50%의 뉴런을 랜덤하게 제거!
+    layers.Dense(len(train_generator.class_indices), activation='softmax')  # 최종 분류층 # 출력: (512,) → (317,) # 317개의 클래스를 예측하는 Softmax 활성화 함수 적용 (즉, 각 클래스의 확률값을 출력) 
+    # 파라미터 수: 162,621
 ])
+
+# 모델 구조 출력
+model.summary()
+
+
+
+
+
+
+# # cnn_model_250216_3.h5 
+# # 사전 학습된 모델(Pre-trained Models) VGG16 사용.
+# from tensorflow.keras.applications import VGG16
+# base_model = VGG16(weights='imagenet', include_top=False, input_shape=(150, 150, 3))
+# base_model.trainable = False  # 사전 학습된 가중치 고정
+
+# model = models.Sequential([
+#     base_model,
+#     layers.Flatten(),
+#     layers.Dense(512, activation='relu'),
+#     layers.Dropout(0.5),
+#     layers.Dense(len(train_generator.class_indices), activation='softmax')
+# ])
 
 
 # cnn_model_250216_2.h5
@@ -114,8 +160,8 @@ history = model.fit(
 
 
 # 모델 저장
-# model.save('app/moidels/two_cnn/cnn_model_250216_3.h5')
-model.save('cnn_model_250216_3.h5')
+model.save('app/models/two_cnn/cnn_model_250217_1.h5')
+# model.save('cnn_model_250217_1.h5')
 
 
 import matplotlib.pyplot as plt
@@ -146,4 +192,4 @@ plt.show()
 
 
 # 클래스 이름 출력
-print("Class indices:", train_generator.class_indices)
+# print("Class indices:", train_generator.class_indices)

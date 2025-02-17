@@ -7,7 +7,18 @@ import numpy as np
 import os
 
 # 모델 로드
-model = tf.keras.models.load_model(r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\cnn_model_250216_2.h5")
+model = tf.keras.models.load_model(r"app\cnn_model_250216_2.h5")
+
+
+## .h5 대용량 모델 로드하기
+# 1. 로컬 환경에서 Git LFS가 활성화되었는지 확인
+# git lfs install # Git LFS를 전역적으로 설정하고, 로컬 리포지토리에 LFS가 적용되도록 보장해 줘요.
+# 2. Git LFS가 .h5 파일을 제대로 추적하고 있는지 확인
+# git lfs ls-files
+# 3. 로컬에 실제 .h5 파일 다운로드 
+# git lfs pull
+
+
     
 # 클래스 인덱스 로드 (train_generator.class_indices를 미리 저장해뒀다고 가정)
 # train_generator.class_indices를 그대로 사용하거나 저장한 json에서 불러올 수 있음
@@ -15,16 +26,24 @@ class_indices = {'A_Basket_of_Clams': 0, 'A_Bear_Walking': 1, 'A_Giant_Seated_in
 classes = {v: k for k, v in class_indices.items()}  # 숫자 인덱스를 클래스명으로 변환
 
 # 테스트할 이미지 경로
-# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_unclassified_MonaLisa.png" # 제대로 안 나옴,, # Unclssified인데,,, # Predicted class: Manuel_Osorio_Manrique_de_Zu_iga__1784_1792_, Confidence: 95.06%
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_unclassified_MonaLisa.png" 
+# 2번 모델 제대로 안 나옴,, # Unclssified인데,,, # Predicted class: Manuel_Osorio_Manrique_de_Zu_iga__1784_1792_, Confidence: 95.06%
+# 3번 모델에선 unclassified 잘 됨. # =17_1
+
 # test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_unclassified_TheStarryNight.png" # Unclssified
 
-test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_수월관음도.png" # Confidence: 99.91%
-# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_WheatFieldwithCypresses_VanGogh.png" # 제대로 안 나옴,,
+test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_수월관음도.png" # Confidence: 99.91% 
+# # 3번 모델에선 unclassified라고 나옴. 그래도 그냥 안 나와버리는게 낫지 # =17_1
 
-# test_image_path = r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\models\two_cnn\data\cnn_test_data\test_ViewofToledo_ElGreco.png" # Confidence: 99.98%
-# test_image_path = r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\models\two_cnn\data\cnn_test_data\test_Rubens,HisWifeHelenaFourmentandTheirSonFrans.png" # Confidence: 99.83%
-# test_image_path = r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\models\two_cnn\data\cnn_test_data\test_JuandePareja.png" # Confidence: 94.32%
-# test_image_path = r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png"  # Confidence: 100.00%
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_WheatFieldwithCypresses_VanGogh.png" # 제대로 안 나옴,, # 3번 모델에선 unclassified라고 나옴. 그래도 그냥 안 나와버리는게 낫지 # =17_1
+
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_ViewofToledo_ElGreco.png" # Confidence: 99.98%
+
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_Rubens,HisWifeHelenaFourmentandTheirSonFrans.png" # Confidence: 99.83% # 17_1번 모델에선 unclassified라고 나옴. 그래도 그냥 안 나와버리는게 낫지
+
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_JuandePareja.png" # Confidence: 94.32% # 3번 모델에선 unclassified라고 나옴. 그래도 그냥 안 나와버리는게 낫지 # =17_1
+
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png"  # Confidence: 100.00%
 
 # 이미지 로드 및 전처리
 def preprocess_image(image_path, target_size=(150, 150)):
