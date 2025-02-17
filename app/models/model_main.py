@@ -36,7 +36,7 @@
 import sys
 import os
 
-from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
+from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_painting_region, detect_edges, extract_dominant_colors, display_results
 from two_cnn.cnn_test import predict_image
 from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, answer_user_question, start_vts_conversation
 
@@ -53,8 +53,9 @@ if __name__ == "__main__":
         # "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg",    # Unknown title
         # "app/models/one_imageDetection/Van Gogh's The Starry Night.png",            # Unknown title
         # r"app\models\two_cnn\data\cnn_test_data\test_ViewofToledo_ElGreco.png",     # View of Toledo
-        r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png" # Garden at Sainte-Adresse
-        # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png" # GardenatSainte-Adresse_monet - Detection 해야함
+        # r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png", # Garden at Sainte-Adresse
+        # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png", # GardenatSainte-Adresse_monet - Detection 해야함
+        r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse
 
     ]
 
@@ -63,7 +64,8 @@ if __name__ == "__main__":
         display_results(image_path)
 
         # 🔹 OpenCV 분석 실행
-        image = load_and_preprocess_image(image_path)
+        image_pre = load_and_preprocess_image(image_path)
+        image = detect_painting_region(image_pre)
         edges = detect_edges(image)
         dominant_colors = extract_dominant_colors(image)
 
