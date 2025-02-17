@@ -13,7 +13,7 @@ from PIL import Image
 from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
 
-from one_imageDetection.opencv_utils import get_color_name
+from app.models.one_imageDetection.opencv_utils import get_color_name
 from langchain.prompts import PromptTemplate
 
 
@@ -116,6 +116,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
         당신은 그림 설명 전문가입니다.  
         다음 그림에 대해 상세한 설명을 생성해주세요.
         시각장애인에게 설명할 수 있도록 자세하게 작성해 주세요.
+        **단, 200자 ~ 500자 사이의 길이로만 생성해야 합니다!**
 
         - **제목:** "{title}"  
         - **VLM 기반 기본 설명:** "{vlm_desc}"   
