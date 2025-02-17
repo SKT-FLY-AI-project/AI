@@ -12,6 +12,7 @@
 # pip install --upgrade torch accelerate
 # pip install qwen-vl-utils[decord]==0.0.8
 # pip install --upgrade transformers
+
 # pip install qwen-vl-utils
 # pip install bitsandbytes # 이건 결국 못썼음.
 # pip install git+https://github.com/huggingface/transformers accelerate
@@ -31,18 +32,23 @@
 # image_path = "app\models\London_CourtauldGallery_Manet'sABar.jpg"
 
 # main.py
+# model_main.py
 import sys
 import os
+
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
 from two_cnn.cnn_test import predict_image
 from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, answer_user_question, start_vts_conversation
 
+
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
-from three_llm.llm import generate_blip_description, generate_rich_description, text_to_speech
+from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, answer_user_question, start_vts_conversation
+
 
 if __name__ == "__main__":
     # 🔹 테스트할 이미지 리스트
     test_images = [
+
         # "app/models/one_imageDetection/London_CourtauldGallery_Cezanne's.png",      # Unknown title
         # "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg",    # Unknown title
         # "app/models/one_imageDetection/Van Gogh's The Starry Night.png",            # Unknown title
@@ -63,6 +69,7 @@ if __name__ == "__main__":
 
        # ✅ Qwen2.5-VL 실행
         print("\n🎨 Qwen2.5-VL 모델 실행 중...")
+
         vlm_descriptions = generate_vlm_description_qwen(image)
 
         # ✅ 결과가 문자열이면 리스트로 변환
@@ -76,6 +83,7 @@ if __name__ == "__main__":
         # ✅ 리스트를 줄바꿈으로 연결하여 출력
         print("\n".join(vlm_descriptions))
 
+
         # 해당 작품이 AI가 학습한 것이면, 제목이 return "{class_name}"
         # 해당 작품이 AI가 학습한 것이 아니면, return "Unknown Title"
         title = predict_image(image)
@@ -86,11 +94,13 @@ if __name__ == "__main__":
 
         # 🔹 LLM을 활용한 설명 생성
         rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)
+
         print("\n📜 생성된 설명:")
         print(rich_description)
 
         # 🔹 음성 변환 실행
         text_to_speech(rich_description, output_file=f"output_{os.path.basename(image_path)}.mp3")
+
         
         ################################# 여기는 추후 상황에 따라 밑의 함수를 돌릴 수 있도록 해야 한다고 생각함. ##########################
         
@@ -99,3 +109,4 @@ if __name__ == "__main__":
 
         # 🔹 5번: VTS 방식 감상 지원
         start_vts_conversation(title, vlm_descriptions[0])
+
