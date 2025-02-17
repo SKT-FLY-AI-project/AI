@@ -61,7 +61,15 @@ def clean_and_restore_spacing(text):
 # 이미지 설명 VLM
 def generate_vlm_description_qwen(image_path):
     # ✅ 이미지 로드 및 리사이징 (512x512)
-    image = Image.open(image_path).convert("RGB")
+
+    # image_path가 numpy 배열일 경우 변환
+    if isinstance(image_path, np.ndarray):
+        image = Image.fromarray(image_path).convert("RGB")
+    elif isinstance(image_path, str):
+        image = Image.open(image_path).convert("RGB")
+    else:
+        raise TypeError("image_path must be a file path (str) or a numpy.ndarray.")
+
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
