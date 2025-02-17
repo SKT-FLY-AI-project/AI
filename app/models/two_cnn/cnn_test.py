@@ -5,9 +5,10 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 import os
+from PIL import Image
 
 # 모델 로드
-model = tf.keras.models.load_model(r"app\cnn_model_250216_2.h5")
+model = tf.keras.models.load_model(r"app\models\two_cnn\cnn_model_250217_1.h5")
 
 
 ## .h5 대용량 모델 로드하기
@@ -32,7 +33,7 @@ classes = {v: k for k, v in class_indices.items()}  # 숫자 인덱스를 클래
 
 # test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_unclassified_TheStarryNight.png" # Unclssified
 
-test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_수월관음도.png" # Confidence: 99.91% 
+# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_수월관음도.png" # Confidence: 99.91% 
 # # 3번 모델에선 unclassified라고 나옴. 그래도 그냥 안 나와버리는게 낫지 # =17_1
 
 # test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_WheatFieldwithCypresses_VanGogh.png" # 제대로 안 나옴,, # 3번 모델에선 unclassified라고 나옴. 그래도 그냥 안 나와버리는게 낫지 # =17_1
@@ -47,7 +48,15 @@ test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_수월관음도.p
 
 # 이미지 로드 및 전처리
 def preprocess_image(image_path, target_size=(150, 150)):
-    img = load_img(image_path, target_size=target_size)  # 이미지 크기 조정
+    # `image_path`가 numpy 배열이면 변환
+    if isinstance(image_path, np.ndarray):
+        img = Image.fromarray(image_path)  # numpy 배열을 PIL 이미지로 변환
+    elif isinstance(image_path, str):
+        img = load_img(image_path)  # 이미지 크기 조정
+    else:
+        raise TypeError("image_path must be a file path (str) or numpy.ndarray.")
+    
+    img = img.resize(target_size)  # 이미지 크기 조정
     img_array = img_to_array(img) / 255.0  # 0~1 범위로 정규화
     img_array = np.expand_dims(img_array, axis=0)  # (1, 150, 150, 3) 형태로 변환
     return img_array
@@ -68,6 +77,9 @@ def predict_image(image_path):
         class_name = classes[predicted_class]
         confidence = prediction[0][predicted_class] * 100
         print(f"참고로, 가장 높은 Confidence({confidence:.2f}% )를 가진 작품은 {class_name} 입니다. ")
+
+        return "Unknown Title"
+    
     else:
         predicted_class = np.argmax(prediction)  # 가장 높은 확률의 클래스 인덱스
 
@@ -75,11 +87,13 @@ def predict_image(image_path):
         confidence = prediction[0][predicted_class] * 100
         print(f"Predicted class: {class_name}, Confidence: {confidence:.2f}%")
 
-# 테스트 이미지 예측
-if os.path.exists(test_image_path):
-    predict_image(test_image_path)
-else:
-    print(f"이미지 파일을 찾을 수 없습니다: {test_image_path}")
+        return {class_name}
+
+# # 테스트 이미지 예측
+# if os.path.exists(test_image_path):
+#     predict_image(test_image_path)
+# else:
+#     print(f"이미지 파일을 찾을 수 없습니다: {test_image_path}")
 
 
 """

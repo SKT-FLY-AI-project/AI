@@ -26,13 +26,41 @@ def generate_blip_description(image_path):
     processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
     model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large").to("cuda" if torch.cuda.is_available() else "cpu")
 
-    image = Image.open(image_path).convert("RGB")
-    inputs = processor(images=image, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
+import re
 
-    prompt = "Describe this painting's scene, colors, composition, and mood in detail."
-    
-    # 🔹 프롬프트를 input_ids로 변환
-    prompt_inputs = processor.tokenizer(prompt, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
+# 정제 코드
+def clean_and_restore_spacing(text):
+    """
+    Qwen2.5-VL의 출력에서 시스템 메시지를 제거하고 띄어쓰기를 복원하는 함수.
+    """
+    # ✅ 1. "이 그림은" 또는 "이 장면은"이 나오기 전까지 모든 텍스트 제거
+    text = re.sub(r".*?(이 그림은|이 장면은)", r"\1", text, flags=re.IGNORECASE | re.DOTALL)
+
+    # ✅ 2. "이 이미지를 보고 ~ 설명하세요" 같은 프롬프트 제거
+    prompt_text = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
+    text = text.replace(prompt_text, "").strip()
+
+    # ✅ 3. 연속된 공백을 한 개의 공백으로 변경
+    text = re.sub(r"\s+", " ", text).strip()
+
+    # ✅ 4. 한글과 영어/숫자 사이에 공백 추가 (자연스러운 띄어쓰기 복원)
+    text = re.sub(r"([가-힣])([a-zA-Z0-9])", r"\1 \2", text)  # 한글 + 영어/숫자
+    text = re.sub(r"([a-zA-Z0-9])([가-힣])", r"\1 \2", text)  # 영어/숫자 + 한글
+
+    return text
+
+# 이미지 설명 VLM
+def generate_vlm_description_qwen(image_path):
+    # ✅ 이미지 로드 및 리사이징 (512x512)
+    # image_path가 numpy 배열일 경우 변환
+    if isinstance(image_path, np.ndarray):
+        image = Image.fromarray(image_path).convert("RGB")
+    elif isinstance(image_path, str):
+        image = Image.open(image_path).convert("RGB")
+    else:
+        raise TypeError("image_path must be a file path (str) or a numpy.ndarray.")
+
+    image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     with torch.no_grad():
         output_with_prompt = model.generate(**inputs, input_ids=prompt_inputs.input_ids, max_length=150)
