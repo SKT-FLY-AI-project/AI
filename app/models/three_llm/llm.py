@@ -1,5 +1,3 @@
-########################### SETP 2 : LLM #####################################
-
 import openai
 import os
 import requests
@@ -12,6 +10,7 @@ import numpy as np
 from PIL import Image
 from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
+from PIL import Image
 
 #from app.models.one_imageDetection.opencv_utils import get_color_name
 from one_imageDetection.opencv_utils import get_color_name
@@ -37,6 +36,8 @@ model = AutoModelForVision2Seq.from_pretrained(
 )
 
 processor = AutoProcessor.from_pretrained(model_name)
+
+########################### SETP 2 : VLM (Vision to LLM) #####################################
 
 import re
 
@@ -64,7 +65,11 @@ def clean_and_restore_spacing(text):
 # 이미지 설명 VLM
 def generate_vlm_description_qwen(image_path):
     # ✅ 이미지 로드 및 리사이징 (512x512)
-    image = Image.open(image_path).convert("RGB")
+    # 만약 image_path가 numpy 배열이라면:
+    if isinstance(image_path, np.ndarray):
+        image = Image.fromarray(image_path).convert("RGB")
+    else:
+        image = Image.open(image_path).convert("RGB")
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
@@ -102,7 +107,7 @@ def generate_vlm_description_qwen(image_path):
     return description
 
 
-########################### STEP 3 : 텍스트 생성 및 음성 변환 ###############################
+########################### STEP 3 : (VLM결과를 바탕으로) LLM ###############################
 from gtts import gTTS
 
 def generate_rich_description(title, vlm_desc, dominant_colors, edges):
@@ -194,7 +199,7 @@ def answer_user_question(image_title, vlm_description, dominant_colors, edges):
         text_to_speech(answer, output_file=f"answer_{image_title}.mp3")
         
 ########################### STEP 5 : 질문 답변 모드를 진행하는 함수 ###############################
-# RAG에서 질문을 가져오는 함수 (예시)
+# 1-1. VTS 질문지 RAG에서 질문을 가져오는 함수 (예시) : VTS_RAG_questions.json
 def load_rag_questions():
     # 현재 파일(llm.py)이 있는 폴더 경로 가져오기
     current_dir = os.path.dirname(os.path.abspath(__file__))  # three_llm 폴더 경로
@@ -208,31 +213,54 @@ def load_rag_questions():
     
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
+    
+# 1-2. 미술 정보 RAG에서 질문을 가져오는 함수 (예시) : art_RAG_questions.json
+def retrieve_art_info(query):
+    """
+    사용자의 감상 및 질문에 대해 관련 미술 정보를 검색하는 함수.
+    """
+    # 예시임. # art_RAG_question.json 파일 가져오는 코드로 수정하자.
+    # retriever = FAISS.load_local("art_database", embeddings).as_retriever()
+    # results = retriever.get_relevant_documents(query)
+    # return results[0].page_content if results else "관련된 미술 정보를 찾지 못했습니다."
+
 
 def retrieve_vts_question(previous_responses):
     """
     사용자의 이전 답변을 기반으로 적절한 VTS 질문을 RAG에서 검색
     """
+    """
+    - 사용자의 입력을 분석하여 VTS 질문을 생성할지, 미술 정보를 제공할지 결정.
+    - 감정적 공감 또는 정보 제공이 필요한 경우: 미술 정보 검색
+    - 질문을 생성할 경우: VTS 질문 매뉴얼 검색
+    """
     rag_questions = load_rag_questions() # 일단 테스트용으로 여기다 두긴 하는데... 나중에 정리합시다.
     # RAG에서 검색 (현재는 임시로 JSON에서 질문을 선택하는 형태)
     relevant_questions = []
 
+    if "느낌" in previous_responses or "설명" in previous_responses or "배경" in previous_responses:
+        # 미술 정보 검색
+        response_text = retrieve_art_info(previous_responses)
+        print(f"📚 AI: {response_text}")
+
     # 이전 답변을 기반으로 적절한 질문 카테고리 선택
-    if not previous_responses:
+    elif not previous_responses:
         # 첫 질문은 "전체에 대한 적극적인 관계 만들기"에서 선택
         relevant_questions = [q for q in rag_questions if q["classification"] == "전체에 대한 적극적인 관계 만들기"]
     else:
         # 사용자의 이전 답변을 분석 (여기서는 단순히 랜덤으로 선택, 실제 구현 시 NLP 활용 가능)
         relevant_questions = [q for q in rag_questions if q["classification"] == "새로운 시각 만들기"]
 
-    # 랜덤으로 질문 하나 선택
-    if relevant_questions:
-        return random.choice(relevant_questions)["question"]
-    else:
-        return "이 작품을 어떻게 바라보면 좋을까요?"
+    # # 랜덤으로 질문 하나 선택
+    # if relevant_questions:
+    #     return random.choice(relevant_questions)["question"]
+    # else:
+    #     return "이 작품을 어떻게 바라보면 좋을까요?"
+    return response_text if "느낌" in previous_responses else relevant_questions
+
 
 # 감상 대화 함수 (개선 버전)
-def start_vts_conversation(image_title, vlm_description):
+def start_vts_conversation(image_title, vlm_description, dominant_colors, edges):
     """VTS 방식의 감상 대화를 진행하는 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
 
@@ -250,3 +278,20 @@ def start_vts_conversation(image_title, vlm_description):
 
         # 사용자 응답 저장
         previous_responses.append(user_response)
+
+        # LLM에 전달할 프롬프트 생성
+        prompt = f"""
+        사용자는 '{image_title}' 작품에 대해 질문하고 있습니다.
+        작품 설명: {vlm_description}
+        주요 색상: {dominant_colors}
+        엣지 감지 결과: {edges}
+        
+        사용자의 질문: "{user_response}"
+        
+        위 정보를 기반으로 사용자의 질문에 대해 상세하고 유익한 답변을 제공하세요.
+        """
+        
+        # LLM을 이용한 답변 생성
+        answer = generate_rich_description(image_title, prompt, dominant_colors, edges)
+        print("\n💬 AI의 답변:")
+        print(answer)
