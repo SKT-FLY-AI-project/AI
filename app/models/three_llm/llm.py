@@ -13,8 +13,11 @@ from PIL import Image
 from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
 
+#from app.models.one_imageDetection.opencv_utils import get_color_name
 from one_imageDetection.opencv_utils import get_color_name
 from langchain.prompts import PromptTemplate
+
+import random
 
 
 # Hugging Face 모델 캐시 경로 설정
@@ -61,15 +64,7 @@ def clean_and_restore_spacing(text):
 # 이미지 설명 VLM
 def generate_vlm_description_qwen(image_path):
     # ✅ 이미지 로드 및 리사이징 (512x512)
-
-    # image_path가 numpy 배열일 경우 변환
-    if isinstance(image_path, np.ndarray):
-        image = Image.fromarray(image_path).convert("RGB")
-    elif isinstance(image_path, str):
-        image = Image.open(image_path).convert("RGB")
-    else:
-        raise TypeError("image_path must be a file path (str) or a numpy.ndarray.")
-
+    image = Image.open(image_path).convert("RGB")
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
@@ -124,6 +119,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
         당신은 그림 설명 전문가입니다.  
         다음 그림에 대해 상세한 설명을 생성해주세요.
         시각장애인에게 설명할 수 있도록 자세하게 작성해 주세요.
+        **단, 200자 ~ 500자 사이의 길이로만 생성해야 합니다!**
 
         - **제목:** "{title}"  
         - **VLM 기반 기본 설명:** "{vlm_desc}"   
@@ -198,25 +194,59 @@ def answer_user_question(image_title, vlm_description, dominant_colors, edges):
         text_to_speech(answer, output_file=f"answer_{image_title}.mp3")
         
 ########################### STEP 5 : 질문 답변 모드를 진행하는 함수 ###############################
-def start_vts_conversation(image_title, vlm_description): # 아직 RAG는 진행하지 않았습니다.
+# RAG에서 질문을 가져오는 함수 (예시)
+def load_rag_questions():
+    # 현재 파일(llm.py)이 있는 폴더 경로 가져오기
+    current_dir = os.path.dirname(os.path.abspath(__file__))  # three_llm 폴더 경로
+
+    # JSON 파일 경로 설정
+    file_path = os.path.join(current_dir, "data", "VTS_RAG_questions.json")
+
+    # 파일 존재 여부 확인
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"❌ RAG 질문 파일을 찾을 수 없습니다: {file_path}")
+    
+    with open(file_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def retrieve_vts_question(previous_responses):
+    """
+    사용자의 이전 답변을 기반으로 적절한 VTS 질문을 RAG에서 검색
+    """
+    rag_questions = load_rag_questions() # 일단 테스트용으로 여기다 두긴 하는데... 나중에 정리합시다.
+    # RAG에서 검색 (현재는 임시로 JSON에서 질문을 선택하는 형태)
+    relevant_questions = []
+
+    # 이전 답변을 기반으로 적절한 질문 카테고리 선택
+    if not previous_responses:
+        # 첫 질문은 "전체에 대한 적극적인 관계 만들기"에서 선택
+        relevant_questions = [q for q in rag_questions if q["classification"] == "전체에 대한 적극적인 관계 만들기"]
+    else:
+        # 사용자의 이전 답변을 분석 (여기서는 단순히 랜덤으로 선택, 실제 구현 시 NLP 활용 가능)
+        relevant_questions = [q for q in rag_questions if q["classification"] == "새로운 시각 만들기"]
+
+    # 랜덤으로 질문 하나 선택
+    if relevant_questions:
+        return random.choice(relevant_questions)["question"]
+    else:
+        return "이 작품을 어떻게 바라보면 좋을까요?"
+
+# 감상 대화 함수 (개선 버전)
+def start_vts_conversation(image_title, vlm_description):
     """VTS 방식의 감상 대화를 진행하는 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
-    
-    while True:
-        # LLM에 전달할 프롬프트 생성
-        prompt = f"""
-        사용자가 '{image_title}' 작품을 감상하고 있습니다.
-        작품 설명: {vlm_description}
 
-        사용자가 더 깊이 감상할 수 있도록 VTS(Visual Thinking Strategies) 방식의 질문을 하나씩 제공하세요.
-        이전 질문과 연관되도록 새로운 질문을 제시하고, 감상자가 생각을 확장할 수 있도록 유도하세요.
-        """
-        
-        # LLM을 이용한 VTS 질문 생성
-        vts_question = generate_rich_description(image_title, prompt, [], [])
-        
+    previous_responses = []  # 사용자 응답 저장 리스트
+
+    while True:
+        # 이전 응답을 반영하여 적절한 질문 선택
+        vts_question = retrieve_vts_question(previous_responses)
+
         # 사용자 입력 받기
         user_response = input(f"\n🎨 {vts_question} (종료하려면 'exit' 입력): ")
         if user_response.lower() == "exit":
             print("📢 VTS 감상 모드 종료.")
             break
+
+        # 사용자 응답 저장
+        previous_responses.append(user_response)
