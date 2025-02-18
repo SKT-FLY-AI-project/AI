@@ -9,7 +9,6 @@
 # pip install langchain langchain-openai openai
 # pip install python-dotenv groq
 # pip install gTTS
-
 # pip install --upgrade torch accelerate
 # pip install qwen-vl-utils[decord]==0.0.8
 # pip install --upgrade transformers
@@ -24,11 +23,6 @@
 
 
 
-#pip install fastapi
-#pip install uvicorn
-#pip install python-multipart
-
-
 # PS C:\Users\007\Documents\TEAM3_GITHUB\AI> venv\Scripts\activate
 # (venv) PS C:\Users\007\Documents\TEAM3_GITHUB\AI> python app/models/model_main.py "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg"
 
@@ -39,8 +33,6 @@
 
 # main.py
 # model_main.py
-
-# fast API 실험용
 import sys
 import os
 
@@ -67,55 +59,55 @@ if __name__ == "__main__":
 
     ]
 
+    for image_path in test_images:
+        print(f"\n🔎 테스트 중: {image_path}")
+        display_results(image_path)
 
         # 🔹 OpenCV 분석 실행
-    image_pre = load_and_preprocess_image(image_path)
-    image = detect_painting_region(image_pre)
-    edges = detect_edges(image)
-    dominant_colors = extract_dominant_colors(image)
+        image_pre = load_and_preprocess_image(image_path)
+        image = detect_painting_region(image_pre)
+        edges = detect_edges(image)
+        dominant_colors = extract_dominant_colors(image)
 
-    # ✅ Qwen2.5-VL 실행
-    print("\n🎨 Qwen2.5-VL 모델 실행 중...")
+       # ✅ Qwen2.5-VL 실행
+        print("\n🎨 Qwen2.5-VL 모델 실행 중...")
 
-    vlm_descriptions = generate_vlm_description_qwen(image)
+        vlm_descriptions = generate_vlm_description_qwen(image)
 
-    # # 🔹 OpenCV 분석 실행
-    # image = load_and_preprocess_image(image_path)
-    # edges = detect_edges(image)
-    # dominant_colors = extract_dominant_colors(image)
+        # ✅ 결과가 문자열이면 리스트로 변환
+        if isinstance(vlm_descriptions, str):
+            vlm_descriptions = [vlm_descriptions]
 
-    # # ✅ Qwen2.5-VL 실행
-    # print("\n🎨 Qwen2.5-VL 모델 실행 중...")
-    # vlm_descriptions = generate_vlm_description_qwen(image_path)
+        # ✅ 결과가 None이면 기본값 설정
+        if vlm_descriptions is None:
+            vlm_descriptions = ["설명을 생성할 수 없습니다."]
 
-    # # ✅ 결과가 문자열이면 리스트로 변환
-    # if isinstance(vlm_descriptions, str):
-    #     vlm_descriptions = [vlm_descriptions]
+        # ✅ 리스트를 줄바꿈으로 연결하여 출력
+        print("\n".join(vlm_descriptions))
 
 
-    # 해당 작품이 AI가 학습한 것이면, 제목이 return "{class_name}"
-    # 해당 작품이 AI가 학습한 것이 아니면, return "Unknown Title"
-    title = predict_image(image)
-    if isinstance(title, set):
-        title = list(title)[0]  # set을 리스트로 변환 후 첫 번째 값 가져오기
+        # 해당 작품이 AI가 학습한 것이면, 제목이 return "{class_name}"
+        # 해당 작품이 AI가 학습한 것이 아니면, return "Unknown Title"
+        title = predict_image(image)
+        if isinstance(title, set):
+            title = list(title)[0]  # set을 리스트로 변환 후 첫 번째 값 가져오기
 
-    print("작품 제목 추출 결과입니다.", title)
+        print("작품 제목 추출 결과입니다.", title)
 
-    # 🔹 LLM을 활용한 설명 생성
-    rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)
+        # 🔹 LLM을 활용한 설명 생성
+        rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)
 
-    print("\n📜 생성된 설명:")
-    print(rich_description)
+        print("\n📜 생성된 설명:")
+        print(rich_description)
 
-    # 🔹 음성 변환 실행
-    text_to_speech(rich_description, output_file=f"output_{os.path.basename(image_path)}.mp3")
+        # 🔹 음성 변환 실행
+        text_to_speech(rich_description, output_file=f"output_{os.path.basename(image_path)}.mp3")
 
-    
-#         ################################# 여기는 추후 상황에 따라 밑의 함수를 돌릴 수 있도록 해야 한다고 생각함. ##########################
-    
-    # 🔹 4번: 사용자 질문 답변 처리
-    answer_user_question(title, vlm_descriptions[0], dominant_colors, edges)
+        
+        ################################# 여기는 추후 상황에 따라 밑의 함수를 돌릴 수 있도록 해야 한다고 생각함. ##########################
+        
+        # 🔹 4번: 사용자 질문 답변 처리
+        answer_user_question(title, vlm_descriptions[0], dominant_colors, edges)
 
-    # 🔹 5번: VTS 방식 감상 지원
-    start_vts_conversation(title, vlm_descriptions[0])
-
+        # 🔹 5번: VTS 방식 감상 지원
+        start_vts_conversation(title, vlm_descriptions[0])
