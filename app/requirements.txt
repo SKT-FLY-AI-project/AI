@@ -1,0 +1,12 @@
+requests python-dotenv numpy
+tensorflow==2.18.0
+torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0
+opencv-python==4.11.0.86
+matplotlib==3.10.0
+bitsandbytes
+openai
+langchain langchain-openai
+groq
+qwen-vl-utils[decord]==0.0.8
+gTTS
+git+https://github.com/huggingface/transformers accelerate
