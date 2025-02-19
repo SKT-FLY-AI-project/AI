@@ -1,6 +1,7 @@
 import openai
 import os
 import requests
+import cv2
 import json
 from dotenv import load_dotenv
 from groq import Groq
@@ -63,13 +64,13 @@ def clean_and_restore_spacing(text):
     return text
 
 # 이미지 설명 VLM
-def generate_vlm_description_qwen(image_path):
+def generate_vlm_description_qwen(image):
     # ✅ 이미지 로드 및 리사이징 (512x512)
     # 만약 image_path가 numpy 배열이라면:
-    if isinstance(image_path, np.ndarray):
-        image = Image.fromarray(image_path).convert("RGB")
+    if isinstance(image, np.ndarray):
+        image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     else:
-        image = Image.open(image_path).convert("RGB")
+        image = Image.open(image).convert("RGB")
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."

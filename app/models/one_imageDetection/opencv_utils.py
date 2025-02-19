@@ -1,5 +1,6 @@
 ########################### SETP 1 : openCV #####################################
 
+import os # colab용
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -157,10 +158,11 @@ def display_results(image_path):
     plt.imshow([dominant_colors / 255])
     plt.title("Dominant Colors (Original)")
 
-    plt.show()
+    # 기존 plt.show() 대신 저장 방식으로 변경
+    plt.savefig("/content/drive/MyDrive/Project/output_image.png")
     return edges, dominant_colors
 
 if __name__ == "__main__":
-    image_path = r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png"
+    image_path = r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"
     # 🔹 OpenCV 분석 실행
     display_results(image_path)

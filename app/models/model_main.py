@@ -55,12 +55,12 @@ if __name__ == "__main__":
         # r"app\models\two_cnn\data\cnn_test_data\test_ViewofToledo_ElGreco.png",     # View of Toledo
         # r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png", # Garden at Sainte-Adresse
         # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png", # GardenatSainte-Adresse_monet - Detection 해야함
-        r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse
+        r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse
 
     ]
 
     for image_path in test_images:
-        print(f"\n🔎 테스트 중: {image_path}")
+        print(f"\n🔎 테스트 중: {os.path.abspath(image_path)}")
         display_results(image_path)
 
         # 🔹 OpenCV 분석 실행
