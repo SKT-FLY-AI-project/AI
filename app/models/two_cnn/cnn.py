@@ -5,8 +5,8 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 
 # 경로 설정
-train_dir = r"app\models\two_cnn\data\cnn_train_data"
-validation_dir = r"app\models\two_cnn\data\cnn_validation_data"
+train_dir = r"app/models/two_cnn/data/cnn_train_data"
+validation_dir = r"app/models/two_cnn/data/cnn_validation_data"
 # train_dir = r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\models\two_cnn\data\cnn_train_data"
 # validation_dir = r"C:\Users\LG\Documents\MJU\Activity\SKT_FLY_AI\github\AI\app\models\two_cnn\data\cnn_validation_data"
 

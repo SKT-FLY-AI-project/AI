@@ -2,7 +2,7 @@
 # (venv) PS C:\Users\007\Documents\TEAM3_GITHUB\AI> python app/models/model_main.py "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg"
 
 # 패키지 설치가 안 되어있다면, 아래 코드 중 필요한 패키지 설치.
-# pip install opencv-python tensorflow numpy matplotlib
+# pip install opencv-python `tensorflow` numpy matplotlib
 # pip install openai
 # pip install requests
 # pip install python-dotenv
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         # r"app\models\two_cnn\data\cnn_test_data\test_ViewofToledo_ElGreco.png",     # View of Toledo
         # r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png", # Garden at Sainte-Adresse
         # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png", # GardenatSainte-Adresse_monet - Detection 해야함
-        r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse
+        r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse, 역슬레시 바꿔
 
     ]
 

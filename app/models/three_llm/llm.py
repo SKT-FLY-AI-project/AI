@@ -64,13 +64,13 @@ def clean_and_restore_spacing(text):
     return text
 
 # 이미지 설명 VLM
-def generate_vlm_description_qwen(image):
+def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어서 image로 바꿈.
     # ✅ 이미지 로드 및 리사이징 (512x512)
     # 만약 image_path가 numpy 배열이라면:
     if isinstance(image, np.ndarray):
-        image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+        image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB)) # 이미지 받을 때 처리.
     else:
-        image = Image.open(image).convert("RGB")
+        image = Image.open(image).convert("RGB") # 만약 경로가 들어오면 그때 처리.
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."

@@ -159,7 +159,7 @@ def display_results(image_path):
     plt.title("Dominant Colors (Original)")
 
     # 기존 plt.show() 대신 저장 방식으로 변경
-    plt.savefig("/content/drive/MyDrive/Project/output_image.png")
+    plt.savefig("/content/drive/MyDrive/Project/output_image.png") # 이거는 절대경로가 필요한 듯.
     return edges, dominant_colors
 
 if __name__ == "__main__":
