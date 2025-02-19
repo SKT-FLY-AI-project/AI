@@ -4,11 +4,13 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
+import cv2 # 이거 있어야 colab에서 됐던 것 같음.
 import os
 from PIL import Image
 
 # 모델 로드
-model = tf.keras.models.load_model(r"app\models\two_cnn\cnn_model_250217_1.h5")
+#model = tf.keras.models.load_model(r"app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함.
+model = tf.keras.models.load_model(r"/content/drive/MyDrive/Project/AI/app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함. 절대 경로 필요.
 
 
 ## .h5 대용량 모델 로드하기
@@ -27,7 +29,7 @@ class_indices = {'A_Basket_of_Clams': 0, 'A_Bear_Walking': 1, 'A_Giant_Seated_in
 classes = {v: k for k, v in class_indices.items()}  # 숫자 인덱스를 클래스명으로 변환
 
 # 테스트할 이미지 경로
-# test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_unclassified_MonaLisa.png" 
+test_image_path = r"app/models/two_cnn/data/cnn_test_data/test_unclassified_MonaLisa.png" 
 # 2번 모델 제대로 안 나옴,, # Unclssified인데,,, # Predicted class: Manuel_Osorio_Manrique_de_Zu_iga__1784_1792_, Confidence: 95.06%
 # 3번 모델에선 unclassified 잘 됨. # =17_1
 
@@ -89,11 +91,11 @@ def predict_image(image_path):
 
         return {class_name}
 
-# # 테스트 이미지 예측
-# if os.path.exists(test_image_path):
-#     predict_image(test_image_path)
-# else:
-#     print(f"이미지 파일을 찾을 수 없습니다: {test_image_path}")
+# 테스트 이미지 예측
+if os.path.exists(test_image_path):
+    predict_image(test_image_path)
+else:
+    print(f"이미지 파일을 찾을 수 없습니다: {test_image_path}")
 
 
 """

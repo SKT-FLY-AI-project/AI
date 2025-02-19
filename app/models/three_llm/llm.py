@@ -1,6 +1,7 @@
 import openai
 import os
 import requests
+import cv2
 import json
 from dotenv import load_dotenv
 from groq import Groq
@@ -17,7 +18,7 @@ from one_imageDetection.opencv_utils import get_color_name
 from langchain.prompts import PromptTemplate
 
 import random
-
+from sentence_transformers import SentenceTransformer, util
 
 # Hugging Face 모델 캐시 경로 설정
 os.environ['HF_HOME'] = "D:/huggingface_models"
@@ -30,8 +31,8 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 # ✅ 모델 로드 (FP16으로 변경)
 model = AutoModelForVision2Seq.from_pretrained(
     model_name,
-    torch_dtype=torch.float16,  # ✅ FP16 사용 (BF16 문제 방지)
-    device_map="auto",
+    torch_dtype=torch.float16,  # ✅ GPU는 FP16 사용, CPU는 FP32 사용
+    device_map="auto", # 원래는 auto. CPU 쓸거면 cpu로 바꿔야함.
     max_memory={0: "10GiB", "cpu": "30GiB"}
 )
 
@@ -63,13 +64,13 @@ def clean_and_restore_spacing(text):
     return text
 
 # 이미지 설명 VLM
-def generate_vlm_description_qwen(image_path):
+def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어서 image로 바꿈.
     # ✅ 이미지 로드 및 리사이징 (512x512)
     # 만약 image_path가 numpy 배열이라면:
-    if isinstance(image_path, np.ndarray):
-        image = Image.fromarray(image_path).convert("RGB")
+    if isinstance(image, np.ndarray):
+        image = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB)) # 이미지 받을 때 처리.
     else:
-        image = Image.open(image_path).convert("RGB")
+        image = Image.open(image).convert("RGB") # 만약 경로가 들어오면 그때 처리.
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
     prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
@@ -201,20 +202,54 @@ def answer_user_question(image_title, vlm_description, dominant_colors, edges):
 ########################### STEP 5 : 질문 답변 모드를 진행하는 함수 ###############################
 # 1. RAG
 # 1-1. VTS 질문지 RAG에서 질문을 가져오는 함수 (예시) : VTS_RAG_questions.json
-def load_vts_questions():
-    # 현재 파일(llm.py)이 있는 폴더 경로 가져오기
-    current_dir = os.path.dirname(os.path.abspath(__file__))  # three_llm 폴더 경로
 
-    # JSON 파일 경로 설정
+# ✅ 1. 문장 유사도 분석을 위한 모델 로드 (KoBERT 사용)
+embedding_model = SentenceTransformer("snunlp/KR-SBERT-V40K-klueNLI-augSTS")
+
+def load_vts_questions():
+    """VTS 질문 파일을 불러오는 함수"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))  
     file_path = os.path.join(current_dir, "data", "VTS_RAG_questions.json")
 
-    # 파일 존재 여부 확인
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"❌ RAG 질문 파일을 찾을 수 없습니다: {file_path}")
-    
+        raise FileNotFoundError(f"❌ VTS 질문 파일을 찾을 수 없습니다: {file_path}")
+
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
     
+# ✅ 사용자의 입력 유형 분석 (작품 정보 요구 vs 감상 표현)
+def classify_user_input(user_input):
+    """
+    사용자의 입력이 작품 설명을 요구하는지(1-1) vs 자신의 감상을 말하는지(1-2) 분류하는 함수.
+    """
+    keywords_info = ["이 작품", "설명", "배경", "작가", "의미", "당시 상황"]
+    keywords_feeling = ["느낌", "분위기", "인상적", "마음에 들어", "생각", "의견"]
+
+    if any(keyword in user_input for keyword in keywords_info):
+        return "info"  # 작품 설명 요청 (1-1)
+    elif any(keyword in user_input for keyword in keywords_feeling):
+        return "feeling"  # 감상 표현 (1-2)
+    return "unknown"
+
+# ✅ 3. 사용자의 응답을 분석하여 적절한 VTS 질문 추천
+def recommend_vts_question(user_response, previous_questions):
+    """사용자의 응답과 가장 관련이 깊은 VTS 질문을 추천하는 함수"""
+    vts_questions = load_vts_questions()
+
+    # 이미 사용한 질문 제외
+    available_questions = [q for q in vts_questions if q["question"] not in previous_questions]
+
+    # 문장 임베딩 생성
+    user_embedding = embedding_model.encode(user_response, convert_to_tensor=True)
+    question_embeddings = embedding_model.encode([q["question"] for q in available_questions], convert_to_tensor=True)
+
+    # 유사도 계산
+    similarities = util.pytorch_cos_sim(user_embedding, question_embeddings)[0]
+    best_match_idx = similarities.argmax().item()
+
+    return available_questions[best_match_idx]["question"]
+
+
 # 1-2. 미술 정보 RAG에서 질문을 가져오는 함수 (예시) : art_RAG_questions.json
 def load_art_questrion(query):
     """
@@ -225,95 +260,73 @@ def load_art_questrion(query):
     # results = retriever.get_relevant_documents(query)
     # return results[0].page_content if results else "관련된 미술 정보를 찾지 못했습니다."
 
-# 2. 질문 유형 파악하여 -> 알맞은 질문 형성하기
-def retrieve_question(user_responses,image_title, vlm_description, dominant_colors, edges):
+# ✅ LLM을 활용한 VTS 반응 및 질문 생성
+def generate_vts_response(user_input, conversation_history):
     """
-    사용자의 이전 답변을 기반으로 적절한 'VTS 질문'을 RAG에서 검색
+    사용자의 입력과 대화 히스토리를 기반으로 적절한 반응과 질문을 생성하는 함수.
     """
+    # 🔹 대화 맥락 정리
+    context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
+
+    prompt = f"""
+    사용자가 미술 작품을 감상하고 있습니다.
+    이전 대화:
+    {context}
+
+    사용자의 입력:
+    "{user_input}"
+
+    AI의 역할:
+    1. 사용자의 감상에 대해 적절한 반응을 제공합니다.
+    2. 새로운 질문을 생성하여 자연스럽게 대화를 이어갑니다.
+
+    AI의 응답 형식:
+    1. 반응: (사용자의 감상을 반영한 피드백)
+    2. 질문: (VTS 기반의 적절한 추가 질문)
     """
-    - 사용자의 입력을 분석하여 VTS 질문을 생성할지, 미술 정보를 제공할지 결정.
-    - 감정적 공감 또는 정보 제공이 필요한 경우: 미술 정보 검색
-    - 질문을 생성할 경우: VTS 질문 매뉴얼 검색
-    """
-    # 사용자의 마지막 질문 (AI가 질문 생성을 위해 넣어줘야할 값)
-    previous_responses = user_responses[-1]
+
+    completion = client.chat.completions.create(
+        model="qwen-2.5-coder-32b",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+        max_tokens=150,
+        top_p=0.95
+    )
+
+    response = completion.choices[0].message.content.strip()
     
-    rag_questions = load_vts_questions() # 일단 테스트용으로 여기다 두긴 하는데... 나중에 정리합시다.
-    # RAG에서 검색 (현재는 임시로 JSON에서 질문을 선택하는 형태)
-    
+    # 🔹 응답을 "반응 + 질문"으로 분리
+    try:
+        response_parts = response.split("\n")
+        reaction = response_parts[0].strip() if response_parts else "흥미로운 생각이에요."
+        question = response_parts[1].strip() if len(response_parts) > 1 else "이 작품을 보고 어떤 점이 가장 인상적이었나요?"
+    except:
+        reaction, question = response, "이 작품을 보고 어떤 점이 가장 인상적이었나요?"
 
-    # 🎨 2-1. 사용자가 작품 설명을 요구함.
-    if "느낌" in previous_responses or "설명" in previous_responses or "배경" in previous_responses: # NLP로 개선하기
-        relevant_questions = []
-        # 👉 RAG : 작품 정보 설명하기.
-        relevant_questions = load_art_questrion(previous_responses)
-        # 👉 RAG : VTS의 질문을 전달.
-        relevant_questions = [q for q in rag_questions if q["classification"] == "질문"]
-
-        print(f"📚 ART AI LLM : {relevant_questions}")
-        return relevant_questions
-
-    # 🎨 2-2. 사용자가 자신의 생각을 말함. 
-    else:
-        relevant_questions = []
-        # 👉 RAG : : VTS의 반응와 관련된 말을 전달.
-        # 사용자의 이전 답변을 분석 (여기서는 단순히 랜덤으로 선택, 실제 구현 시 NLP 활용 가능)
-        relevant_questions = [q for q in rag_questions if q["classification"] == "반응"]
-
-        # 👉 LLM : AI가 작품에 대해 생각하는 말을 전다. + LLM기반 작품 정보
-        prompt = f"""
-        사용자와 '{image_title}' 작품에 대해 대화하고 있습니다.
-        작품 설명: {vlm_description}
-        주요 색상: {dominant_colors}
-        엣지 감지 결과: {edges}
-        
-        사용자의 생각: "{previous_responses}"
-        
-        위 정보를 기반으로 사용자의 생각에 대해 유익한 답변을 제공하세요.
-        사용자 생각에대해 동의 및 다른 의견을 제시해주세요.
-        """
-        
-        # LLM을 이용한 답변 생성
-        answer = generate_rich_description(image_title, prompt, dominant_colors, edges)
-        print("\n💬 AI의 답변:")
-        print(answer)
-
-        # 👉 RAG : VTS의 질문을 전달.
-        # 첫 질문은 "전체에 대한 적극적인 관계 만들기"에서 선택
-        relevant_questions = [q for q in rag_questions if q["classification"] == "질문"]
-        return relevant_questions
-
-    # # 랜덤으로 질문 하나 선택
-    # if relevant_questions:
-    #     return random.choice(relevant_questions)["question"]
-    # else:
-    #     return "이 작품을 어떻게 바라보면 좋을까요?"
-    # return relevant_questions
+    return reaction, question
 
 
-# 감상 대화 함수 (개선 버전)
+# ✅ VTS 감상 대화 흐름 (피드백 + 질문 조합)
 def start_vts_conversation(image_title, vlm_description, dominant_colors, edges):
-    """VTS 방식의 감상 대화를 진행하는 함수"""
+    """VTS 기반 감상 대화 진행 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
 
-    user_responses = []  # 사용자 응답 저장 리스트 # 단순 리스트로 정의하는 대신, DB에 저장하자.
+    conversation_history = []  # 대화 히스토리 저장
+    user_response = input("🎨 작품을 보고 떠오른 느낌이나 궁금한 점을 말해주세요 (종료: exit): ")
 
-    # 첫번째 물음 던지기.
-    user_response_first = input("🎨 가장 크게 와닿는 부분이 무엇인가요? 전체적인 느낌은 어떤가요? (종료하려면 'exit' 입력): ") # GPT : 제시하는 첫 질문은 VTS 방식에 잘 맞아
-    if user_response_first.lower() == "exit":
-        print("📢 VTS 감상 모드 종료.")
-        return
-    user_responses.append(user_response_first)
+    while user_response.lower() != "exit":
+        # 🔹 대화 히스토리에 추가
+        conversation_history.append(f"사용자: {user_response}")
 
-    while True:
-        # 이전 응답을 반영하여 적절한 질문 선택
-        question = retrieve_question(user_responses,image_title, vlm_description, dominant_colors, edges)
+        # 🔹 AI 반응 및 질문 생성
+        reaction, next_question = generate_vts_response(user_response, conversation_history)
 
-        # 사용자 입력 받기
-        user_response = input(f"\n🎨 {question} (종료하려면 'exit' 입력): ")
-        if user_response.lower() == "exit":
-            print("📢 VTS 감상 모드 종료.")
-            break
+        # 🔹 대화 히스토리에 추가
+        conversation_history.append(f"AI: {reaction}")
+        conversation_history.append(f"AI 질문: {next_question}")
 
-        # 사용자 응답 저장
-        user_responses.append(user_response) # 단순 리스트로 정의하는 대신, DB에 저장하자.
+        # 🔹 피드백 및 다음 질문 출력
+        print(f"\n💬 {reaction}")
+        user_response = input(f"🎨 {next_question} (종료: exit): ")
+
+    print("📢 VTS 감상 모드 종료.")
