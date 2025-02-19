@@ -247,9 +247,8 @@ def retrieve_question(user_responses,image_title, vlm_description, dominant_colo
         relevant_questions = []
         # 👉 RAG : 작품 정보 설명하기.
         relevant_questions = load_art_questrion(previous_responses)
-        # 👉 RAG : VTS의 교류(관계)와 관련된 말을 전달.
-        # 코드 작성하기!!
-        relevant_questions = [q for q in rag_questions if q["classification"] == "관계"]
+        # 👉 RAG : VTS의 질문을 전달.
+        relevant_questions = [q for q in rag_questions if q["classification"] == "질문"]
 
         print(f"📚 ART AI LLM : {relevant_questions}")
         return relevant_questions
@@ -257,13 +256,13 @@ def retrieve_question(user_responses,image_title, vlm_description, dominant_colo
     # 🎨 2-2. 사용자가 자신의 생각을 말함. 
     else:
         relevant_questions = []
-        # 👉 RAG : VTS의 신뢰와 관련된 말을 전달.
+        # 👉 RAG : : VTS의 반응와 관련된 말을 전달.
         # 사용자의 이전 답변을 분석 (여기서는 단순히 랜덤으로 선택, 실제 구현 시 NLP 활용 가능)
-        relevant_questions = [q for q in rag_questions if q["classification"] == "신뢰"]
+        relevant_questions = [q for q in rag_questions if q["classification"] == "반응"]
 
         # 👉 LLM : AI가 작품에 대해 생각하는 말을 전다. + LLM기반 작품 정보
         prompt = f"""
-        사용자는 '{image_title}' 작품에 대해 대화하고 있습니다.
+        사용자와 '{image_title}' 작품에 대해 대화하고 있습니다.
         작품 설명: {vlm_description}
         주요 색상: {dominant_colors}
         엣지 감지 결과: {edges}
@@ -271,6 +270,7 @@ def retrieve_question(user_responses,image_title, vlm_description, dominant_colo
         사용자의 생각: "{previous_responses}"
         
         위 정보를 기반으로 사용자의 생각에 대해 유익한 답변을 제공하세요.
+        사용자 생각에대해 동의 및 다른 의견을 제시해주세요.
         """
         
         # LLM을 이용한 답변 생성
@@ -278,9 +278,9 @@ def retrieve_question(user_responses,image_title, vlm_description, dominant_colo
         print("\n💬 AI의 답변:")
         print(answer)
 
-        # 👉 RAG : VTS의 교류(관계)와 관련된 말을 전달.
+        # 👉 RAG : VTS의 질문을 전달.
         # 첫 질문은 "전체에 대한 적극적인 관계 만들기"에서 선택
-        relevant_questions = [q for q in rag_questions if q["classification"] == "관계"]
+        relevant_questions = [q for q in rag_questions if q["classification"] == "질문"]
         return relevant_questions
 
     # # 랜덤으로 질문 하나 선택
