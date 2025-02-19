@@ -215,7 +215,7 @@ def load_rag_questions():
         return json.load(f)
     
 # 1-2. 미술 정보 RAG에서 질문을 가져오는 함수 (예시) : art_RAG_questions.json
-def retrieve_art_info(query):
+def load_art_questrion(query):
     """
     사용자의 감상 및 질문에 대해 관련 미술 정보를 검색하는 함수.
     """
@@ -225,22 +225,25 @@ def retrieve_art_info(query):
     # return results[0].page_content if results else "관련된 미술 정보를 찾지 못했습니다."
 
 
-def retrieve_vts_question(previous_responses):
+def retrieve_vts_question(user_responses):
     """
-    사용자의 이전 답변을 기반으로 적절한 VTS 질문을 RAG에서 검색
+    사용자의 이전 답변을 기반으로 적절한 'VTS 질문'을 RAG에서 검색
     """
     """
     - 사용자의 입력을 분석하여 VTS 질문을 생성할지, 미술 정보를 제공할지 결정.
     - 감정적 공감 또는 정보 제공이 필요한 경우: 미술 정보 검색
     - 질문을 생성할 경우: VTS 질문 매뉴얼 검색
     """
+    # 사용자의 마지막 질문 (AI가 질문 생성을 위해 넣어줘야할 값)
+    previous_responses = user_responses[-1]
+
     rag_questions = load_rag_questions() # 일단 테스트용으로 여기다 두긴 하는데... 나중에 정리합시다.
     # RAG에서 검색 (현재는 임시로 JSON에서 질문을 선택하는 형태)
     relevant_questions = []
 
     if "느낌" in previous_responses or "설명" in previous_responses or "배경" in previous_responses:
         # 미술 정보 검색
-        response_text = retrieve_art_info(previous_responses)
+        response_text = load_art_questrion(previous_responses)
         print(f"📚 AI: {response_text}")
 
     # 이전 답변을 기반으로 적절한 질문 카테고리 선택
@@ -264,20 +267,30 @@ def start_vts_conversation(image_title, vlm_description, dominant_colors, edges)
     """VTS 방식의 감상 대화를 진행하는 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
 
-    previous_responses = []  # 사용자 응답 저장 리스트
+    user_responses = []  # 사용자 응답 저장 리스트
+    question = True
 
-    while True:
+    # 첫번째 물음 던지기.
+    print("가장 크게 와닿는 부분이 무엇인가요? 전체적인 느낌은 어떤가요?")
+    user_response_first = input("(종료하려면 'exit' 입력): ")
+    user_responses.append(user_response_first)
+    if user_response_first.lower() == "exit":
+        question = False
+        print("📢 VTS 감상 모드 종료.")
+
+    while question:
         # 이전 응답을 반영하여 적절한 질문 선택
-        vts_question = retrieve_vts_question(previous_responses)
+        vts_question = retrieve_vts_question(user_responses)
 
         # 사용자 입력 받기
         user_response = input(f"\n🎨 {vts_question} (종료하려면 'exit' 입력): ")
         if user_response.lower() == "exit":
             print("📢 VTS 감상 모드 종료.")
+            question = False
             break
 
         # 사용자 응답 저장
-        previous_responses.append(user_response)
+        user_responses.append(user_response)
 
         # LLM에 전달할 프롬프트 생성
         prompt = f"""
