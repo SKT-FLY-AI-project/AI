@@ -9,8 +9,8 @@ import os
 from PIL import Image
 
 # 모델 로드
-#model = tf.keras.models.load_model(r"app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함.
-model = tf.keras.models.load_model(r"/content/drive/MyDrive/Project/AI/app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함. 절대 경로 필요.
+model = tf.keras.models.load_model(r"app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함.
+#model = tf.keras.models.load_model(r"/content/drive/MyDrive/Project/AI/app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함. 절대 경로 필요.
 
 
 ## .h5 대용량 모델 로드하기

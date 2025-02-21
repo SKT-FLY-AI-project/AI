@@ -26,17 +26,50 @@ client = Groq(api_key="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"
 
 # 모델 정보 설정
 model_name = "Qwen/Qwen2.5-VL-3B-Instruct"
+dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # ✅ 모델 로드 (FP16으로 변경)
 model = AutoModelForVision2Seq.from_pretrained(
     model_name,
-    torch_dtype=torch.float16,  # ✅ GPU는 FP16 사용, CPU는 FP32 사용
-    device_map="auto", # 원래는 auto. CPU 쓸거면 cpu로 바꿔야함.
+    torch_dtype=dtype,  # ✅ GPU는 FP16 사용, CPU는 FP32 사용
+    device_map=device, # 원래는 auto. CPU 쓸거면 cpu로 바꿔야함.
     max_memory={0: "10GiB", "cpu": "30GiB"}
 )
 
 processor = AutoProcessor.from_pretrained(model_name)
+
+########################## SETP 1 : 대화 검증 함수 ##############################
+# 미술 정보 RAG에서 질문을 가져오는 함수 (검증용) : art_RAG_questions.json
+
+def load_art_database():
+    """예술 DB를 불러오는 함수"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))  
+    file_path = os.path.join(current_dir, "data", "labels_with_image_paths.json")
+    
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"❌ 예술 DB를 찾을 수 없습니다: {file_path}")
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+    
+# 작품 정보 검색 함수
+def search_artwork_by_title(title):
+    """
+    작품 제목을 기반으로 RAG 문서에서 artist, period, webpage 정보를 검색하는 함수.
+    """
+    art_database = load_art_database()
+    
+    for entry in art_database:
+        if entry["title"].lower() == title.lower():  # 대소문자 구분 없이 비교
+            return {
+                "artist": entry["artist_display_name"],
+                "period": entry["period"],
+                "webpage": entry["webpage"]
+            }
+    
+    # 해당 작품이 없을 경우 Untitled로 처리
+    return None
 
 ########################### SETP 2 : VLM (Vision to LLM) #####################################
 
@@ -45,19 +78,25 @@ import re
 # 정제 코드
 def clean_and_restore_spacing(text):
     """
-    Qwen2.5-VL의 출력에서 시스템 메시지를 제거하고 띄어쓰기를 복원하는 함수.
+    VLM(Qwen2.5-VL) 출력에서 불필요한 시스템 메시지 및 프롬프트 반복을 제거하고, 핵심 정보만 유지하는 함수.
     """
-    # ✅ 1. "이 그림은" 또는 "이 장면은"이 나오기 전까지 모든 텍스트 제거
-    text = re.sub(r".*?(이 그림은|이 장면은)", r"\1", text, flags=re.IGNORECASE | re.DOTALL)
+    # ✅ 1. "system", "You are a helpful assistant." 같은 AI 시스템 메시지 제거
+    text = re.sub(r"(system|You are a helpful assistant\.)", "", text, flags=re.IGNORECASE)
 
-    # ✅ 2. "이 이미지를 보고 ~ 설명하세요" 같은 프롬프트 제거
-    prompt_text = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
-    text = text.replace(prompt_text, "").strip()
+    # ✅ 2. "assistant" 같은 응답 태그 제거 (ex: "assistant 1. 주요 객체")
+    text = re.sub(r"assistant\s*\d*\.*", "", text, flags=re.IGNORECASE)
 
-    # ✅ 3. 연속된 공백을 한 개의 공백으로 변경
+    # ✅ 3. "이 이미지를 보고 ~ 설명하세요" 같은 프롬프트 반복 제거
+    text = re.sub(r"이 이미지를 보고.*?설명하세요\.", "", text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r"user\s*이\s*이미지를\s*보고.*?제공하세요\.", "", text, flags=re.IGNORECASE | re.DOTALL)
+
+    # ✅ 4. 공백 및 줄바꿈 정리
     text = re.sub(r"\s+", " ", text).strip()
 
-    # ✅ 4. 한글과 영어/숫자 사이에 공백 추가 (자연스러운 띄어쓰기 복원)
+    # ✅ 5. 불필요한 기호(-, *, •) 정리 (일관되게 "-" 사용)
+    text = re.sub(r"[•*]", "-", text)
+
+    # ✅ 6. 한글과 영어/숫자 사이 띄어쓰기 복원
     text = re.sub(r"([가-힣])([a-zA-Z0-9])", r"\1 \2", text)  # 한글 + 영어/숫자
     text = re.sub(r"([a-zA-Z0-9])([가-힣])", r"\1 \2", text)  # 영어/숫자 + 한글
 
@@ -73,7 +112,26 @@ def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어�
         image = Image.open(image).convert("RGB") # 만약 경로가 들어오면 그때 처리.
     image = image.resize((512, 512)) # 일단은 크기 정규화 했는데 추후 수정 필요.
     
-    prompt = "이 이미지를 보고 장면, 색채, 구도, 분위기, 주요 특징을 설명하세요."
+    prompt = """
+    이 이미지를 보고 핵심 정보만 간결하게 요약하여 제공하세요.
+
+    1. **주요 객체 (3~5개 키워드)**
+    - 사람이 있다면 "사람 (명수, 성별별)", 동물이 있다면 "동물 (종류)" 형식으로만 작성하세요.
+    - 건물, 자연 요소 등이 있다면 1~3개 주요 요소를 단어로만 나열하세요.
+
+    2️. **색채 및 조명 (3~5개 키워드)**
+    - 주요 색상을 3~5개 단어로만 제공하세요 (예: "빨강, 파랑, 노랑").
+    - 빛의 방향이나 명암 대비가 있다면 간단한 설명을 덧붙이세요 (예: "빛 방향: 왼쪽 → 오른쪽").
+
+    3️. **구도 및 시각적 흐름 (1~2개 키워드)**
+    - 시선이 이동하는 방식이나 주요 패턴이 있다면 1~2개 단어로 제공하세요.
+    - 예: "중앙 집중", "대각선 구도", "좌 → 우 시선 이동"
+
+    4️. **분위기 및 감정 (1~2개 키워드)**
+    - 이 작품이 주는 감정을 간단한 키워드로 정리하세요.
+    - 예: "평온함, 따뜻함", "고요함, 우울함"
+    """
+
 
     # ✅ 메시지 형식으로 변환 (apply_chat_template 사용)
     messages = [
@@ -114,36 +172,95 @@ from gtts import gTTS
 def generate_rich_description(title, vlm_desc, dominant_colors, edges):
     """
     AI가 생성한 기본 설명을 기반으로 보다 풍부한 그림 설명을 생성하는 함수.
+    CNN이 인식한 작품이면 RAG 데이터를 사용하고, 인식하지 못하면 시각적 요소만 사용.
     """
-    color_names = [get_color_name(c) for c in dominant_colors[:5]]
-    dominant_colors_text = ", ".join(color_names)
-    edges_detected = "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
 
+    # 🔹 1. RAG에서 작품 정보 검색
+    artwork_info = search_artwork_by_title(title)
+
+    # 🔹 2. CNN이 작품을 인식하지 못한 경우 (Untitled 처리)
+    if not artwork_info:
+        color_names = [get_color_name(c) for c in dominant_colors[:5]]
+        dominant_colors_text = ", ".join(color_names)
+        edges_detected = edges #= "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
+
+        prompt_template = PromptTemplate(
+            input_variables=["vlm_desc", "dominant_colors", "edges_detected"],
+            template="""
+            당신은 그림 설명 전문가입니다.
+            다음 그림에 대해 상세한 시각적 설명을 생성해주세요.
+
+            - **VLM 분석 결과:** "{vlm_desc}"
+            - **주요 색상:** "{dominant_colors}"
+            - **윤곽선 감지 결과:** "{edges_detected}"
+
+            작품의 분위기, 색채, 구도, 표현 기법 등을 상세히 설명해주세요.
+            작가나 시대 정보는 알 수 없으므로, 역사적 해설은 포함하지 말고
+            순수한 시각적 요소에 집중해주세요.
+
+            설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+            숫자, 특수문자, 한자는 포함할 수 없습니다.
+            """
+        )
+
+        formatted_prompt = prompt_template.format(
+            vlm_desc=vlm_desc,
+            dominant_colors=dominant_colors_text,
+            edges_detected=edges_detected
+        )
+
+        completion = client.chat.completions.create(
+            model="qwen-2.5-coder-32b",
+            messages=[{"role": "user", "content": formatted_prompt}],
+            temperature=0.5,
+            max_tokens=1024,
+            top_p=0.95
+        )
+
+        return completion.choices[0].message.content.strip()
+
+    # 🔹 3. 작품을 인식한 경우 (RAG 정보 활용)
+    prompt_variables = {
+        "title": title,
+        "vlm_desc": vlm_desc,
+        "dominant_colors": ", ".join([get_color_name(c) for c in dominant_colors[:5]]),
+        "edges_detected": "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
+    }
+
+    if artwork_info.get("artist"):
+        prompt_variables["correct_artist"] = artwork_info["artist"]
+    if artwork_info.get("period"):
+        prompt_variables["correct_period"] = artwork_info["period"]
+    if artwork_info.get("webpage"):
+        prompt_variables["webpage"] = artwork_info["webpage"]
+
+    # 🔹 4. PromptTemplate을 사용하여 동적 프롬프트 구성
+    # ✅ Prompt Template을 사용하여 프롬프트 구성
     prompt_template = PromptTemplate(
-        input_variables=["title", "vlm_desc", "dominant_colors", "edges_detected"],
-        template=f"""
+        input_variables=list(prompt_variables.keys()),
+        template="""
         당신은 그림 설명 전문가입니다.  
         다음 그림에 대해 상세한 설명을 생성해주세요.
-        시각장애인에게 설명할 수 있도록 자세하게 작성해 주세요.
-        **단, 200자 ~ 500자 사이의 길이로만 생성해야 합니다!**
 
-        - **제목:** "{title}"  
-        - **VLM 기반 기본 설명:** "{vlm_desc}"   
+        - **제목:** "{title}"
+        {correct_artist}
+        {correct_period}
+        - **VLM 기반 기본 설명:** "{vlm_desc}"
+        - **주요 색상:** "{dominant_colors}"
+        - **윤곽선 감지 결과:** "{edges_detected}"
 
         위 정보를 바탕으로 그림에 대한 상세한 설명을 작성해 주세요.  
         작품의 분위기, 색채, 구도, 표현 기법 등을 분석하고,  
-        가능하다면 역사적, 예술적 배경도 함께 제공해 주세요.  
-        설명은 반드시 **한글(가-힣)만 사용하여 작성해야 합니다.**  
-        영어, 숫자, 특수문자는 포함할 수 없습니다.  
+        가능하다면 역사적, 예술적 배경도 함께 제공해 주세요.
+
+        {webpage}
         """
     )
 
-    formatted_prompt = prompt_template.format(
-        title=title,
-        vlm_desc=vlm_desc,
-        dominant_colors=dominant_colors_text,
-        edges_detected=edges_detected
-    )
+    # `None`이 포함된 key 제거
+    filtered_prompt_variables = {k: v for k, v in prompt_variables.items() if v is not None}
+
+    formatted_prompt = prompt_template.format(**filtered_prompt_variables)
 
     completion = client.chat.completions.create(
         model="qwen-2.5-coder-32b",
@@ -249,16 +366,6 @@ def recommend_vts_question(user_response, previous_questions):
 
     return available_questions[best_match_idx]["question"]
 
-
-# 1-2. 미술 정보 RAG에서 질문을 가져오는 함수 (예시) : art_RAG_questions.json
-def load_art_questrion(query):
-    """
-    사용자의 감상 및 질문에 대해 관련 미술 정보를 검색하는 함수.
-    """
-    # 예시임. # art_RAG_question.json 파일 가져오는 코드로 수정하자.
-    # retriever = FAISS.load_local("art_database", embeddings).as_retriever()
-    # results = retriever.get_relevant_documents(query)
-    # return results[0].page_content if results else "관련된 미술 정보를 찾지 못했습니다."
 
 # ✅ LLM을 활용한 VTS 반응 및 질문 생성
 def generate_vts_response(user_input, conversation_history):

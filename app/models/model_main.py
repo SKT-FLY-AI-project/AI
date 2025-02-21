@@ -93,6 +93,9 @@ if __name__ == "__main__":
             title = list(title)[0]  # set을 리스트로 변환 후 첫 번째 값 가져오기
 
         print("작품 제목 추출 결과입니다.", title)
+        
+        # 테스트용입니다.
+        title = "Garden at Sainte-Adresse"
 
         # 🔹 LLM을 활용한 설명 생성
         rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)
@@ -111,3 +114,5 @@ if __name__ == "__main__":
 
         # 🔹 5번: VTS 방식 감상 지원
         start_vts_conversation(title, rich_description[0], dominant_colors, edges)
+        
+        

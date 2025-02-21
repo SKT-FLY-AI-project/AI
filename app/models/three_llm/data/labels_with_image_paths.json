@@ -1,102 +1,111 @@
 [
     {
         "object_number": "1977.78",
-        "title": "Night-Shining White",
+        "title": "唐 韓幹 照夜白圖 卷|Night-Shining White",
         "department": "Asian Art",
         "culture": "China",
         "period": "Tang dynasty (618–907)",
         "object_date": "ca. 750",
         "webpage": "http://www.metmuseum.org/art/collection/search/39901",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/39901/148136/main-image",
-        "file_path": "data/met_art/China\\1977.78_main-image"
+        "file_path": "data/met_art/China\\1977.78",
+        "artist_display_name": "Han Gan"
     },
     {
         "object_number": "1986.266.4",
-        "title": "The Sixteen Luohans",
+        "title": "明  吳彬  十六羅漢圖  卷|The Sixteen Luohans",
         "department": "Asian Art",
         "culture": "China",
         "period": "Ming dynasty (1368–1644)",
         "object_date": "dated 1591",
         "webpage": "http://www.metmuseum.org/art/collection/search/48948",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/48948/148185/main-image",
-        "file_path": "data/met_art/China\\1986.266.4_main-image"
+        "file_path": "data/met_art/China\\1986.266.4",
+        "artist_display_name": "Wu Bin"
     },
     {
         "object_number": "1981.4.1a–o",
-        "title": "Ink Landscapes with Poems",
+        "title": "清   龔賢   自題 山水十六開   冊|Ink Landscapes with Poems",
         "department": "Asian Art",
         "culture": "China",
         "period": "Qing dynasty (1644–1911)",
         "object_date": "dated 1688",
         "webpage": "http://www.metmuseum.org/art/collection/search/36131",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/36131/98913/main-image",
-        "file_path": "data/met_art/China\\1981.4.1a–o_main-image"
+        "file_path": "data/met_art/China\\1981.4.1a–o",
+        "artist_display_name": "Gong Xian"
     },
     {
         "object_number": "1979.5a–d",
-        "title": "The Kangxi Emperor's Southern Inspection Tour, Scroll Three: Ji'nan to Mount Tai",
+        "title": "清   王翬 等   康熙南巡圖  （卷三: 濟南至泰山）   卷|The Kangxi Emperor's Southern Inspection Tour, Scroll Three: Ji'nan to Mount Tai",
         "department": "Asian Art",
         "culture": "China",
         "period": "Qing dynasty (1644–1911)",
         "object_date": "datable to 1698",
         "webpage": "http://www.metmuseum.org/art/collection/search/49156",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/49156/198919/main-image",
-        "file_path": "data/met_art/China\\1979.5a–d_main-image"
+        "file_path": "data/met_art/China\\1979.5a–d",
+        "artist_display_name": "Wang Hui"
     },
     {
         "object_number": "1973.120.6",
-        "title": "Wang Xizhi watching geese",
+        "title": "元   錢選   王羲之觀鵝圖   卷|Wang Xizhi watching geese",
         "department": "Asian Art",
         "culture": "China",
         "period": "Yuan dynasty (1271–1368)",
         "object_date": "ca. 1295",
         "webpage": "http://www.metmuseum.org/art/collection/search/40081",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/40081/198958/main-image",
-        "file_path": "data/met_art/China\\1973.120.6_main-image"
+        "file_path": "data/met_art/China\\1973.120.6",
+        "artist_display_name": "Qian Xuan"
     },
     {
         "object_number": "1981.276",
-        "title": "Old Trees, Level Distance",
+        "title": "北宋    郭熙    樹色平遠圖    卷  |Old Trees, Level Distance",
         "department": "Asian Art",
         "culture": "China",
         "period": "Northern Song dynasty (960–1127)",
         "object_date": "ca. 1080",
         "webpage": "http://www.metmuseum.org/art/collection/search/39668",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/39668/198923/main-image",
-        "file_path": "data/met_art/China\\1981.276_main-image"
+        "file_path": "data/met_art/China\\1981.276",
+        "artist_display_name": "Guo Xi"
     },
     {
         "object_number": "1981.278",
-        "title": "Finches and bamboo",
+        "title": "北宋   徽宗   竹禽圖   卷|Finches and bamboo",
         "department": "Asian Art",
         "culture": "China",
         "period": "Northern Song dynasty (960–1127)",
         "object_date": "early 12th century",
         "webpage": "http://www.metmuseum.org/art/collection/search/39936",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/39936/198920/main-image",
-        "file_path": "data/met_art/China\\1981.278_main-image"
+        "file_path": "data/met_art/China\\1981.278",
+        "artist_display_name": "Emperor Huizong"
     },
     {
         "object_number": "1973.120.1",
-        "title": "Summer Mountains",
+        "title": "北宋 傳屈鼎 夏山圖 卷|Summer Mountains",
         "department": "Asian Art",
         "culture": "China",
         "period": "Northern Song dynasty (960–1127)",
         "object_date": "ca. 1050",
         "webpage": "http://www.metmuseum.org/art/collection/search/39915",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/39915/173889/main-image",
-        "file_path": "data/met_art/China\\1973.120.1_main-image"
+        "file_path": "data/met_art/China\\1973.120.1",
+        "artist_display_name": "Qu Ding"
     },
     {
         "object_number": "1975.268.48a–d",
-        "title": "Old Plum",
+        "title": "老梅図襖|Old Plum",
         "department": "Asian Art",
         "culture": "Japan",
         "period": "Edo period (1615–1868)",
         "object_date": "1646",
         "webpage": "http://www.metmuseum.org/art/collection/search/44858",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/44858/148433/main-image",
-        "file_path": "data/met_art/Japan\\1975.268.48a–d_main-image"
+        "file_path": "data/met_art/Japan\\1975.268.48a–d",
+        "artist_display_name": "Kano Sansetsu"
     },
     {
         "object_number": "1984.459.1",
@@ -107,7 +116,8 @@
         "object_date": "ca. 1661",
         "webpage": "http://www.metmuseum.org/art/collection/search/437769",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437769/1817984/main-image",
-        "file_path": "data/met_art/None\\1984.459.1_main-image"
+        "file_path": "data/met_art/None\\1984.459.1",
+        "artist_display_name": "Michiel Sweerts"
     },
     {
         "object_number": "14.40.619",
@@ -118,7 +128,8 @@
         "object_date": "ca. 1622",
         "webpage": "http://www.metmuseum.org/art/collection/search/436253",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436253/2186884/main-image",
-        "file_path": "data/met_art/None\\14.40.619_main-image"
+        "file_path": "data/met_art/None\\14.40.619",
+        "artist_display_name": "Anthony van Dyck"
     },
     {
         "object_number": "1981.238",
@@ -129,7 +140,8 @@
         "object_date": "ca. 1635",
         "webpage": "http://www.metmuseum.org/art/collection/search/437532",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437532/1763006/main-image",
-        "file_path": "data/met_art/None\\1981.238_main-image"
+        "file_path": "data/met_art/None\\1981.238",
+        "artist_display_name": "Peter Paul Rubens"
     },
     {
         "object_number": "34.73",
@@ -140,7 +152,8 @@
         "object_date": "1648",
         "webpage": "http://www.metmuseum.org/art/collection/search/437455",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437455/796086/main-image",
-        "file_path": "data/met_art/None\\34.73_main-image"
+        "file_path": "data/met_art/None\\34.73",
+        "artist_display_name": "Jusepe de Ribera (called Lo Spagnoletto)"
     },
     {
         "object_number": "1971.86",
@@ -151,7 +164,8 @@
         "object_date": "1650",
         "webpage": "http://www.metmuseum.org/art/collection/search/437869",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437869/1763004/main-image",
-        "file_path": "data/met_art/None\\1971.86_main-image"
+        "file_path": "data/met_art/None\\1971.86",
+        "artist_display_name": "Velázquez (Diego Rodríguez de Silva y Velázquez)"
     },
     {
         "object_number": "43.13",
@@ -162,7 +176,8 @@
         "object_date": "ca. 1670–72",
         "webpage": "http://www.metmuseum.org/art/collection/search/437175",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437175/1882604/main-image",
-        "file_path": "data/met_art/None\\43.13_main-image"
+        "file_path": "data/met_art/None\\43.13",
+        "artist_display_name": "Bartolomé Estebán Murillo"
     },
     {
         "object_number": "64.148",
@@ -173,7 +188,8 @@
         "object_date": "1912–13",
         "webpage": "http://www.metmuseum.org/art/collection/search/436819",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436819/801225/main-image",
-        "file_path": "data/met_art/None\\64.148_main-image"
+        "file_path": "data/met_art/None\\64.148",
+        "artist_display_name": "Gustav Klimt"
     },
     {
         "object_number": "49.7.41",
@@ -184,7 +200,8 @@
         "object_date": "1787–88",
         "webpage": "http://www.metmuseum.org/art/collection/search/436545",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436545/805399/main-image",
-        "file_path": "data/met_art/None\\49.7.41_main-image"
+        "file_path": "data/met_art/None\\49.7.41",
+        "artist_display_name": "Goya (Francisco de Goya y Lucientes)"
     },
     {
         "object_number": "27.137",
@@ -195,7 +212,8 @@
         "object_date": "ca. 1632–33",
         "webpage": "http://www.metmuseum.org/art/collection/search/437971",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437971/2181577/main-image",
-        "file_path": "data/met_art/None\\27.137_main-image"
+        "file_path": "data/met_art/None\\27.137",
+        "artist_display_name": "Francisco de Zurbarán"
     },
     {
         "object_number": "26.90",
@@ -206,7 +224,8 @@
         "object_date": "1880",
         "webpage": "http://www.metmuseum.org/art/collection/search/435683",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435683/1728749/main-image",
-        "file_path": "data/met_art/None\\26.90_main-image"
+        "file_path": "data/met_art/None\\26.90",
+        "artist_display_name": "Arnold Böcklin"
     },
     {
         "object_number": "29.100.5",
@@ -217,7 +236,8 @@
         "object_date": "ca. 1600",
         "webpage": "http://www.metmuseum.org/art/collection/search/436573",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436573/1905220/main-image",
-        "file_path": "data/met_art/None\\29.100.5_main-image"
+        "file_path": "data/met_art/None\\29.100.5",
+        "artist_display_name": "El Greco (Domenikos Theotokopoulos)"
     },
     {
         "object_number": "29.100.6",
@@ -228,7 +248,8 @@
         "object_date": "ca. 1598–99",
         "webpage": "http://www.metmuseum.org/art/collection/search/436575",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436575/1455894/main-image",
-        "file_path": "data/met_art/None\\29.100.6_main-image"
+        "file_path": "data/met_art/None\\29.100.6",
+        "artist_display_name": "El Greco (Domenikos Theotokopoulos)"
     },
     {
         "object_number": "89.15.21",
@@ -239,7 +260,8 @@
         "object_date": "ca. 1662",
         "webpage": "http://www.metmuseum.org/art/collection/search/437881",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437881/1476893/main-image",
-        "file_path": "data/met_art/None\\89.15.21_main-image"
+        "file_path": "data/met_art/None\\89.15.21",
+        "artist_display_name": "Johannes Vermeer"
     },
     {
         "object_number": "1979.396.1",
@@ -250,7 +272,8 @@
         "object_date": "ca. 1665–67",
         "webpage": "http://www.metmuseum.org/art/collection/search/437879",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437879/1475736/main-image",
-        "file_path": "data/met_art/None\\1979.396.1_main-image"
+        "file_path": "data/met_art/None\\1979.396.1",
+        "artist_display_name": "Johannes Vermeer"
     },
     {
         "object_number": "58.89",
@@ -261,7 +284,8 @@
         "object_date": "ca. 1670",
         "webpage": "http://www.metmuseum.org/art/collection/search/437749",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437749/795836/main-image",
-        "file_path": "data/met_art/None\\58.89_main-image"
+        "file_path": "data/met_art/None\\58.89",
+        "artist_display_name": "Jan Steen"
     },
     {
         "object_number": "61.198",
@@ -272,7 +296,8 @@
         "object_date": "1653",
         "webpage": "http://www.metmuseum.org/art/collection/search/437394",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437394/2211141/main-image",
-        "file_path": "data/met_art/None\\61.198_main-image"
+        "file_path": "data/met_art/None\\61.198",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "14.40.618",
@@ -283,7 +308,8 @@
         "object_date": "1660",
         "webpage": "http://www.metmuseum.org/art/collection/search/437397",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437397/1843832/main-image",
-        "file_path": "data/met_art/None\\14.40.618_main-image"
+        "file_path": "data/met_art/None\\14.40.618",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "14.40.602",
@@ -294,7 +320,8 @@
         "object_date": "1623",
         "webpage": "http://www.metmuseum.org/art/collection/search/436616",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436616/795768/main-image",
-        "file_path": "data/met_art/None\\14.40.602_main-image"
+        "file_path": "data/met_art/None\\14.40.602",
+        "artist_display_name": "Frans Hals"
     },
     {
         "object_number": "14.40.605",
@@ -305,7 +332,8 @@
         "object_date": "ca. 1616–17",
         "webpage": "http://www.metmuseum.org/art/collection/search/436622",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436622/795770/main-image",
-        "file_path": "data/met_art/None\\14.40.605_main-image"
+        "file_path": "data/met_art/None\\14.40.605",
+        "artist_display_name": "Frans Hals"
     },
     {
         "object_number": "56.228",
@@ -316,7 +344,8 @@
         "object_date": "ca. 1624–25",
         "webpage": "http://www.metmuseum.org/art/collection/search/435817",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435817/795870/main-image",
-        "file_path": "data/met_art/None\\56.228_main-image"
+        "file_path": "data/met_art/None\\56.228",
+        "artist_display_name": "Hendrick ter Brugghen"
     },
     {
         "object_number": "14.40.623",
@@ -327,7 +356,8 @@
         "object_date": "ca. 1670",
         "webpage": "http://www.metmuseum.org/art/collection/search/437549",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437549/795780/main-image",
-        "file_path": "data/met_art/None\\14.40.623_main-image"
+        "file_path": "data/met_art/None\\14.40.623",
+        "artist_display_name": "Jacob van Ruisdael"
     },
     {
         "object_number": "49.30",
@@ -338,7 +368,8 @@
         "object_date": "1889",
         "webpage": "http://www.metmuseum.org/art/collection/search/437980",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437980/794518/main-image",
-        "file_path": "data/met_art/None\\49.30_main-image"
+        "file_path": "data/met_art/None\\49.30",
+        "artist_display_name": "Vincent van Gogh"
     },
     {
         "object_number": "1993.132",
@@ -349,7 +380,8 @@
         "object_date": "1889",
         "webpage": "http://www.metmuseum.org/art/collection/search/436535",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436535/796067/main-image",
-        "file_path": "data/met_art/None\\1993.132_main-image"
+        "file_path": "data/met_art/None\\1993.132",
+        "artist_display_name": "Vincent van Gogh"
     },
     {
         "object_number": "51.112.5",
@@ -360,7 +392,8 @@
         "object_date": "ca. 1907",
         "webpage": "http://www.metmuseum.org/art/collection/search/438822",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438822/796430/main-image",
-        "file_path": "data/met_art/None\\51.112.5_main-image"
+        "file_path": "data/met_art/None\\51.112.5",
+        "artist_display_name": "Henri Rousseau (le Douanier)"
     },
     {
         "object_number": "49.24",
@@ -371,7 +404,8 @@
         "object_date": "ca. 1733–34",
         "webpage": "http://www.metmuseum.org/art/collection/search/435888",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435888/1507010/main-image",
-        "file_path": "data/met_art/None\\49.24_main-image"
+        "file_path": "data/met_art/None\\49.24",
+        "artist_display_name": "Jean Siméon Chardin"
     },
     {
         "object_number": "20.155.9",
@@ -382,7 +416,8 @@
         "object_date": "1751",
         "webpage": "http://www.metmuseum.org/art/collection/search/435739",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435739/1653617/main-image",
-        "file_path": "data/met_art/None\\20.155.9_main-image"
+        "file_path": "data/met_art/None\\20.155.9",
+        "artist_display_name": "François Boucher"
     },
     {
         "object_number": "29.100.565",
@@ -393,7 +428,8 @@
         "object_date": "ca. 1870",
         "webpage": "http://www.metmuseum.org/art/collection/search/435984",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435984/1868028/main-image",
-        "file_path": "data/met_art/None\\29.100.565_main-image"
+        "file_path": "data/met_art/None\\29.100.565",
+        "artist_display_name": "Camille Corot"
     },
     {
         "object_number": "29.100.53",
@@ -404,7 +440,8 @@
         "object_date": "1862",
         "webpage": "http://www.metmuseum.org/art/collection/search/436945",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436945/2186223/main-image",
-        "file_path": "data/met_art/None\\29.100.53_main-image"
+        "file_path": "data/met_art/None\\29.100.53",
+        "artist_display_name": "Édouard Manet"
     },
     {
         "object_number": "29.100.115",
@@ -415,7 +452,8 @@
         "object_date": "1874",
         "webpage": "http://www.metmuseum.org/art/collection/search/436947",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436947/2170247/main-image",
-        "file_path": "data/met_art/None\\29.100.115_main-image"
+        "file_path": "data/met_art/None\\29.100.115",
+        "artist_display_name": "Édouard Manet"
     },
     {
         "object_number": "1987.47.1",
@@ -426,7 +464,8 @@
         "object_date": "1874",
         "webpage": "http://www.metmuseum.org/art/collection/search/438817",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438817/2007191/main-image",
-        "file_path": "data/met_art/None\\1987.47.1_main-image"
+        "file_path": "data/met_art/None\\1987.47.1",
+        "artist_display_name": "Edgar Degas"
     },
     {
         "object_number": "61.101.17",
@@ -437,7 +476,8 @@
         "object_date": "1887–88",
         "webpage": "http://www.metmuseum.org/art/collection/search/437654",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437654/1652949/main-image",
-        "file_path": "data/met_art/None\\61.101.17_main-image"
+        "file_path": "data/met_art/None\\61.101.17",
+        "artist_display_name": "Georges Seurat"
     },
     {
         "object_number": "1989.183",
@@ -448,7 +488,8 @@
         "object_date": "1818",
         "webpage": "http://www.metmuseum.org/art/collection/search/436455",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436455/796274/main-image",
-        "file_path": "data/met_art/None\\1989.183_main-image"
+        "file_path": "data/met_art/None\\1989.183",
+        "artist_display_name": "Théodore Gericault"
     },
     {
         "object_number": "49.7.49",
@@ -459,7 +500,8 @@
         "object_date": "early 1770s",
         "webpage": "http://www.metmuseum.org/art/collection/search/436322",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436322/1661166/main-image",
-        "file_path": "data/met_art/None\\49.7.49_main-image"
+        "file_path": "data/met_art/None\\49.7.49",
+        "artist_display_name": "Jean Honoré Fragonard"
     },
     {
         "object_number": "2008.547.1",
@@ -470,7 +512,8 @@
         "object_date": "1868–69",
         "webpage": "http://www.metmuseum.org/art/collection/search/440723",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/440723/801233/main-image",
-        "file_path": "data/met_art/None\\2008.547.1_main-image"
+        "file_path": "data/met_art/None\\2008.547.1",
+        "artist_display_name": "Jean-Léon Gérôme"
     },
     {
         "object_number": "67.241",
@@ -481,7 +524,8 @@
         "object_date": "1867",
         "webpage": "http://www.metmuseum.org/art/collection/search/437133",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437133/1566072/restricted",
-        "file_path": "data/met_art/None\\67.241_restricted"
+        "file_path": "data/met_art/None\\67.241",
+        "artist_display_name": "Claude Monet"
     },
     {
         "object_number": "20.155.8",
@@ -492,7 +536,8 @@
         "object_date": "1756",
         "webpage": "http://www.metmuseum.org/art/collection/search/436579",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436579/1702341/main-image",
-        "file_path": "data/met_art/None\\20.155.8_main-image"
+        "file_path": "data/met_art/None\\20.155.8",
+        "artist_display_name": "Jean-Baptiste Greuze"
     },
     {
         "object_number": "31.45",
@@ -503,7 +548,8 @@
         "object_date": "1787",
         "webpage": "http://www.metmuseum.org/art/collection/search/436105",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436105/1692908/main-image",
-        "file_path": "data/met_art/None\\31.45_main-image"
+        "file_path": "data/met_art/None\\31.45",
+        "artist_display_name": "Jacques Louis David"
     },
     {
         "object_number": "1977.10",
@@ -514,7 +560,8 @@
         "object_date": "1788",
         "webpage": "http://www.metmuseum.org/art/collection/search/436106",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436106/1998671/main-image",
-        "file_path": "data/met_art/None\\1977.10_main-image"
+        "file_path": "data/met_art/None\\1977.10",
+        "artist_display_name": "Jacques Louis David"
     },
     {
         "object_number": "19.77.2",
@@ -525,7 +572,8 @@
         "object_date": "1823",
         "webpage": "http://www.metmuseum.org/art/collection/search/436703",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436703/796160/main-image",
-        "file_path": "data/met_art/None\\19.77.2_main-image"
+        "file_path": "data/met_art/None\\19.77.2",
+        "artist_display_name": "Jean Auguste Dominique Ingres"
     },
     {
         "object_number": "29.100.23",
@@ -536,7 +584,8 @@
         "object_date": "ca. 1810",
         "webpage": "http://www.metmuseum.org/art/collection/search/438818",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438818/795916/main-image",
-        "file_path": "data/met_art/None\\29.100.23_main-image"
+        "file_path": "data/met_art/None\\29.100.23",
+        "artist_display_name": "Jean Auguste Dominique Ingres"
     },
     {
         "object_number": "87.25",
@@ -547,7 +596,8 @@
         "object_date": "1852–55",
         "webpage": "http://www.metmuseum.org/art/collection/search/435702",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435702/2078727/main-image",
-        "file_path": "data/met_art/None\\87.25_main-image"
+        "file_path": "data/met_art/None\\87.25",
+        "artist_display_name": "Rosa Bonheur"
     },
     {
         "object_number": "55.119",
@@ -558,7 +608,8 @@
         "object_date": "ca. 1643",
         "webpage": "http://www.metmuseum.org/art/collection/search/435908",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435908/800168/main-image",
-        "file_path": "data/met_art/None\\55.119_main-image"
+        "file_path": "data/met_art/None\\55.119",
+        "artist_display_name": "Claude Lorrain (Claude Gellée)"
     },
     {
         "object_number": "89.21.1",
@@ -569,7 +620,8 @@
         "object_date": "1879",
         "webpage": "http://www.metmuseum.org/art/collection/search/435621",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435621/1728774/main-image",
-        "file_path": "data/met_art/None\\89.21.1_main-image"
+        "file_path": "data/met_art/None\\89.21.1",
+        "artist_display_name": "Jules Bastien-Lepage"
     },
     {
         "object_number": "46.160",
@@ -580,7 +632,8 @@
         "object_date": "probably 1633–34",
         "webpage": "http://www.metmuseum.org/art/collection/search/437329",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437329/2196056/main-image",
-        "file_path": "data/met_art/None\\46.160_main-image"
+        "file_path": "data/met_art/None\\46.160",
+        "artist_display_name": "Nicolas Poussin"
     },
     {
         "object_number": "24.45.1",
@@ -591,7 +644,8 @@
         "object_date": "1658",
         "webpage": "http://www.metmuseum.org/art/collection/search/437326",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437326/794924/main-image",
-        "file_path": "data/met_art/None\\24.45.1_main-image"
+        "file_path": "data/met_art/None\\24.45.1",
+        "artist_display_name": "Nicolas Poussin"
     },
     {
         "object_number": "29.100.129",
@@ -602,7 +656,8 @@
         "object_date": "ca. 1862–64",
         "webpage": "http://www.metmuseum.org/art/collection/search/436095",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436095/2019540/main-image",
-        "file_path": "data/met_art/None\\29.100.129_main-image"
+        "file_path": "data/met_art/None\\29.100.129",
+        "artist_display_name": "Honoré Daumier"
     },
     {
         "object_number": "07.122",
@@ -613,7 +668,8 @@
         "object_date": "1878",
         "webpage": "http://www.metmuseum.org/art/collection/search/438815",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438815/2272388/main-image",
-        "file_path": "data/met_art/None\\07.122_main-image"
+        "file_path": "data/met_art/None\\07.122",
+        "artist_display_name": "Auguste Renoir"
     },
     {
         "object_number": "29.100.57",
@@ -624,7 +680,8 @@
         "object_date": "1866",
         "webpage": "http://www.metmuseum.org/art/collection/search/436002",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436002/1911933/main-image",
-        "file_path": "data/met_art/None\\29.100.57_main-image"
+        "file_path": "data/met_art/None\\29.100.57",
+        "artist_display_name": "Gustave Courbet"
     },
     {
         "object_number": "2008.459",
@@ -635,7 +692,8 @@
         "object_date": "ca. 1625–26",
         "webpage": "http://www.metmuseum.org/art/collection/search/439933",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/439933/799638/main-image",
-        "file_path": "data/met_art/None\\2008.459_main-image"
+        "file_path": "data/met_art/None\\2008.459",
+        "artist_display_name": "Valentin de Boulogne"
     },
     {
         "object_number": "51.33.2",
@@ -646,7 +704,8 @@
         "object_date": "ca. 1894–96",
         "webpage": "http://www.metmuseum.org/art/collection/search/437837",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437837/796158/main-image",
-        "file_path": "data/met_art/None\\51.33.2_main-image"
+        "file_path": "data/met_art/None\\51.33.2",
+        "artist_display_name": "Henri de Toulouse-Lautrec"
     },
     {
         "object_number": "60.30",
@@ -657,7 +716,8 @@
         "object_date": "probably 1630s",
         "webpage": "http://www.metmuseum.org/art/collection/search/436838",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436838/1763016/main-image",
-        "file_path": "data/met_art/None\\60.30_main-image"
+        "file_path": "data/met_art/None\\60.30",
+        "artist_display_name": "Georges de La Tour"
     },
     {
         "object_number": "03.30",
@@ -668,7 +728,8 @@
         "object_date": "1846",
         "webpage": "http://www.metmuseum.org/art/collection/search/438814",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438814/1749448/main-image",
-        "file_path": "data/met_art/None\\03.30_main-image"
+        "file_path": "data/met_art/None\\03.30",
+        "artist_display_name": "Eugène Delacroix"
     },
     {
         "object_number": "34.138",
@@ -679,7 +740,8 @@
         "object_date": "ca. 1718–20",
         "webpage": "http://www.metmuseum.org/art/collection/search/437926",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437926/799853/main-image",
-        "file_path": "data/met_art/None\\34.138_main-image"
+        "file_path": "data/met_art/None\\34.138",
+        "artist_display_name": "Antoine Watteau"
     },
     {
         "object_number": "51.112.1",
@@ -690,7 +752,8 @@
         "object_date": "ca. 1890",
         "webpage": "http://www.metmuseum.org/art/collection/search/435882",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435882/796423/main-image",
-        "file_path": "data/met_art/None\\51.112.1_main-image"
+        "file_path": "data/met_art/None\\51.112.1",
+        "artist_display_name": "Paul Cézanne"
     },
     {
         "object_number": "61.101.1",
@@ -701,7 +764,8 @@
         "object_date": "1890–92",
         "webpage": "http://www.metmuseum.org/art/collection/search/435868",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435868/800382/main-image",
-        "file_path": "data/met_art/None\\61.101.1_main-image"
+        "file_path": "data/met_art/None\\61.101.1",
+        "artist_display_name": "Paul Cézanne"
     },
     {
         "object_number": "29.100.66",
@@ -712,7 +776,8 @@
         "object_date": "ca. 1877",
         "webpage": "http://www.metmuseum.org/art/collection/search/435884",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435884/799924/main-image",
-        "file_path": "data/met_art/None\\29.100.66_main-image"
+        "file_path": "data/met_art/None\\29.100.66",
+        "artist_display_name": "Paul Cézanne"
     },
     {
         "object_number": "51.112.2",
@@ -723,7 +788,8 @@
         "object_date": "1891",
         "webpage": "http://www.metmuseum.org/art/collection/search/438821",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438821/795924/main-image",
-        "file_path": "data/met_art/None\\51.112.2_main-image"
+        "file_path": "data/met_art/None\\51.112.2",
+        "artist_display_name": "Paul Gauguin"
     },
     {
         "object_number": "28.221",
@@ -734,7 +800,8 @@
         "object_date": "ca. 1528",
         "webpage": "http://www.metmuseum.org/art/collection/search/436037",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436037/803498/main-image",
-        "file_path": "data/met_art/None\\28.221_main-image"
+        "file_path": "data/met_art/None\\28.221",
+        "artist_display_name": "Lucas Cranach the Elder"
     },
     {
         "object_number": "50.135.4",
@@ -745,7 +812,8 @@
         "object_date": "1532",
         "webpage": "http://www.metmuseum.org/art/collection/search/436658",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436658/797342/main-image",
-        "file_path": "data/met_art/None\\50.135.4_main-image"
+        "file_path": "data/met_art/None\\50.135.4",
+        "artist_display_name": "Hans Holbein the Younger"
     },
     {
         "object_number": "2000.51",
@@ -756,7 +824,8 @@
         "object_date": "ca. 1825–30",
         "webpage": "http://www.metmuseum.org/art/collection/search/438417",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438417/2291693/main-image",
-        "file_path": "data/met_art/None\\2000.51_main-image"
+        "file_path": "data/met_art/None\\2000.51",
+        "artist_display_name": "Caspar David Friedrich"
     },
     {
         "object_number": "14.40.633",
@@ -767,7 +836,8 @@
         "object_date": "probably 1519",
         "webpage": "http://www.metmuseum.org/art/collection/search/436244",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436244/803521/main-image",
-        "file_path": "data/met_art/None\\14.40.633_main-image"
+        "file_path": "data/met_art/None\\14.40.633",
+        "artist_display_name": "Albrecht Dürer"
     },
     {
         "object_number": "1983.451",
@@ -778,7 +848,8 @@
         "object_date": "ca. 1511",
         "webpage": "http://www.metmuseum.org/art/collection/search/435600",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435600/797368/main-image",
-        "file_path": "data/met_art/None\\1983.451_main-image"
+        "file_path": "data/met_art/None\\1983.451",
+        "artist_display_name": "Hans Baldung (called Hans Baldung Grien)"
     },
     {
         "object_number": "96.29",
@@ -789,7 +860,8 @@
         "object_date": "ca. 1845",
         "webpage": "http://www.metmuseum.org/art/collection/search/437854",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437854/1685823/main-image",
-        "file_path": "data/met_art/None\\96.29_main-image"
+        "file_path": "data/met_art/None\\96.29",
+        "artist_display_name": "Joseph Mallord William Turner"
     },
     {
         "object_number": "99.31",
@@ -800,7 +872,8 @@
         "object_date": "ca. 1835",
         "webpage": "http://www.metmuseum.org/art/collection/search/437853",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437853/799790/main-image",
-        "file_path": "data/met_art/None\\99.31_main-image"
+        "file_path": "data/met_art/None\\99.31",
+        "artist_display_name": "Joseph Mallord William Turner"
     },
     {
         "object_number": "50.135.5",
@@ -811,7 +884,8 @@
         "object_date": "1790",
         "webpage": "http://www.metmuseum.org/art/collection/search/436851",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436851/799664/main-image",
-        "file_path": "data/met_art/None\\50.135.5_main-image"
+        "file_path": "data/met_art/None\\50.135.5",
+        "artist_display_name": "Sir Thomas Lawrence"
     },
     {
         "object_number": "20.155.1",
@@ -822,7 +896,8 @@
         "object_date": "1778",
         "webpage": "http://www.metmuseum.org/art/collection/search/436435",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436435/799660/main-image",
-        "file_path": "data/met_art/None\\20.155.1_main-image"
+        "file_path": "data/met_art/None\\20.155.1",
+        "artist_display_name": "Thomas Gainsborough"
     },
     {
         "object_number": "20.155.3",
@@ -833,7 +908,8 @@
         "object_date": "1782",
         "webpage": "http://www.metmuseum.org/art/collection/search/437447",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437447/799661/main-image",
-        "file_path": "data/met_art/None\\20.155.3_main-image"
+        "file_path": "data/met_art/None\\20.155.3",
+        "artist_display_name": "Sir Joshua Reynolds"
     },
     {
         "object_number": "47.26",
@@ -844,7 +920,8 @@
         "object_date": "1868–77",
         "webpage": "http://www.metmuseum.org/art/collection/search/435826",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435826/1344637/main-image",
-        "file_path": "data/met_art/None\\47.26_main-image"
+        "file_path": "data/met_art/None\\47.26",
+        "artist_display_name": "Sir Edward Burne-Jones"
     },
     {
         "object_number": "50.145.8",
@@ -855,7 +932,8 @@
         "object_date": "ca. 1825",
         "webpage": "http://www.metmuseum.org/art/collection/search/435922",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435922/797343/main-image",
-        "file_path": "data/met_art/None\\50.145.8_main-image"
+        "file_path": "data/met_art/None\\50.145.8",
+        "artist_display_name": "John Constable"
     },
     {
         "object_number": "2002.436",
@@ -866,7 +944,8 @@
         "object_date": "1340s",
         "webpage": "http://www.metmuseum.org/art/collection/search/438605",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438605/803283/main-image",
-        "file_path": "data/met_art/None\\2002.436_main-image"
+        "file_path": "data/met_art/None\\2002.436",
+        "artist_display_name": "Pietro Lorenzetti"
     },
     {
         "object_number": "16.30ab",
@@ -877,7 +956,8 @@
         "object_date": "ca. 1504",
         "webpage": "http://www.metmuseum.org/art/collection/search/437372",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437372/795959/main-image",
-        "file_path": "data/met_art/None\\16.30ab_main-image"
+        "file_path": "data/met_art/None\\16.30ab",
+        "artist_display_name": "Raphael (Raffaello Sanzio or Santi)"
     },
     {
         "object_number": "1971.155",
@@ -888,7 +968,8 @@
         "object_date": "after 1595",
         "webpage": "http://www.metmuseum.org/art/collection/search/435853",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435853/2181573/main-image",
-        "file_path": "data/met_art/None\\1971.155_main-image"
+        "file_path": "data/met_art/None\\1971.155",
+        "artist_display_name": "Annibale Carracci"
     },
     {
         "object_number": "1984.459.2",
@@ -899,7 +980,8 @@
         "object_date": "1619",
         "webpage": "http://www.metmuseum.org/art/collection/search/436603",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436603/796433/main-image",
-        "file_path": "data/met_art/None\\1984.459.2_main-image"
+        "file_path": "data/met_art/None\\1984.459.2",
+        "artist_display_name": "Guercino (Giovanni Francesco Barbieri)"
     },
     {
         "object_number": "1977.1.3",
@@ -910,7 +992,8 @@
         "object_date": "1752",
         "webpage": "http://www.metmuseum.org/art/collection/search/437790",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437790/1763008/main-image",
-        "file_path": "data/met_art/None\\1977.1.3_main-image"
+        "file_path": "data/met_art/None\\1977.1.3",
+        "artist_display_name": "Giovanni Battista Tiepolo"
     },
     {
         "object_number": "1988.162",
@@ -921,7 +1004,8 @@
         "object_date": "late 1720s",
         "webpage": "http://www.metmuseum.org/art/collection/search/435839",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435839/1763010/main-image",
-        "file_path": "data/met_art/None\\1988.162_main-image"
+        "file_path": "data/met_art/None\\1988.162",
+        "artist_display_name": "Canaletto (Giovanni Antonio Canal)"
     },
     {
         "object_number": "10.189",
@@ -932,7 +1016,8 @@
         "object_date": "1570s",
         "webpage": "http://www.metmuseum.org/art/collection/search/437891",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437891/797737/main-image",
-        "file_path": "data/met_art/None\\10.189_main-image"
+        "file_path": "data/met_art/None\\10.189",
+        "artist_display_name": "Paolo Veronese (Paolo Caliari)"
     },
     {
         "object_number": "11.126.1",
@@ -943,7 +1028,8 @@
         "object_date": "possibly ca. 1320",
         "webpage": "http://www.metmuseum.org/art/collection/search/436504",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436504/2216475/main-image",
-        "file_path": "data/met_art/None\\11.126.1_main-image"
+        "file_path": "data/met_art/None\\11.126.1",
+        "artist_display_name": "Giotto di Bondone"
     },
     {
         "object_number": "75.7.2",
@@ -954,7 +1040,8 @@
         "object_date": "ca. 1494–1500",
         "webpage": "http://www.metmuseum.org/art/collection/search/437283",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437283/1982974/main-image",
-        "file_path": "data/met_art/None\\75.7.2_main-image"
+        "file_path": "data/met_art/None\\75.7.2",
+        "artist_display_name": "Piero di Cosimo (Piero di Lorenzo di Piero d'Antonio)"
     },
     {
         "object_number": "49.7.10",
@@ -965,7 +1052,8 @@
         "object_date": "ca. 1483–84",
         "webpage": "http://www.metmuseum.org/art/collection/search/436892",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436892/801231/main-image",
-        "file_path": "data/met_art/None\\49.7.10_main-image"
+        "file_path": "data/met_art/None\\49.7.10",
+        "artist_display_name": "Filippino Lippi"
     },
     {
         "object_number": "29.100.16",
@@ -976,7 +1064,8 @@
         "object_date": "1530s",
         "webpage": "http://www.metmuseum.org/art/collection/search/435802",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435802/1763012/main-image",
-        "file_path": "data/met_art/None\\29.100.16_main-image"
+        "file_path": "data/met_art/None\\29.100.16",
+        "artist_display_name": "Bronzino (Agnolo di Cosimo di Mariano)"
     },
     {
         "object_number": "14.40.642",
@@ -987,7 +1076,8 @@
         "object_date": "early 1490s",
         "webpage": "http://www.metmuseum.org/art/collection/search/435728",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435728/2096670/main-image",
-        "file_path": "data/met_art/None\\14.40.642_main-image"
+        "file_path": "data/met_art/None\\14.40.642",
+        "artist_display_name": "Botticelli (Alessandro di Mariano Filipepi)"
     },
     {
         "object_number": "89.15.19",
@@ -998,7 +1088,8 @@
         "object_date": "ca. 1440",
         "webpage": "http://www.metmuseum.org/art/collection/search/436896",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436896/795014/main-image",
-        "file_path": "data/met_art/None\\89.15.19_main-image"
+        "file_path": "data/met_art/None\\89.15.19",
+        "artist_display_name": "Fra Filippo Lippi"
     },
     {
         "object_number": "11.118",
@@ -1009,7 +1100,8 @@
         "object_date": "ca. 1490",
         "webpage": "http://www.metmuseum.org/art/collection/search/435851",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435851/805596/main-image",
-        "file_path": "data/met_art/None\\11.118_main-image"
+        "file_path": "data/met_art/None\\11.118",
+        "artist_display_name": "Vittore Carpaccio"
     },
     {
         "object_number": "2004.442",
@@ -1020,7 +1112,8 @@
         "object_date": "ca. 1290–1300",
         "webpage": "http://www.metmuseum.org/art/collection/search/438754",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/438754/794829/main-image",
-        "file_path": "data/met_art/None\\2004.442_main-image"
+        "file_path": "data/met_art/None\\2004.442",
+        "artist_display_name": "Duccio di Buoninsegna"
     },
     {
         "object_number": "32.130.2",
@@ -1031,7 +1124,8 @@
         "object_date": "shortly after 1450",
         "webpage": "http://www.metmuseum.org/art/collection/search/436966",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436966/799944/main-image",
-        "file_path": "data/met_art/None\\32.130.2_main-image"
+        "file_path": "data/met_art/None\\32.130.2",
+        "artist_display_name": "Andrea Mantegna"
     },
     {
         "object_number": "41.100.23",
@@ -1042,7 +1136,8 @@
         "object_date": "ca. 1326",
         "webpage": "http://www.metmuseum.org/art/collection/search/437675",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437675/1475220/main-image",
-        "file_path": "data/met_art/None\\41.100.23_main-image"
+        "file_path": "data/met_art/None\\41.100.23",
+        "artist_display_name": "Simone Martini"
     },
     {
         "object_number": "08.183.1",
@@ -1053,7 +1148,8 @@
         "object_date": "late 1480s",
         "webpage": "http://www.metmuseum.org/art/collection/search/435641",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435641/796352/main-image",
-        "file_path": "data/met_art/None\\08.183.1_main-image"
+        "file_path": "data/met_art/None\\08.183.1",
+        "artist_display_name": "Giovanni Bellini"
     },
     {
         "object_number": "52.81",
@@ -1064,7 +1160,8 @@
         "object_date": "ca. 1595",
         "webpage": "http://www.metmuseum.org/art/collection/search/435844",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435844/1581937/main-image",
-        "file_path": "data/met_art/None\\52.81_main-image"
+        "file_path": "data/met_art/None\\52.81",
+        "artist_display_name": "Caravaggio (Michelangelo Merisi)"
     },
     {
         "object_number": "1997.167",
@@ -1075,7 +1172,8 @@
         "object_date": "ca. 1610",
         "webpage": "http://www.metmuseum.org/art/collection/search/437986",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437986/1641164/main-image",
-        "file_path": "data/met_art/None\\1997.167_main-image"
+        "file_path": "data/met_art/None\\1997.167",
+        "artist_display_name": "Caravaggio (Michelangelo Merisi)"
     },
     {
         "object_number": "22.75",
@@ -1086,7 +1184,8 @@
         "object_date": "None",
         "webpage": "http://www.metmuseum.org/art/collection/search/437609",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437609/805589/main-image",
-        "file_path": "data/met_art/None\\22.75_main-image"
+        "file_path": "data/met_art/None\\22.75",
+        "artist_display_name": "Andrea del Sarto (Andrea d'Agnolo)"
     },
     {
         "object_number": "1986.138",
@@ -1097,7 +1196,8 @@
         "object_date": "None",
         "webpage": "http://www.metmuseum.org/art/collection/search/436918",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436918/2169880/main-image",
-        "file_path": "data/met_art/None\\1986.138_main-image"
+        "file_path": "data/met_art/None\\1986.138",
+        "artist_display_name": "Lorenzo Lotto"
     },
     {
         "object_number": "49.7.16",
@@ -1108,7 +1208,8 @@
         "object_date": "None",
         "webpage": "http://www.metmuseum.org/art/collection/search/437826",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437826/1982476/main-image",
-        "file_path": "data/met_art/None\\49.7.16_main-image"
+        "file_path": "data/met_art/None\\49.7.16",
+        "artist_display_name": "Titian (Tiziano Vecellio)"
     },
     {
         "object_number": "33.92ab",
@@ -1119,7 +1220,8 @@
         "object_date": "ca. 1440–41",
         "webpage": "http://www.metmuseum.org/art/collection/search/436282",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436282/1927583/main-image",
-        "file_path": "data/met_art/None\\33.92ab_main-image"
+        "file_path": "data/met_art/None\\33.92ab",
+        "artist_display_name": "Jan van Eyck"
     },
     {
         "object_number": "49.7.21",
@@ -1130,7 +1232,8 @@
         "object_date": "ca. 1512–15",
         "webpage": "http://www.metmuseum.org/art/collection/search/436101",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436101/1882607/main-image",
-        "file_path": "data/met_art/None\\49.7.21_main-image"
+        "file_path": "data/met_art/None\\49.7.21",
+        "artist_display_name": "Gerard David"
     },
     {
         "object_number": "32.100.43",
@@ -1141,7 +1244,8 @@
         "object_date": "ca. 1460",
         "webpage": "http://www.metmuseum.org/art/collection/search/437487",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437487/2178247/main-image",
-        "file_path": "data/met_art/None\\32.100.43_main-image"
+        "file_path": "data/met_art/None\\32.100.43",
+        "artist_display_name": "Rogier van der Weyden"
     },
     {
         "object_number": "19.164",
@@ -1152,7 +1256,8 @@
         "object_date": "1565",
         "webpage": "http://www.metmuseum.org/art/collection/search/435809",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435809/794356/main-image",
-        "file_path": "data/met_art/None\\19.164_main-image"
+        "file_path": "data/met_art/None\\19.164",
+        "artist_display_name": "Pieter Bruegel the Elder"
     },
     {
         "object_number": "14.40.626–27",
@@ -1163,7 +1268,8 @@
         "object_date": "ca. 1470",
         "webpage": "http://www.metmuseum.org/art/collection/search/437056",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437056/1708361/main-image",
-        "file_path": "data/met_art/None\\14.40.626–27_main-image"
+        "file_path": "data/met_art/None\\14.40.626–27",
+        "artist_display_name": "Hans Memling"
     },
     {
         "object_number": "36.14a–c",
@@ -1174,7 +1280,8 @@
         "object_date": "ca. 1512–15",
         "webpage": "http://www.metmuseum.org/art/collection/search/437261",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/437261/796486/main-image",
-        "file_path": "data/met_art/None\\36.14a–c_main-image"
+        "file_path": "data/met_art/None\\36.14a–c",
+        "artist_display_name": "Joachim Patinir"
     },
     {
         "object_number": "49.7.19",
@@ -1185,7 +1292,8 @@
         "object_date": "1446",
         "webpage": "http://www.metmuseum.org/art/collection/search/435896",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/435896/796328/main-image",
-        "file_path": "data/met_art/None\\49.7.19_main-image"
+        "file_path": "data/met_art/None\\49.7.19",
+        "artist_display_name": "Petrus Christus"
     },
     {
         "object_number": "17.50.17-36",
@@ -1196,7 +1304,8 @@
         "object_date": "ca. 1645–47 (published 1648)",
         "webpage": "http://www.metmuseum.org/art/collection/search/335668",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/335668/766484/main-image",
-        "file_path": "data/met_art/None\\17.50.17-36_main-image"
+        "file_path": "data/met_art/None\\17.50.17-36",
+        "artist_display_name": "Giovanni Benedetto Castiglione (Il Grechetto)|Matthys van de Merwede, Lord of Clootwyck|Giovanni Giacomo De Rossi"
     },
     {
         "object_number": "1998.21",
@@ -1207,7 +1316,8 @@
         "object_date": "1818",
         "webpage": "http://www.metmuseum.org/art/collection/search/334710",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/334710/739952/main-image",
-        "file_path": "data/met_art/None\\1998.21_main-image"
+        "file_path": "data/met_art/None\\1998.21",
+        "artist_display_name": "Jean Auguste Dominique Ingres|Prince Wenzel von Kaunitz-Rietberg"
     },
     {
         "object_number": "50.583.4",
@@ -1218,7 +1328,8 @@
         "object_date": "ca. 1630",
         "webpage": "http://www.metmuseum.org/art/collection/search/337062",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337062/751657/main-image",
-        "file_path": "data/met_art/None\\50.583.4_main-image"
+        "file_path": "data/met_art/None\\50.583.4",
+        "artist_display_name": "Anthony van Dyck"
     },
     {
         "object_number": "35.42",
@@ -1229,7 +1340,8 @@
         "object_date": "by 1818",
         "webpage": "http://www.metmuseum.org/art/collection/search/334002",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/334002/770096/main-image",
-        "file_path": "data/met_art/None\\35.42_main-image"
+        "file_path": "data/met_art/None\\35.42",
+        "artist_display_name": "Goya (Francisco de Goya y Lucientes)"
     },
     {
         "object_number": "1999.222",
@@ -1240,7 +1352,8 @@
         "object_date": "1617",
         "webpage": "http://www.metmuseum.org/art/collection/search/337844",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337844/770369/main-image",
-        "file_path": "data/met_art/None\\1999.222_main-image"
+        "file_path": "data/met_art/None\\1999.222",
+        "artist_display_name": "Peter Paul Rubens"
     },
     {
         "object_number": "39.68.27",
@@ -1251,7 +1364,8 @@
         "object_date": "ca. 1830",
         "webpage": "http://www.metmuseum.org/art/collection/search/337699",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337699/725534/main-image",
-        "file_path": "data/met_art/None\\39.68.27_main-image"
+        "file_path": "data/met_art/None\\39.68.27",
+        "artist_display_name": "David Lucas|John Constable"
     },
     {
         "object_number": "08.162.1",
@@ -1262,7 +1376,8 @@
         "object_date": "1867",
         "webpage": "http://www.metmuseum.org/art/collection/search/337500",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337500/787246/main-image",
-        "file_path": "data/met_art/None\\08.162.1_main-image"
+        "file_path": "data/met_art/None\\08.162.1",
+        "artist_display_name": "Dante Gabriel Rossetti|Henry Treffry Dunn"
     },
     {
         "object_number": "41.1.31",
@@ -1273,7 +1388,8 @@
         "object_date": "1653",
         "webpage": "http://www.metmuseum.org/art/collection/search/354631",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/354631/741538/main-image",
-        "file_path": "data/met_art/None\\41.1.31_main-image"
+        "file_path": "data/met_art/None\\41.1.31",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "29.107.28",
@@ -1284,7 +1400,8 @@
         "object_date": "1658",
         "webpage": "http://www.metmuseum.org/art/collection/search/337063",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337063/765698/main-image",
-        "file_path": "data/met_art/None\\29.107.28_main-image"
+        "file_path": "data/met_art/None\\29.107.28",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "1997.117.10",
@@ -1295,7 +1412,8 @@
         "object_date": "1673",
         "webpage": "http://www.metmuseum.org/art/collection/search/337632",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337632/747682/main-image",
-        "file_path": "data/met_art/None\\1997.117.10_main-image"
+        "file_path": "data/met_art/None\\1997.117.10",
+        "artist_display_name": "Adriaen van Ostade"
     },
     {
         "object_number": "29.100.939",
@@ -1306,7 +1424,8 @@
         "object_date": "ca. 1650",
         "webpage": "http://www.metmuseum.org/art/collection/search/337491",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337491/786247/main-image",
-        "file_path": "data/met_art/None\\29.100.939_main-image"
+        "file_path": "data/met_art/None\\29.100.939",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "1995.196",
@@ -1317,7 +1436,8 @@
         "object_date": "1650–55",
         "webpage": "http://www.metmuseum.org/art/collection/search/337493",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337493/747934/main-image",
-        "file_path": "data/met_art/None\\1995.196_main-image"
+        "file_path": "data/met_art/None\\1995.196",
+        "artist_display_name": "Jacob van Ruisdael"
     },
     {
         "object_number": "48.190.2",
@@ -1328,7 +1448,8 @@
         "object_date": "September 1889",
         "webpage": "http://www.metmuseum.org/art/collection/search/336327",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336327/1517058/main-image",
-        "file_path": "data/met_art/None\\48.190.2_main-image"
+        "file_path": "data/met_art/None\\48.190.2",
+        "artist_display_name": "Vincent van Gogh"
     },
     {
         "object_number": "61.101.16",
@@ -1339,7 +1460,8 @@
         "object_date": "1882–83",
         "webpage": "http://www.metmuseum.org/art/collection/search/339751",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/339751/740661/main-image",
-        "file_path": "data/met_art/None\\61.101.16_main-image"
+        "file_path": "data/met_art/None\\61.101.16",
+        "artist_display_name": "Georges Seurat"
     },
     {
         "object_number": "63.1",
@@ -1350,7 +1472,8 @@
         "object_date": "ca. 1814",
         "webpage": "http://www.metmuseum.org/art/collection/search/334245",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/334245/2024629/main-image",
-        "file_path": "data/met_art/None\\63.1_main-image"
+        "file_path": "data/met_art/None\\63.1",
+        "artist_display_name": "Jacques Louis David"
     },
     {
         "object_number": "1997.156",
@@ -1361,7 +1484,8 @@
         "object_date": "1658",
         "webpage": "http://www.metmuseum.org/art/collection/search/336489",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336489/786251/main-image",
-        "file_path": "data/met_art/None\\1997.156_main-image"
+        "file_path": "data/met_art/None\\1997.156",
+        "artist_display_name": "Claude Lorrain (Claude Gellée)"
     },
     {
         "object_number": "1998.225",
@@ -1372,7 +1496,8 @@
         "object_date": "ca. 1635–36",
         "webpage": "http://www.metmuseum.org/art/collection/search/335240",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/335240/757168/main-image",
-        "file_path": "data/met_art/None\\1998.225_main-image"
+        "file_path": "data/met_art/None\\1998.225",
+        "artist_display_name": "Nicolas Poussin"
     },
     {
         "object_number": "49.38",
@@ -1383,7 +1508,8 @@
         "object_date": "ca. 1461",
         "webpage": "http://www.metmuseum.org/art/collection/search/337088",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337088/786176/main-image",
-        "file_path": "data/met_art/None\\49.38_main-image"
+        "file_path": "data/met_art/None\\49.38",
+        "artist_display_name": "Jean Fouquet"
     },
     {
         "object_number": "29.100.200",
@@ -1394,7 +1520,8 @@
         "object_date": "ca. 1860–65",
         "webpage": "http://www.metmuseum.org/art/collection/search/333915",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/333915/725529/main-image",
-        "file_path": "data/met_art/None\\29.100.200_main-image"
+        "file_path": "data/met_art/None\\29.100.200",
+        "artist_display_name": "Honoré Daumier"
     },
     {
         "object_number": "1972.118.210",
@@ -1405,7 +1532,8 @@
         "object_date": "1832",
         "webpage": "http://www.metmuseum.org/art/collection/search/336046",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336046/1364579/main-image",
-        "file_path": "data/met_art/None\\1972.118.210_main-image"
+        "file_path": "data/met_art/None\\1972.118.210",
+        "artist_display_name": "Eugène Delacroix"
     },
     {
         "object_number": "37.165.107",
@@ -1416,7 +1544,8 @@
         "object_date": "ca. 1718",
         "webpage": "http://www.metmuseum.org/art/collection/search/334650",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/334650/757927/main-image",
-        "file_path": "data/met_art/None\\37.165.107_main-image"
+        "file_path": "data/met_art/None\\37.165.107",
+        "artist_display_name": "Antoine Watteau"
     },
     {
         "object_number": "1996.418",
@@ -1427,7 +1556,8 @@
         "object_date": "ca. 1899",
         "webpage": "http://www.metmuseum.org/art/collection/search/337172",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337172/739964/main-image",
-        "file_path": "data/met_art/None\\1996.418_main-image"
+        "file_path": "data/met_art/None\\1996.418",
+        "artist_display_name": "Paul Gauguin"
     },
     {
         "object_number": "19.73.1",
@@ -1438,7 +1568,8 @@
         "object_date": "1504",
         "webpage": "http://www.metmuseum.org/art/collection/search/336222",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336222/766616/main-image",
-        "file_path": "data/met_art/None\\19.73.1_main-image"
+        "file_path": "data/met_art/None\\19.73.1",
+        "artist_display_name": "Albrecht Dürer"
     },
     {
         "object_number": "43.106.1",
@@ -1449,7 +1580,8 @@
         "object_date": "1514",
         "webpage": "http://www.metmuseum.org/art/collection/search/336228",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336228/770914/main-image",
-        "file_path": "data/met_art/None\\43.106.1_main-image"
+        "file_path": "data/met_art/None\\43.106.1",
+        "artist_display_name": "Albrecht Dürer"
     },
     {
         "object_number": "35.27",
@@ -1460,7 +1592,8 @@
         "object_date": "ca. 1475–80",
         "webpage": "http://www.metmuseum.org/art/collection/search/336162",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336162/770505/main-image",
-        "file_path": "data/met_art/None\\35.27_main-image"
+        "file_path": "data/met_art/None\\35.27",
+        "artist_display_name": "Martin Schongauer"
     },
     {
         "object_number": "26.72.68",
@@ -1471,7 +1604,8 @@
         "object_date": "1519",
         "webpage": "http://www.metmuseum.org/art/collection/search/336256",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336256/772669/main-image",
-        "file_path": "data/met_art/None\\26.72.68_main-image"
+        "file_path": "data/met_art/None\\26.72.68",
+        "artist_display_name": "Albrecht Altdorfer"
     },
     {
         "object_number": "1993.1097",
@@ -1482,7 +1616,8 @@
         "object_date": "ca. 1521–22",
         "webpage": "http://www.metmuseum.org/art/collection/search/336259",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/336259/772329/main-image",
-        "file_path": "data/met_art/None\\1993.1097_main-image"
+        "file_path": "data/met_art/None\\1993.1097",
+        "artist_display_name": "Albrecht Altdorfer"
     },
     {
         "object_number": "06.1051.2",
@@ -1493,7 +1628,8 @@
         "object_date": "1506",
         "webpage": "http://www.metmuseum.org/art/collection/search/334769",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/334769/786244/main-image",
-        "file_path": "data/met_art/None\\06.1051.2_main-image"
+        "file_path": "data/met_art/None\\06.1051.2",
+        "artist_display_name": "Albrecht Altdorfer"
     },
     {
         "object_number": "59.120",
@@ -1504,7 +1640,8 @@
         "object_date": "1843",
         "webpage": "http://www.metmuseum.org/art/collection/search/337499",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337499/771617/main-image",
-        "file_path": "data/met_art/None\\59.120_main-image"
+        "file_path": "data/met_art/None\\59.120",
+        "artist_display_name": "Joseph Mallord William Turner"
     },
     {
         "object_number": "1973.634",
@@ -1515,7 +1652,8 @@
         "object_date": "1741",
         "webpage": "http://www.metmuseum.org/art/collection/search/335287",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/335287/759051/main-image",
-        "file_path": "data/met_art/None\\1973.634_main-image"
+        "file_path": "data/met_art/None\\1973.634",
+        "artist_display_name": "Canaletto (Giovanni Antonio Canal)"
     },
     {
         "object_number": "1986.1159",
@@ -1526,7 +1664,8 @@
         "object_date": "ca. 1470–90",
         "webpage": "http://www.metmuseum.org/art/collection/search/337057",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337057/2049642/main-image",
-        "file_path": "data/met_art/None\\1986.1159_main-image"
+        "file_path": "data/met_art/None\\1986.1159",
+        "artist_display_name": "Andrea Mantegna"
     },
     {
         "object_number": "1997.153",
@@ -1537,7 +1676,8 @@
         "object_date": "1508–10",
         "webpage": "http://www.metmuseum.org/art/collection/search/337075",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337075/1588046/main-image",
-        "file_path": "data/met_art/None\\1997.153_main-image"
+        "file_path": "data/met_art/None\\1997.153",
+        "artist_display_name": "Raphael (Raffaello Sanzio or Santi)"
     },
     {
         "object_number": "24.197.2",
@@ -1548,7 +1688,8 @@
         "object_date": "ca. 1510–11",
         "webpage": "http://www.metmuseum.org/art/collection/search/337497",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337497/777477/main-image",
-        "file_path": "data/met_art/None\\24.197.2_main-image"
+        "file_path": "data/met_art/None\\24.197.2",
+        "artist_display_name": "Michelangelo Buonarroti"
     },
     {
         "object_number": "62.126",
@@ -1559,7 +1700,8 @@
         "object_date": "1645–50",
         "webpage": "http://www.metmuseum.org/art/collection/search/335663",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/335663/770738/main-image",
-        "file_path": "data/met_art/None\\62.126_main-image"
+        "file_path": "data/met_art/None\\62.126",
+        "artist_display_name": "Giovanni Benedetto Castiglione (Il Grechetto)"
     },
     {
         "object_number": "2011.36",
@@ -1570,7 +1712,8 @@
         "object_date": "ca. 1532–35",
         "webpage": "http://www.metmuseum.org/art/collection/search/395485",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/395485/764593/main-image",
-        "file_path": "data/met_art/None\\2011.36_main-image"
+        "file_path": "data/met_art/None\\2011.36",
+        "artist_display_name": "Perino del Vaga (Pietro Buonaccorsi)"
     },
     {
         "object_number": "1971.63.1",
@@ -1581,7 +1724,8 @@
         "object_date": "ca. 1756–58",
         "webpage": "http://www.metmuseum.org/art/collection/search/337498",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337498/748813/main-image",
-        "file_path": "data/met_art/None\\1971.63.1_main-image"
+        "file_path": "data/met_art/None\\1971.63.1",
+        "artist_display_name": "Giovanni Paolo Panini"
     },
     {
         "object_number": "51.90",
@@ -1592,7 +1736,8 @@
         "object_date": "1510–1513",
         "webpage": "http://www.metmuseum.org/art/collection/search/337496",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337496/739534/main-image",
-        "file_path": "data/met_art/None\\51.90_main-image"
+        "file_path": "data/met_art/None\\51.90",
+        "artist_display_name": "Leonardo da Vinci"
     },
     {
         "object_number": "17.142.1",
@@ -1603,7 +1748,8 @@
         "object_date": "1480–85",
         "webpage": "http://www.metmuseum.org/art/collection/search/337494",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337494/786246/main-image",
-        "file_path": "data/met_art/None\\17.142.1_main-image"
+        "file_path": "data/met_art/None\\17.142.1",
+        "artist_display_name": "Leonardo da Vinci"
     },
     {
         "object_number": "1996.364a, b",
@@ -1614,7 +1760,8 @@
         "object_date": "1435–38",
         "webpage": "http://www.metmuseum.org/art/collection/search/337894",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337894/2181285/main-image",
-        "file_path": "data/met_art/None\\1996.364a, b_main-image"
+        "file_path": "data/met_art/None\\1996.364a, b",
+        "artist_display_name": "Stefano da Verona (Stefano di Giovanni)"
     },
     {
         "object_number": "17.3.90",
@@ -1625,7 +1772,8 @@
         "object_date": "1879–80",
         "webpage": "http://www.metmuseum.org/art/collection/search/365017",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/365017/763943/main-image",
-        "file_path": "data/met_art/None\\17.3.90_main-image"
+        "file_path": "data/met_art/None\\17.3.90",
+        "artist_display_name": "James McNeill Whistler"
     },
     {
         "object_number": "17.3.159",
@@ -1636,7 +1784,8 @@
         "object_date": "1878",
         "webpage": "http://www.metmuseum.org/art/collection/search/337702",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337702/764106/main-image",
-        "file_path": "data/met_art/None\\17.3.159_main-image"
+        "file_path": "data/met_art/None\\17.3.159",
+        "artist_display_name": "James McNeill Whistler"
     },
     {
         "object_number": "16.2.2",
@@ -1647,7 +1796,8 @@
         "object_date": "1890–91",
         "webpage": "http://www.metmuseum.org/art/collection/search/337064",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337064/764588/restricted",
-        "file_path": "data/met_art/None\\16.2.2_restricted"
+        "file_path": "data/met_art/None\\16.2.2",
+        "artist_display_name": "Mary Cassatt"
     },
     {
         "object_number": "19.51.7",
@@ -1658,7 +1808,8 @@
         "object_date": "ca. 1865",
         "webpage": "http://www.metmuseum.org/art/collection/search/333813",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/333813/755039/main-image",
-        "file_path": "data/met_art/None\\19.51.7_main-image"
+        "file_path": "data/met_art/None\\19.51.7",
+        "artist_display_name": "Edgar Degas|Édouard Manet"
     },
     {
         "object_number": "1997.93",
@@ -1669,7 +1820,8 @@
         "object_date": "ca. 1580–1585",
         "webpage": "http://www.metmuseum.org/art/collection/search/337490",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337490/756228/main-image",
-        "file_path": "data/met_art/None\\1997.93_main-image"
+        "file_path": "data/met_art/None\\1997.93",
+        "artist_display_name": "Bartholomeus Spranger"
     },
     {
         "object_number": "1995.15",
@@ -1680,7 +1832,8 @@
         "object_date": "ca. 1588–89",
         "webpage": "http://www.metmuseum.org/art/collection/search/337489",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337489/748453/main-image",
-        "file_path": "data/met_art/None\\1995.15_main-image"
+        "file_path": "data/met_art/None\\1995.15",
+        "artist_display_name": "Jan Brueghel the Elder"
     },
     {
         "object_number": "1995.12",
@@ -1691,7 +1844,8 @@
         "object_date": "1530–35",
         "webpage": "http://www.metmuseum.org/art/collection/search/337487",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337487/739932/main-image",
-        "file_path": "data/met_art/None\\1995.12_main-image"
+        "file_path": "data/met_art/None\\1995.12",
+        "artist_display_name": "Bernard van Orley"
     },
     {
         "object_number": "20.24.76",
@@ -1702,7 +1856,8 @@
         "object_date": "ca. 1510–30",
         "webpage": "http://www.metmuseum.org/art/collection/search/337700",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337700/1814392/main-image",
-        "file_path": "data/met_art/None\\20.24.76_main-image"
+        "file_path": "data/met_art/None\\20.24.76",
+        "artist_display_name": "Baldassare Tommaso Peruzzi|Ugo da Carpi"
     },
     {
         "object_number": "19.74.1",
@@ -1713,7 +1868,8 @@
         "object_date": "ca. 1510–20",
         "webpage": "http://www.metmuseum.org/art/collection/search/337058",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337058/1914771/main-image",
-        "file_path": "data/met_art/None\\19.74.1_main-image"
+        "file_path": "data/met_art/None\\19.74.1",
+        "artist_display_name": "Marcantonio Raimondi|Raphael (Raffaello Sanzio or Santi)"
     },
     {
         "object_number": "37.45.3(27)",
@@ -1724,7 +1880,8 @@
         "object_date": "ca. 1749–50",
         "webpage": "http://www.metmuseum.org/art/collection/search/337725",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/337725/779129/main-image",
-        "file_path": "data/met_art/None\\37.45.3(27)_main-image"
+        "file_path": "data/met_art/None\\37.45.3(27)",
+        "artist_display_name": "Giovanni Battista Piranesi|Giovanni Bouchard"
     },
     {
         "object_number": "2007.442",
@@ -1735,7 +1892,8 @@
         "object_date": "ca. 1782",
         "webpage": "http://www.metmuseum.org/art/collection/search/505722",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/505722/1647032/main-image",
-        "file_path": "data/met_art/French\\2007.442_main-image"
+        "file_path": "data/met_art/French\\2007.442",
+        "artist_display_name": "Guillaume Voiriot"
     },
     {
         "object_number": "1975.1.843",
@@ -1746,7 +1904,8 @@
         "object_date": "1600–1626",
         "webpage": "http://www.metmuseum.org/art/collection/search/459195",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459195/1510710/main-image",
-        "file_path": "data/met_art/None\\1975.1.843_main-image"
+        "file_path": "data/met_art/None\\1975.1.843",
+        "artist_display_name": "Peter Paul Rubens"
     },
     {
         "object_number": "1975.1.148",
@@ -1757,7 +1916,8 @@
         "object_date": "1787–88",
         "webpage": "http://www.metmuseum.org/art/collection/search/459090",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459090/919157/main-image",
-        "file_path": "data/met_art/None\\1975.1.148_main-image"
+        "file_path": "data/met_art/None\\1975.1.148",
+        "artist_display_name": "Goya (Francisco de Goya y Lucientes)"
     },
     {
         "object_number": "1975.1.145",
@@ -1768,7 +1928,8 @@
         "object_date": "ca. 1577–87",
         "webpage": "http://www.metmuseum.org/art/collection/search/459087",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459087/1456237/main-image",
-        "file_path": "data/met_art/None\\1975.1.145_main-image"
+        "file_path": "data/met_art/None\\1975.1.145",
+        "artist_display_name": "El Greco (Domenikos Theotokopoulos)"
     },
     {
         "object_number": "1975.1.146",
@@ -1779,7 +1940,8 @@
         "object_date": "ca. 1610",
         "webpage": "http://www.metmuseum.org/art/collection/search/459088",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459088/913475/main-image",
-        "file_path": "data/met_art/None\\1975.1.146_main-image"
+        "file_path": "data/met_art/None\\1975.1.146",
+        "artist_display_name": "El Greco (Domenikos Theotokopoulos)"
     },
     {
         "object_number": "1975.1.103",
@@ -1790,7 +1952,8 @@
         "object_date": "ca. 1330–35",
         "webpage": "http://www.metmuseum.org/art/collection/search/459045",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459045/913433/main-image",
-        "file_path": "data/met_art/Italian Rimini\\1975.1.103_main-image"
+        "file_path": "data/met_art/Italian Rimini\\1975.1.103",
+        "artist_display_name": "Giovanni Baronzio"
     },
     {
         "object_number": "1975.1.95",
@@ -1801,7 +1964,8 @@
         "object_date": "1494(?)",
         "webpage": "http://www.metmuseum.org/art/collection/search/459037",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459037/913425/main-image",
-        "file_path": "data/met_art/None\\1975.1.95_main-image"
+        "file_path": "data/met_art/None\\1975.1.95",
+        "artist_display_name": "Maestro delle Storie del Pane"
     },
     {
         "object_number": "1975.1.96",
@@ -1812,7 +1976,8 @@
         "object_date": "1494?",
         "webpage": "http://www.metmuseum.org/art/collection/search/459038",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459038/913426/main-image",
-        "file_path": "data/met_art/None\\1975.1.96_main-image"
+        "file_path": "data/met_art/None\\1975.1.96",
+        "artist_display_name": "Maestro delle Storie del Pane"
     },
     {
         "object_number": "1975.1.792",
@@ -1823,7 +1988,8 @@
         "object_date": "1644",
         "webpage": "http://www.metmuseum.org/art/collection/search/459238",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459238/1804812/main-image",
-        "file_path": "data/met_art/None\\1975.1.792_main-image"
+        "file_path": "data/met_art/None\\1975.1.792",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "1975.1.794",
@@ -1834,7 +2000,8 @@
         "object_date": "1634–35",
         "webpage": "http://www.metmuseum.org/art/collection/search/459194",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459194/919073/main-image",
-        "file_path": "data/met_art/None\\1975.1.794_main-image"
+        "file_path": "data/met_art/None\\1975.1.794",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "1975.1.799",
@@ -1845,7 +2012,8 @@
         "object_date": "1644",
         "webpage": "http://www.metmuseum.org/art/collection/search/459210",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459210/1510434/main-image",
-        "file_path": "data/met_art/None\\1975.1.799_main-image"
+        "file_path": "data/met_art/None\\1975.1.799",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "1975.1.774",
@@ -1856,7 +2024,8 @@
         "object_date": "1881",
         "webpage": "http://www.metmuseum.org/art/collection/search/459193",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459193/1510704/main-image",
-        "file_path": "data/met_art/None\\1975.1.774_main-image"
+        "file_path": "data/met_art/None\\1975.1.774",
+        "artist_display_name": "Vincent van Gogh"
     },
     {
         "object_number": "1975.1.141",
@@ -1867,7 +2036,8 @@
         "object_date": "ca. 1666–67",
         "webpage": "http://www.metmuseum.org/art/collection/search/459083",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459083/913465/main-image",
-        "file_path": "data/met_art/None\\1975.1.141_main-image"
+        "file_path": "data/met_art/None\\1975.1.141",
+        "artist_display_name": "Gerard ter Borch the Younger"
     },
     {
         "object_number": "1975.1.142",
@@ -1878,7 +2048,8 @@
         "object_date": "ca. 1666–67",
         "webpage": "http://www.metmuseum.org/art/collection/search/459084",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459084/913322/main-image",
-        "file_path": "data/met_art/None\\1975.1.142_main-image"
+        "file_path": "data/met_art/None\\1975.1.142",
+        "artist_display_name": "Gerard ter Borch the Younger"
     },
     {
         "object_number": "1975.1.140",
@@ -1889,7 +2060,8 @@
         "object_date": "1665–67",
         "webpage": "http://www.metmuseum.org/art/collection/search/459082",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459082/913312/main-image",
-        "file_path": "data/met_art/None\\1975.1.140_main-image"
+        "file_path": "data/met_art/None\\1975.1.140",
+        "artist_display_name": "Rembrandt (Rembrandt van Rijn)"
     },
     {
         "object_number": "1975.1.144",
@@ -1900,7 +2072,8 @@
         "object_date": "ca. 1663–65",
         "webpage": "http://www.metmuseum.org/art/collection/search/459086",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459086/913324/main-image",
-        "file_path": "data/met_art/None\\1975.1.144_main-image"
+        "file_path": "data/met_art/None\\1975.1.144",
+        "artist_display_name": "Pieter de Hooch"
     },
     {
         "object_number": "1975.1.231",
@@ -1911,7 +2084,8 @@
         "object_date": "1888",
         "webpage": "http://www.metmuseum.org/art/collection/search/459123",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459123/913555/main-image",
-        "file_path": "data/met_art/None\\1975.1.231_main-image"
+        "file_path": "data/met_art/None\\1975.1.231",
+        "artist_display_name": "Vincent van Gogh"
     },
     {
         "object_number": "1975.1.704",
@@ -1922,7 +2096,8 @@
         "object_date": "1886-87",
         "webpage": "http://www.metmuseum.org/art/collection/search/459191",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459191/1510697/main-image",
-        "file_path": "data/met_art/None\\1975.1.704_main-image"
+        "file_path": "data/met_art/None\\1975.1.704",
+        "artist_display_name": "Georges Seurat"
     },
     {
         "object_number": "1975.1.710",
@@ -1933,7 +2108,8 @@
         "object_date": "1886–87",
         "webpage": "http://www.metmuseum.org/art/collection/search/459240",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459240/1510432/restricted",
-        "file_path": "data/met_art/None\\1975.1.710_restricted"
+        "file_path": "data/met_art/None\\1975.1.710",
+        "artist_display_name": "Paul Signac"
     },
     {
         "object_number": "1975.1.647",
@@ -1944,7 +2120,8 @@
         "object_date": "1852",
         "webpage": "http://www.metmuseum.org/art/collection/search/459213",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459213/1510690/main-image",
-        "file_path": "data/met_art/None\\1975.1.647_main-image"
+        "file_path": "data/met_art/None\\1975.1.647",
+        "artist_display_name": "Jean Auguste Dominique Ingres"
     },
     {
         "object_number": "1975.1.661",
@@ -1955,7 +2132,8 @@
         "object_date": "ca. 1671",
         "webpage": "http://www.metmuseum.org/art/collection/search/459190",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459190/1510694/main-image",
-        "file_path": "data/met_art/None\\1975.1.661_main-image"
+        "file_path": "data/met_art/None\\1975.1.661",
+        "artist_display_name": "Claude Lorrain (Claude Gellée)"
     },
     {
         "object_number": "1975.1.592",
@@ -1966,7 +2144,8 @@
         "object_date": "ca. 1905–1908",
         "webpage": "http://www.metmuseum.org/art/collection/search/459189",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459189/1510685/main-image",
-        "file_path": "data/met_art/None\\1975.1.592_main-image"
+        "file_path": "data/met_art/None\\1975.1.592",
+        "artist_display_name": "Henri-Edmond Cross (Henri-Edmond Delacroix)"
     },
     {
         "object_number": "1975.1.731",
@@ -1977,7 +2156,8 @@
         "object_date": "1899",
         "webpage": "http://www.metmuseum.org/art/collection/search/459241",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459241/1510700/main-image",
-        "file_path": "data/met_art/None\\1975.1.731_main-image"
+        "file_path": "data/met_art/None\\1975.1.731",
+        "artist_display_name": "Henri de Toulouse-Lautrec"
     },
     {
         "object_number": "1975.1.763",
@@ -1988,7 +2168,8 @@
         "object_date": "1716–17",
         "webpage": "http://www.metmuseum.org/art/collection/search/459192",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459192/1510703/main-image",
-        "file_path": "data/met_art/None\\1975.1.763_main-image"
+        "file_path": "data/met_art/None\\1975.1.763",
+        "artist_display_name": "Antoine Watteau"
     },
     {
         "object_number": "1975.1.162",
@@ -1999,7 +2180,8 @@
         "object_date": "1836",
         "webpage": "http://www.metmuseum.org/art/collection/search/459093",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459093/914088/main-image",
-        "file_path": "data/met_art/None\\1975.1.162_main-image"
+        "file_path": "data/met_art/None\\1975.1.162",
+        "artist_display_name": "Camille Corot"
     },
     {
         "object_number": "1975.1.209",
@@ -2010,7 +2192,8 @@
         "object_date": "1891",
         "webpage": "http://www.metmuseum.org/art/collection/search/459119",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459119/2183022/restricted",
-        "file_path": "data/met_art/None\\1975.1.209_restricted"
+        "file_path": "data/met_art/None\\1975.1.209",
+        "artist_display_name": "Paul Signac"
     },
     {
         "object_number": "1975.1.196",
@@ -2021,7 +2204,8 @@
         "object_date": "1871",
         "webpage": "http://www.metmuseum.org/art/collection/search/459107",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459107/914090/restricted",
-        "file_path": "data/met_art/None\\1975.1.196_restricted"
+        "file_path": "data/met_art/None\\1975.1.196",
+        "artist_display_name": "Claude Monet"
     },
     {
         "object_number": "1975.1.186",
@@ -2032,7 +2216,8 @@
         "object_date": "1851–53",
         "webpage": "http://www.metmuseum.org/art/collection/search/459106",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459106/1964622/main-image",
-        "file_path": "data/met_art/None\\1975.1.186_main-image"
+        "file_path": "data/met_art/None\\1975.1.186",
+        "artist_display_name": "Jean Auguste Dominique Ingres"
     },
     {
         "object_number": "1975.1.225",
@@ -2043,7 +2228,8 @@
         "object_date": "ca. 1899",
         "webpage": "http://www.metmuseum.org/art/collection/search/459174",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459174/2275537/restricted",
-        "file_path": "data/met_art/None\\1975.1.225_restricted"
+        "file_path": "data/met_art/None\\1975.1.225",
+        "artist_display_name": "Édouard Vuillard"
     },
     {
         "object_number": "1975.1.199",
@@ -2054,7 +2240,8 @@
         "object_date": "1892",
         "webpage": "http://www.metmuseum.org/art/collection/search/459110",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459110/1888225/main-image",
-        "file_path": "data/met_art/None\\1975.1.199_main-image"
+        "file_path": "data/met_art/None\\1975.1.199",
+        "artist_display_name": "Auguste Renoir"
     },
     {
         "object_number": "1975.1.201",
@@ -2065,7 +2252,8 @@
         "object_date": "1892",
         "webpage": "http://www.metmuseum.org/art/collection/search/459112",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459112/2286153/main-image",
-        "file_path": "data/met_art/None\\1975.1.201_main-image"
+        "file_path": "data/met_art/None\\1975.1.201",
+        "artist_display_name": "Auguste Renoir"
     },
     {
         "object_number": "1975.1.160",
@@ -2076,7 +2264,8 @@
         "object_date": "1885–86",
         "webpage": "http://www.metmuseum.org/art/collection/search/459092",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459092/2289106/main-image",
-        "file_path": "data/met_art/None\\1975.1.160_main-image"
+        "file_path": "data/met_art/None\\1975.1.160",
+        "artist_display_name": "Paul Cézanne"
     },
     {
         "object_number": "1975.1.859",
@@ -2087,7 +2276,8 @@
         "object_date": "1522",
         "webpage": "http://www.metmuseum.org/art/collection/search/459211",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459211/915770/main-image",
-        "file_path": "data/met_art/None\\1975.1.859_main-image"
+        "file_path": "data/met_art/None\\1975.1.859",
+        "artist_display_name": "Albrecht Dürer"
     },
     {
         "object_number": "1975.1.872",
@@ -2098,7 +2288,8 @@
         "object_date": "ca. 1480–90",
         "webpage": "http://www.metmuseum.org/art/collection/search/459232",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459232/1731830/main-image",
-        "file_path": "data/met_art/None\\1975.1.872_main-image"
+        "file_path": "data/met_art/None\\1975.1.872",
+        "artist_display_name": "Martin Schongauer"
     },
     {
         "object_number": "1975.1.855",
@@ -2109,7 +2300,8 @@
         "object_date": "ca. 1510–11",
         "webpage": "http://www.metmuseum.org/art/collection/search/459138",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459138/915769/main-image",
-        "file_path": "data/met_art/None\\1975.1.855_main-image"
+        "file_path": "data/met_art/None\\1975.1.855",
+        "artist_display_name": "Hans Baldung (called Hans Baldung Grien)"
     },
     {
         "object_number": "1975.1.138",
@@ -2120,7 +2312,8 @@
         "object_date": "ca. 1532",
         "webpage": "http://www.metmuseum.org/art/collection/search/459080",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459080/914576/main-image",
-        "file_path": "data/met_art/None\\1975.1.138_main-image"
+        "file_path": "data/met_art/None\\1975.1.138",
+        "artist_display_name": "Hans Holbein the Younger"
     },
     {
         "object_number": "1975.1.335",
@@ -2131,7 +2324,8 @@
         "object_date": "ca. 1420",
         "webpage": "http://www.metmuseum.org/art/collection/search/459234",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459234/1510666/main-image",
-        "file_path": "data/met_art/Italian Florence\\1975.1.335_main-image"
+        "file_path": "data/met_art/Italian Florence\\1975.1.335",
+        "artist_display_name": "Lorenzo Monaco (Piero di Giovanni)"
     },
     {
         "object_number": "1975.1.104",
@@ -2142,7 +2336,8 @@
         "object_date": "1266–75",
         "webpage": "http://www.metmuseum.org/art/collection/search/459046",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459046/2214231/main-image",
-        "file_path": "data/met_art/Italian Umbria\\1975.1.104_main-image"
+        "file_path": "data/met_art/Italian Umbria\\1975.1.104",
+        "artist_display_name": "Master of Saint Francis"
     },
     {
         "object_number": "1975.1.376",
@@ -2153,7 +2348,8 @@
         "object_date": "ca. 1490",
         "webpage": "http://www.metmuseum.org/art/collection/search/459185",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459185/1356087/main-image",
-        "file_path": "data/met_art/None\\1975.1.376_main-image"
+        "file_path": "data/met_art/None\\1975.1.376",
+        "artist_display_name": "Francesco di Giorgio Martini"
     },
     {
         "object_number": "1975.1.443",
@@ -2164,7 +2360,8 @@
         "object_date": "ca. 1740",
         "webpage": "http://www.metmuseum.org/art/collection/search/459236",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459236/1510430/main-image",
-        "file_path": "data/met_art/None\\1975.1.443_main-image"
+        "file_path": "data/met_art/None\\1975.1.443",
+        "artist_display_name": "Giovanni Battista Tiepolo"
     },
     {
         "object_number": "1975.1.297",
@@ -2175,7 +2372,8 @@
         "object_date": "1752",
         "webpage": "http://www.metmuseum.org/art/collection/search/459183",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459183/1510428/main-image",
-        "file_path": "data/met_art/None\\1975.1.297_main-image"
+        "file_path": "data/met_art/None\\1975.1.297",
+        "artist_display_name": "Canaletto (Giovanni Antonio Canal)"
     },
     {
         "object_number": "1975.1.342",
@@ -2186,7 +2384,8 @@
         "object_date": "1780–93",
         "webpage": "http://www.metmuseum.org/art/collection/search/459235",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459235/913588/main-image",
-        "file_path": "data/met_art/None\\1975.1.342_main-image"
+        "file_path": "data/met_art/None\\1975.1.342",
+        "artist_display_name": "Francesco Guardi"
     },
     {
         "object_number": "1975.1.473",
@@ -2197,7 +2396,8 @@
         "object_date": "ca. 1800",
         "webpage": "http://www.metmuseum.org/art/collection/search/459187",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459187/1510680/main-image",
-        "file_path": "data/met_art/None\\1975.1.473_main-image"
+        "file_path": "data/met_art/None\\1975.1.473",
+        "artist_display_name": "Giovanni Domenico Tiepolo"
     },
     {
         "object_number": "1975.1.514",
@@ -2208,7 +2408,8 @@
         "object_date": "ca. 1770",
         "webpage": "http://www.metmuseum.org/art/collection/search/459237",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459237/1510682/main-image",
-        "file_path": "data/met_art/None\\1975.1.514_main-image"
+        "file_path": "data/met_art/None\\1975.1.514",
+        "artist_display_name": "Giovanni Domenico Tiepolo"
     },
     {
         "object_number": "1975.1.369",
@@ -2219,7 +2420,8 @@
         "object_date": "ca. 1482–85",
         "webpage": "http://www.metmuseum.org/art/collection/search/459184",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459184/1356089/main-image",
-        "file_path": "data/met_art/None\\1975.1.369_main-image"
+        "file_path": "data/met_art/None\\1975.1.369",
+        "artist_display_name": "Leonardo da Vinci"
     },
     {
         "object_number": "1975.1.270",
@@ -2230,7 +2432,8 @@
         "object_date": "ca. 1501",
         "webpage": "http://www.metmuseum.org/art/collection/search/459137",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459137/913112/main-image",
-        "file_path": "data/met_art/None\\1975.1.270_main-image"
+        "file_path": "data/met_art/None\\1975.1.270",
+        "artist_display_name": "Fra Bartolomeo (Bartolomeo di Paolo del Fattorino)"
     },
     {
         "object_number": "1975.1.410",
@@ -2241,7 +2444,8 @@
         "object_date": "early to mid 1480s",
         "webpage": "http://www.metmuseum.org/art/collection/search/459186",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459186/1356091/main-image",
-        "file_path": "data/met_art/None\\1975.1.410_main-image"
+        "file_path": "data/met_art/None\\1975.1.410",
+        "artist_display_name": "Antonio Pollaiuolo"
     },
     {
         "object_number": "1975.1.553",
@@ -2252,7 +2456,8 @@
         "object_date": "ca. 1557–58",
         "webpage": "http://www.metmuseum.org/art/collection/search/459188",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459188/1356090/main-image",
-        "file_path": "data/met_art/None\\1975.1.553_main-image"
+        "file_path": "data/met_art/None\\1975.1.553",
+        "artist_display_name": "Taddeo Zuccaro"
     },
     {
         "object_number": "1975.1.31",
@@ -2263,7 +2468,8 @@
         "object_date": "1445",
         "webpage": "http://www.metmuseum.org/art/collection/search/458971",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458971/914071/main-image",
-        "file_path": "data/met_art/None\\1975.1.31_main-image"
+        "file_path": "data/met_art/None\\1975.1.31",
+        "artist_display_name": "Giovanni di Paolo (Giovanni di Paolo di Grazia)"
     },
     {
         "object_number": "1975.1.37",
@@ -2274,7 +2480,8 @@
         "object_date": "ca. 1455–60",
         "webpage": "http://www.metmuseum.org/art/collection/search/458977",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458977/2003313/main-image",
-        "file_path": "data/met_art/None\\1975.1.37_main-image"
+        "file_path": "data/met_art/None\\1975.1.37",
+        "artist_display_name": "Giovanni di Paolo (Giovanni di Paolo di Grazia)"
     },
     {
         "object_number": "1975.1.38",
@@ -2285,7 +2492,8 @@
         "object_date": "ca. 1455",
         "webpage": "http://www.metmuseum.org/art/collection/search/458978",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458978/914072/main-image",
-        "file_path": "data/met_art/None\\1975.1.38_main-image"
+        "file_path": "data/met_art/None\\1975.1.38",
+        "artist_display_name": "Giovanni di Paolo (Giovanni di Paolo di Grazia)"
     },
     {
         "object_number": "1975.1.54",
@@ -2296,7 +2504,8 @@
         "object_date": "ca. 1470",
         "webpage": "http://www.metmuseum.org/art/collection/search/458994",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458994/2071067/main-image",
-        "file_path": "data/met_art/None\\1975.1.54_main-image"
+        "file_path": "data/met_art/None\\1975.1.54",
+        "artist_display_name": "Benvenuto di Giovanni"
     },
     {
         "object_number": "1975.1.74",
@@ -2307,7 +2516,8 @@
         "object_date": "ca. 1485",
         "webpage": "http://www.metmuseum.org/art/collection/search/459016",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459016/913345/main-image",
-        "file_path": "data/met_art/None\\1975.1.74_main-image"
+        "file_path": "data/met_art/None\\1975.1.74",
+        "artist_display_name": "Botticelli (Alessandro di Mariano Filipepi)"
     },
     {
         "object_number": "1975.1.16",
@@ -2318,7 +2528,8 @@
         "object_date": "ca. 1390",
         "webpage": "http://www.metmuseum.org/art/collection/search/458956",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458956/913357/main-image",
-        "file_path": "data/met_art/None\\1975.1.16_main-image"
+        "file_path": "data/met_art/None\\1975.1.16",
+        "artist_display_name": "Bartolo di Fredi"
     },
     {
         "object_number": "1975.1.58",
@@ -2329,7 +2540,8 @@
         "object_date": "ca. 1337–39",
         "webpage": "http://www.metmuseum.org/art/collection/search/458998",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458998/1699368/main-image",
-        "file_path": "data/met_art/None\\1975.1.58_main-image"
+        "file_path": "data/met_art/None\\1975.1.58",
+        "artist_display_name": "Bernardo Daddi"
     },
     {
         "object_number": "1975.1.7",
@@ -2340,7 +2552,8 @@
         "object_date": "ca. 1325–30",
         "webpage": "http://www.metmuseum.org/art/collection/search/459131",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459131/913353/main-image",
-        "file_path": "data/met_art/None\\1975.1.7_main-image"
+        "file_path": "data/met_art/None\\1975.1.7",
+        "artist_display_name": "Ugolino da Siena (Ugolino di Nerio)"
     },
     {
         "object_number": "1975.1.21",
@@ -2351,7 +2564,8 @@
         "object_date": "ca. 1380",
         "webpage": "http://www.metmuseum.org/art/collection/search/458961",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458961/2003359/main-image",
-        "file_path": "data/met_art/None\\1975.1.21_main-image"
+        "file_path": "data/met_art/None\\1975.1.21",
+        "artist_display_name": "Niccolò di Buonaccorso"
     },
     {
         "object_number": "1975.1.66",
@@ -2362,7 +2576,8 @@
         "object_date": "ca. 1406–10",
         "webpage": "http://www.metmuseum.org/art/collection/search/459007",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459007/914073/main-image",
-        "file_path": "data/met_art/None\\1975.1.66_main-image"
+        "file_path": "data/met_art/None\\1975.1.66",
+        "artist_display_name": "Lorenzo Monaco (Piero di Giovanni)"
     },
     {
         "object_number": "1975.1.12",
@@ -2373,7 +2588,8 @@
         "object_date": "ca. 1326",
         "webpage": "http://www.metmuseum.org/art/collection/search/459136",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459136/2205991/main-image",
-        "file_path": "data/met_art/None\\1975.1.12_main-image"
+        "file_path": "data/met_art/None\\1975.1.12",
+        "artist_display_name": "Simone Martini"
     },
     {
         "object_number": "1975.1.27",
@@ -2384,7 +2600,8 @@
         "object_date": "ca. 1435",
         "webpage": "http://www.metmuseum.org/art/collection/search/458967",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/458967/1356083/main-image",
-        "file_path": "data/met_art/None\\1975.1.27_main-image"
+        "file_path": "data/met_art/None\\1975.1.27",
+        "artist_display_name": "Osservanza Master"
     },
     {
         "object_number": "1975.1.85",
@@ -2395,7 +2612,8 @@
         "object_date": "ca. 1485–95",
         "webpage": "http://www.metmuseum.org/art/collection/search/459027",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459027/914944/main-image",
-        "file_path": "data/met_art/None\\1975.1.85_main-image"
+        "file_path": "data/met_art/None\\1975.1.85",
+        "artist_display_name": "Jacometto (Jacometto Veneziano)"
     },
     {
         "object_number": "1975.1.86",
@@ -2406,7 +2624,8 @@
         "object_date": "ca. 1485–95",
         "webpage": "http://www.metmuseum.org/art/collection/search/459028",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459028/914946/main-image",
-        "file_path": "data/met_art/None\\1975.1.86_main-image"
+        "file_path": "data/met_art/None\\1975.1.86",
+        "artist_display_name": "Jacometto (Jacometto Veneziano)"
     },
     {
         "object_number": "1975.1.940",
@@ -2417,7 +2636,8 @@
         "object_date": "1895–1897",
         "webpage": "http://www.metmuseum.org/art/collection/search/459196",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459196/914124/restricted",
-        "file_path": "data/met_art/None\\1975.1.940_restricted"
+        "file_path": "data/met_art/None\\1975.1.940",
+        "artist_display_name": "Maurice Brazil Prendergast"
     },
     {
         "object_number": "1975.1.848",
@@ -2428,7 +2648,8 @@
         "object_date": "1444–50",
         "webpage": "http://www.metmuseum.org/art/collection/search/459209",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459209/1510711/main-image",
-        "file_path": "data/met_art/None\\1975.1.848_main-image"
+        "file_path": "data/met_art/None\\1975.1.848",
+        "artist_display_name": "Vranke van der Stockt"
     },
     {
         "object_number": "1975.1.119",
@@ -2439,7 +2660,8 @@
         "object_date": "ca. 1510",
         "webpage": "http://www.metmuseum.org/art/collection/search/459061",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459061/913343/main-image",
-        "file_path": "data/met_art/None\\1975.1.119_main-image"
+        "file_path": "data/met_art/None\\1975.1.119",
+        "artist_display_name": "Gerard David"
     },
     {
         "object_number": "1975.1.120",
@@ -2450,7 +2672,8 @@
         "object_date": "ca. 1510",
         "webpage": "http://www.metmuseum.org/art/collection/search/459062",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459062/913447/main-image",
-        "file_path": "data/met_art/None\\1975.1.120_main-image"
+        "file_path": "data/met_art/None\\1975.1.120",
+        "artist_display_name": "Gerard David"
     },
     {
         "object_number": "1975.1.130",
@@ -2461,7 +2684,8 @@
         "object_date": "ca. 1490",
         "webpage": "http://www.metmuseum.org/art/collection/search/459072",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459072/914078/main-image",
-        "file_path": "data/met_art/None\\1975.1.130_main-image"
+        "file_path": "data/met_art/None\\1975.1.130",
+        "artist_display_name": "Jean Hey (called Master of Moulins)"
     },
     {
         "object_number": "1975.1.113",
@@ -2472,7 +2696,8 @@
         "object_date": "1480–89",
         "webpage": "http://www.metmuseum.org/art/collection/search/459055",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459055/914075/main-image",
-        "file_path": "data/met_art/None\\1975.1.113_main-image"
+        "file_path": "data/met_art/None\\1975.1.113",
+        "artist_display_name": "Hans Memling"
     },
     {
         "object_number": "1975.1.110",
@@ -2483,7 +2708,8 @@
         "object_date": "1449",
         "webpage": "http://www.metmuseum.org/art/collection/search/459052",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459052/914074/main-image",
-        "file_path": "data/met_art/None\\1975.1.110_main-image"
+        "file_path": "data/met_art/None\\1975.1.110",
+        "artist_display_name": "Petrus Christus"
     },
     {
         "object_number": "1984.433.294",
@@ -2494,7 +2720,8 @@
         "object_date": "1917",
         "webpage": "http://www.metmuseum.org/art/collection/search/483434",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/483434/1016549/main-image",
-        "file_path": "data/met_art/None\\1984.433.294_main-image"
+        "file_path": "data/met_art/None\\1984.433.294",
+        "artist_display_name": "Egon Schiele"
     },
     {
         "object_number": "1984.433.298ab",
@@ -2505,7 +2732,8 @@
         "object_date": "1911",
         "webpage": "http://www.metmuseum.org/art/collection/search/483438",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/483438/1016551/main-image",
-        "file_path": "data/met_art/None\\1984.433.298ab_main-image"
+        "file_path": "data/met_art/None\\1984.433.298ab",
+        "artist_display_name": "Egon Schiele"
     },
     {
         "object_number": "1987.455.2",
@@ -2516,7 +2744,8 @@
         "object_date": "1920",
         "webpage": "http://www.metmuseum.org/art/collection/search/484870",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/484870/994231/restricted",
-        "file_path": "data/met_art/None\\1987.455.2_restricted"
+        "file_path": "data/met_art/None\\1987.455.2",
+        "artist_display_name": "Paul Klee"
     },
     {
         "object_number": "49.70.1",
@@ -2527,7 +2756,8 @@
         "object_date": "1912",
         "webpage": "http://www.metmuseum.org/art/collection/search/488319",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/488319/1010542/restricted",
-        "file_path": "data/met_art/None\\49.70.1_restricted"
+        "file_path": "data/met_art/None\\49.70.1",
+        "artist_display_name": "Vasily Kandinsky"
     },
     {
         "object_number": "1984.315.42",
@@ -2538,7 +2768,8 @@
         "object_date": "1925",
         "webpage": "http://www.metmuseum.org/art/collection/search/483161",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/483161/1587059/restricted",
-        "file_path": "data/met_art/None\\1984.315.42_restricted"
+        "file_path": "data/met_art/None\\1984.315.42",
+        "artist_display_name": "Paul Klee"
     },
     {
         "object_number": "49.70.42",
@@ -2549,7 +2780,8 @@
         "object_date": "1914",
         "webpage": "http://www.metmuseum.org/art/collection/search/488486",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/488486/1010544/restricted",
-        "file_path": "data/met_art/None\\49.70.42_restricted"
+        "file_path": "data/met_art/None\\49.70.42",
+        "artist_display_name": "Marsden Hartley"
     },
     {
         "object_number": "1992.24.3",
@@ -2560,7 +2792,8 @@
         "object_date": "1939–40",
         "webpage": "http://www.metmuseum.org/art/collection/search/486009",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/486009/1574695/restricted",
-        "file_path": "data/met_art/None\\1992.24.3_restricted"
+        "file_path": "data/met_art/None\\1992.24.3",
+        "artist_display_name": "Marsden Hartley"
     },
     {
         "object_number": "42.154",
@@ -2571,7 +2804,8 @@
         "object_date": "1938–39",
         "webpage": "http://www.metmuseum.org/art/collection/search/488030",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/488030/1006992/restricted",
-        "file_path": "data/met_art/None\\42.154_restricted"
+        "file_path": "data/met_art/None\\42.154",
+        "artist_display_name": "John Steuart Curry"
     },
     {
         "object_number": "49.59.1",
@@ -2582,7 +2816,8 @@
         "object_date": "1928",
         "webpage": "http://www.metmuseum.org/art/collection/search/488315",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/488315/1011132/restricted",
-        "file_path": "data/met_art/None\\49.59.1_restricted"
+        "file_path": "data/met_art/None\\49.59.1",
+        "artist_display_name": "Charles Demuth"
     },
     {
         "object_number": "1982.55.1",
@@ -2593,7 +2828,8 @@
         "object_date": "ca. 1936–39",
         "webpage": "http://www.metmuseum.org/art/collection/search/482599",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/482599/1006953/restricted",
-        "file_path": "data/met_art/None\\1982.55.1_restricted"
+        "file_path": "data/met_art/None\\1982.55.1",
+        "artist_display_name": "Horace Pippin"
     },
     {
         "object_number": "2014.269",
@@ -2604,7 +2840,8 @@
         "object_date": "ca. 1702",
         "webpage": "http://www.metmuseum.org/art/collection/search/631985",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/631985/1377061/main-image",
-        "file_path": "data/met_art/None\\2014.269_main-image"
+        "file_path": "data/met_art/None\\2014.269",
+        "artist_display_name": "Juan Rodríguez Juárez"
     },
     {
         "object_number": "2014.173",
@@ -2615,7 +2852,8 @@
         "object_date": "1773",
         "webpage": "http://www.metmuseum.org/art/collection/search/635401",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/635401/1484905/main-image",
-        "file_path": "data/met_art/None\\2014.173_main-image"
+        "file_path": "data/met_art/None\\2014.173",
+        "artist_display_name": "Nicolás Enríquez"
     },
     {
         "object_number": "02.7.1",
@@ -2626,7 +2864,8 @@
         "object_date": "1846",
         "webpage": "http://www.metmuseum.org/art/collection/search/11207",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11207/34534/main-image",
-        "file_path": "data/met_art/None\\02.7.1_main-image"
+        "file_path": "data/met_art/None\\02.7.1",
+        "artist_display_name": "Charles Cromwell Ingham"
     },
     {
         "object_number": "97.34",
@@ -2637,7 +2876,8 @@
         "object_date": "1851",
         "webpage": "http://www.metmuseum.org/art/collection/search/11417",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11417/42494/main-image",
-        "file_path": "data/met_art/None\\97.34_main-image"
+        "file_path": "data/met_art/None\\97.34",
+        "artist_display_name": "Emanuel Leutze"
     },
     {
         "object_number": "62.79.1",
@@ -2648,7 +2888,8 @@
         "object_date": "1729",
         "webpage": "http://www.metmuseum.org/art/collection/search/12600",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12600/33056/main-image",
-        "file_path": "data/met_art/None\\62.79.1_main-image"
+        "file_path": "data/met_art/None\\62.79.1",
+        "artist_display_name": "John Smibert"
     },
     {
         "object_number": "62.79.2",
@@ -2659,7 +2900,8 @@
         "object_date": "1729",
         "webpage": "http://www.metmuseum.org/art/collection/search/12602",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12602/33059/main-image",
-        "file_path": "data/met_art/None\\62.79.2_main-image"
+        "file_path": "data/met_art/None\\62.79.2",
+        "artist_display_name": "John Smibert"
     },
     {
         "object_number": "1972.263.6",
@@ -2670,7 +2912,8 @@
         "object_date": "1834",
         "webpage": "http://www.metmuseum.org/art/collection/search/10732",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10732/34252/main-image",
-        "file_path": "data/met_art/None\\1972.263.6_main-image"
+        "file_path": "data/met_art/None\\1972.263.6",
+        "artist_display_name": "Joseph H. Davis"
     },
     {
         "object_number": "63.201.1",
@@ -2681,7 +2924,8 @@
         "object_date": "1790",
         "webpage": "http://www.metmuseum.org/art/collection/search/11040",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11040/33028/main-image",
-        "file_path": "data/met_art/None\\63.201.1_main-image"
+        "file_path": "data/met_art/None\\63.201.1",
+        "artist_display_name": "Rufus Hathaway"
     },
     {
         "object_number": "59.166",
@@ -2692,7 +2936,8 @@
         "object_date": "1818",
         "webpage": "http://www.metmuseum.org/art/collection/search/11737",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11737/34324/main-image",
-        "file_path": "data/met_art/None\\59.166_main-image"
+        "file_path": "data/met_art/None\\59.166",
+        "artist_display_name": "Raphaelle Peale"
     },
     {
         "object_number": "23.102",
@@ -2703,7 +2948,8 @@
         "object_date": "1842",
         "webpage": "http://www.metmuseum.org/art/collection/search/11055",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11055/33029/main-image",
-        "file_path": "data/met_art/None\\23.102_main-image"
+        "file_path": "data/met_art/None\\23.102",
+        "artist_display_name": "George P. A. Healy"
     },
     {
         "object_number": "21.115.4",
@@ -2714,7 +2960,8 @@
         "object_date": "1870",
         "webpage": "http://www.metmuseum.org/art/collection/search/13315",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/13315/34639/main-image",
-        "file_path": "data/met_art/None\\21.115.4_main-image"
+        "file_path": "data/met_art/None\\21.115.4",
+        "artist_display_name": "Worthington Whittredge"
     },
     {
         "object_number": "1992.128",
@@ -2725,7 +2972,8 @@
         "object_date": "1866",
         "webpage": "http://www.metmuseum.org/art/collection/search/14472",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/14472/32699/main-image",
-        "file_path": "data/met_art/None\\1992.128_main-image"
+        "file_path": "data/met_art/None\\1992.128",
+        "artist_display_name": "Seymour Joseph Guy"
     },
     {
         "object_number": "16.68.2",
@@ -2736,7 +2984,8 @@
         "object_date": "1754",
         "webpage": "http://www.metmuseum.org/art/collection/search/10174",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10174/34964/main-image",
-        "file_path": "data/met_art/None\\16.68.2_main-image"
+        "file_path": "data/met_art/None\\16.68.2",
+        "artist_display_name": "Joseph Blackburn"
     },
     {
         "object_number": "1999.176",
@@ -2747,7 +2996,8 @@
         "object_date": "ca. 1890–1909",
         "webpage": "http://www.metmuseum.org/art/collection/search/16571",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16571/34287/restricted",
-        "file_path": "data/met_art/None\\1999.176_restricted"
+        "file_path": "data/met_art/None\\1999.176",
+        "artist_display_name": "Thomas Wilmer Dewing"
     },
     {
         "object_number": "46.192.4",
@@ -2758,7 +3008,8 @@
         "object_date": "1810",
         "webpage": "http://www.metmuseum.org/art/collection/search/12613",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12613/36178/main-image",
-        "file_path": "data/met_art/None\\46.192.4_main-image"
+        "file_path": "data/met_art/None\\46.192.4",
+        "artist_display_name": "John Rubens Smith"
     },
     {
         "object_number": "1999.19",
@@ -2769,7 +3020,8 @@
         "object_date": "1869",
         "webpage": "http://www.metmuseum.org/art/collection/search/16577",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16577/32443/main-image",
-        "file_path": "data/met_art/None\\1999.19_main-image"
+        "file_path": "data/met_art/None\\1999.19",
+        "artist_display_name": "Henry Farrer"
     },
     {
         "object_number": "1996.279",
@@ -2780,7 +3032,8 @@
         "object_date": "1758",
         "webpage": "http://www.metmuseum.org/art/collection/search/15541",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/15541/32466/main-image",
-        "file_path": "data/met_art/None\\1996.279_main-image"
+        "file_path": "data/met_art/None\\1996.279",
+        "artist_display_name": "John Singleton Copley"
     },
     {
         "object_number": "17.97.5",
@@ -2791,7 +3044,8 @@
         "object_date": "ca. 1880",
         "webpage": "http://www.metmuseum.org/art/collection/search/13215",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/13215/34651/main-image",
-        "file_path": "data/met_art/None\\17.97.5_main-image"
+        "file_path": "data/met_art/None\\17.97.5",
+        "artist_display_name": "James McNeill Whistler"
     },
     {
         "object_number": "2000.512",
@@ -2802,7 +3056,8 @@
         "object_date": "1885",
         "webpage": "http://www.metmuseum.org/art/collection/search/16863",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16863/34293/main-image",
-        "file_path": "data/met_art/None\\2000.512_main-image"
+        "file_path": "data/met_art/None\\2000.512",
+        "artist_display_name": "James McNeill Whistler"
     },
     {
         "object_number": "2002.1",
@@ -2813,7 +3068,8 @@
         "object_date": "1784",
         "webpage": "http://www.metmuseum.org/art/collection/search/17066",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/17066/32463/main-image",
-        "file_path": "data/met_art/None\\2002.1_main-image"
+        "file_path": "data/met_art/None\\2002.1",
+        "artist_display_name": "Benjamin West"
     },
     {
         "object_number": "66.143",
@@ -2824,7 +3080,8 @@
         "object_date": "1887",
         "webpage": "http://www.metmuseum.org/art/collection/search/11375",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11375/32485/main-image",
-        "file_path": "data/met_art/None\\66.143_main-image"
+        "file_path": "data/met_art/None\\66.143",
+        "artist_display_name": "John La Farge"
     },
     {
         "object_number": "10.228.1",
@@ -2835,7 +3092,8 @@
         "object_date": "1903",
         "webpage": "http://www.metmuseum.org/art/collection/search/11120",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11120/29605/main-image",
-        "file_path": "data/met_art/None\\10.228.1_main-image"
+        "file_path": "data/met_art/None\\10.228.1",
+        "artist_display_name": "Winslow Homer"
     },
     {
         "object_number": "1995.378",
@@ -2846,7 +3104,8 @@
         "object_date": "1873",
         "webpage": "http://www.metmuseum.org/art/collection/search/12388",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12388/2030413/main-image",
-        "file_path": "data/met_art/None\\1995.378_main-image"
+        "file_path": "data/met_art/None\\1995.378",
+        "artist_display_name": "Winslow Homer"
     },
     {
         "object_number": "2001.608.1",
@@ -2857,7 +3116,8 @@
         "object_date": "1873",
         "webpage": "http://www.metmuseum.org/art/collection/search/17053",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/17053/33779/main-image",
-        "file_path": "data/met_art/None\\2001.608.1_main-image"
+        "file_path": "data/met_art/None\\2001.608.1",
+        "artist_display_name": "Winslow Homer"
     },
     {
         "object_number": "80.1.2",
@@ -2868,7 +3128,8 @@
         "object_date": "1873",
         "webpage": "http://www.metmuseum.org/art/collection/search/11900",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11900/23248/main-image",
-        "file_path": "data/met_art/None\\80.1.2_main-image"
+        "file_path": "data/met_art/None\\80.1.2",
+        "artist_display_name": "William Trost Richards"
     },
     {
         "object_number": "1975.319.1",
@@ -2879,7 +3140,8 @@
         "object_date": "1878",
         "webpage": "http://www.metmuseum.org/art/collection/search/10409",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10409/32484/restricted",
-        "file_path": "data/met_art/None\\1975.319.1_restricted"
+        "file_path": "data/met_art/None\\1975.319.1",
+        "artist_display_name": "Mary Cassatt"
     },
     {
         "object_number": "97.29.3",
@@ -2890,7 +3152,8 @@
         "object_date": "1765",
         "webpage": "http://www.metmuseum.org/art/collection/search/11797",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11797/33062/main-image",
-        "file_path": "data/met_art/None\\97.29.3_main-image"
+        "file_path": "data/met_art/None\\97.29.3",
+        "artist_display_name": "Matthew Pratt"
     },
     {
         "object_number": "62.256.3",
@@ -2901,7 +3164,8 @@
         "object_date": "ca. 1825",
         "webpage": "http://www.metmuseum.org/art/collection/search/11080",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11080/34307/main-image",
-        "file_path": "data/met_art/None\\62.256.3_main-image"
+        "file_path": "data/met_art/None\\62.256.3",
+        "artist_display_name": "Edward Hicks"
     },
     {
         "object_number": "1978.203",
@@ -2912,7 +3176,8 @@
         "object_date": "1862",
         "webpage": "http://www.metmuseum.org/art/collection/search/11396",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11396/34311/main-image",
-        "file_path": "data/met_art/None\\1978.203_main-image"
+        "file_path": "data/met_art/None\\1978.203",
+        "artist_display_name": "Fitz Henry Lane (formerly Fitz Hugh Lane)"
     },
     {
         "object_number": "1975.160",
@@ -2923,7 +3188,8 @@
         "object_date": "1859",
         "webpage": "http://www.metmuseum.org/art/collection/search/11050",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11050/46452/main-image",
-        "file_path": "data/met_art/None\\1975.160_main-image"
+        "file_path": "data/met_art/None\\1975.160",
+        "artist_display_name": "Martin Johnson Heade"
     },
     {
         "object_number": "15.30.62",
@@ -2934,7 +3200,8 @@
         "object_date": "1862",
         "webpage": "http://www.metmuseum.org/art/collection/search/10946",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10946/34355/main-image",
-        "file_path": "data/met_art/None\\15.30.62_main-image"
+        "file_path": "data/met_art/None\\15.30.62",
+        "artist_display_name": "Sanford Robinson Gifford"
     },
     {
         "object_number": "07.123",
@@ -2945,7 +3212,8 @@
         "object_date": "1863",
         "webpage": "http://www.metmuseum.org/art/collection/search/10154",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10154/34358/main-image",
-        "file_path": "data/met_art/None\\07.123_main-image"
+        "file_path": "data/met_art/None\\07.123",
+        "artist_display_name": "Albert Bierstadt"
     },
     {
         "object_number": "26.97",
@@ -2956,7 +3224,8 @@
         "object_date": "1870–71",
         "webpage": "http://www.metmuseum.org/art/collection/search/11263",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11263/34369/main-image",
-        "file_path": "data/met_art/None\\26.97_main-image"
+        "file_path": "data/met_art/None\\26.97",
+        "artist_display_name": "Eastman Johnson"
     },
     {
         "object_number": "1996.563",
@@ -2967,7 +3236,8 @@
         "object_date": "ca. 1770",
         "webpage": "http://www.metmuseum.org/art/collection/search/15588",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/15588/34315/main-image",
-        "file_path": "data/met_art/None\\1996.563_main-image"
+        "file_path": "data/met_art/None\\1996.563",
+        "artist_display_name": "Henry Benbridge"
     },
     {
         "object_number": "49.12",
@@ -2978,7 +3248,8 @@
         "object_date": "1771",
         "webpage": "http://www.metmuseum.org/art/collection/search/10522",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10522/34316/main-image",
-        "file_path": "data/met_art/None\\49.12_main-image"
+        "file_path": "data/met_art/None\\49.12",
+        "artist_display_name": "John Singleton Copley"
     },
     {
         "object_number": "31.109",
@@ -2989,7 +3260,8 @@
         "object_date": "1773",
         "webpage": "http://www.metmuseum.org/art/collection/search/10531",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10531/34232/main-image",
-        "file_path": "data/met_art/None\\31.109_main-image"
+        "file_path": "data/met_art/None\\31.109",
+        "artist_display_name": "John Singleton Copley"
     },
     {
         "object_number": "43.86.4",
@@ -3000,7 +3272,8 @@
         "object_date": "1782",
         "webpage": "http://www.metmuseum.org/art/collection/search/10527",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10527/36200/main-image",
-        "file_path": "data/met_art/None\\43.86.4_main-image"
+        "file_path": "data/met_art/None\\43.86.4",
+        "artist_display_name": "John Singleton Copley"
     },
     {
         "object_number": "13.20",
@@ -3011,7 +3284,8 @@
         "object_date": "1883",
         "webpage": "http://www.metmuseum.org/art/collection/search/13211",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/13211/33592/main-image",
-        "file_path": "data/met_art/None\\13.20_main-image"
+        "file_path": "data/met_art/None\\13.20",
+        "artist_display_name": "James McNeill Whistler"
     },
     {
         "object_number": "08.228",
@@ -3022,7 +3296,8 @@
         "object_date": "1836",
         "webpage": "http://www.metmuseum.org/art/collection/search/10497",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10497/1655152/main-image",
-        "file_path": "data/met_art/None\\08.228_main-image"
+        "file_path": "data/met_art/None\\08.228",
+        "artist_display_name": "Thomas Cole"
     },
     {
         "object_number": "04.29.2",
@@ -3033,7 +3308,8 @@
         "object_date": "1833",
         "webpage": "http://www.metmuseum.org/art/collection/search/10499",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10499/1660910/main-image",
-        "file_path": "data/met_art/None\\04.29.2_main-image"
+        "file_path": "data/met_art/None\\04.29.2",
+        "artist_display_name": "Thomas Cole"
     },
     {
         "object_number": "1976.332",
@@ -3044,7 +3320,8 @@
         "object_date": "1789",
         "webpage": "http://www.metmuseum.org/art/collection/search/12828",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12828/33688/main-image",
-        "file_path": "data/met_art/None\\1976.332_main-image"
+        "file_path": "data/met_art/None\\1976.332",
+        "artist_display_name": "John Trumbull"
     },
     {
         "object_number": "1996.102",
@@ -3055,7 +3332,8 @@
         "object_date": "1889",
         "webpage": "http://www.metmuseum.org/art/collection/search/5223",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/5223/17429/restricted",
-        "file_path": "data/met_art/None\\1996.102_restricted"
+        "file_path": "data/met_art/None\\1996.102",
+        "artist_display_name": "Charles Caryl Coleman"
     },
     {
         "object_number": "74.24",
@@ -3066,7 +3344,8 @@
         "object_date": "1872",
         "webpage": "http://www.metmuseum.org/art/collection/search/11329",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11329/35150/main-image",
-        "file_path": "data/met_art/None\\74.24_main-image"
+        "file_path": "data/met_art/None\\74.24",
+        "artist_display_name": "John Frederick Kensett"
     },
     {
         "object_number": "15.30.61",
@@ -3077,7 +3356,8 @@
         "object_date": "1869",
         "webpage": "http://www.metmuseum.org/art/collection/search/11311",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11311/34368/main-image",
-        "file_path": "data/met_art/None\\15.30.61_main-image"
+        "file_path": "data/met_art/None\\15.30.61",
+        "artist_display_name": "John Frederick Kensett"
     },
     {
         "object_number": "2001.402a",
@@ -3088,7 +3368,8 @@
         "object_date": "1923",
         "webpage": "http://www.metmuseum.org/art/collection/search/16947",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16947/2216155/restricted",
-        "file_path": "data/met_art/None\\2001.402a_restricted"
+        "file_path": "data/met_art/None\\2001.402a",
+        "artist_display_name": "Henry Ossawa Tanner"
     },
     {
         "object_number": "67.187.123",
@@ -3099,7 +3380,8 @@
         "object_date": "ca. 1892",
         "webpage": "http://www.metmuseum.org/art/collection/search/10464",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10464/32489/main-image",
-        "file_path": "data/met_art/None\\67.187.123_main-image"
+        "file_path": "data/met_art/None\\67.187.123",
+        "artist_display_name": "William Merritt Chase"
     },
     {
         "object_number": "34.134",
@@ -3110,7 +3392,8 @@
         "object_date": "1859",
         "webpage": "http://www.metmuseum.org/art/collection/search/11383",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11383/34354/main-image",
-        "file_path": "data/met_art/None\\34.134_main-image"
+        "file_path": "data/met_art/None\\34.134",
+        "artist_display_name": "John La Farge"
     },
     {
         "object_number": "45.62.1",
@@ -3121,7 +3404,8 @@
         "object_date": "ca. 1836–37",
         "webpage": "http://www.metmuseum.org/art/collection/search/11605",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11605/33068/main-image",
-        "file_path": "data/met_art/None\\45.62.1_main-image"
+        "file_path": "data/met_art/None\\45.62.1",
+        "artist_display_name": "Samuel F. B. Morse"
     },
     {
         "object_number": "1975.27.1",
@@ -3132,7 +3416,8 @@
         "object_date": "1858",
         "webpage": "http://www.metmuseum.org/art/collection/search/10843",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10843/34345/main-image",
-        "file_path": "data/met_art/None\\1975.27.1_main-image"
+        "file_path": "data/met_art/None\\1975.27.1",
+        "artist_display_name": "Francis William Edmonds"
     },
     {
         "object_number": "52.184",
@@ -3143,7 +3428,8 @@
         "object_date": "1818–19",
         "webpage": "http://www.metmuseum.org/art/collection/search/13052",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/13052/34260/main-image",
-        "file_path": "data/met_art/None\\52.184_main-image"
+        "file_path": "data/met_art/None\\52.184",
+        "artist_display_name": "John Vanderlyn"
     },
     {
         "object_number": "66.126",
@@ -3154,7 +3440,8 @@
         "object_date": "1840–41",
         "webpage": "http://www.metmuseum.org/art/collection/search/11619",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11619/34333/main-image",
-        "file_path": "data/met_art/None\\66.126_main-image"
+        "file_path": "data/met_art/None\\66.126",
+        "artist_display_name": "William Sidney Mount"
     },
     {
         "object_number": "22.207",
@@ -3165,7 +3452,8 @@
         "object_date": "1866",
         "webpage": "http://www.metmuseum.org/art/collection/search/11133",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11133/33070/main-image",
-        "file_path": "data/met_art/None\\22.207_main-image"
+        "file_path": "data/met_art/None\\22.207",
+        "artist_display_name": "Winslow Homer"
     },
     {
         "object_number": "06.1234",
@@ -3176,7 +3464,8 @@
         "object_date": "1899",
         "webpage": "http://www.metmuseum.org/art/collection/search/11122",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11122/2018691/main-image",
-        "file_path": "data/met_art/None\\06.1234_main-image"
+        "file_path": "data/met_art/None\\06.1234",
+        "artist_display_name": "Winslow Homer"
     },
     {
         "object_number": "10.64.5",
@@ -3187,7 +3476,8 @@
         "object_date": "1895; reworked by 1901",
         "webpage": "http://www.metmuseum.org/art/collection/search/11130",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11130/34226/main-image",
-        "file_path": "data/met_art/None\\10.64.5_main-image"
+        "file_path": "data/met_art/None\\10.64.5",
+        "artist_display_name": "Winslow Homer"
     },
     {
         "object_number": "11.156",
@@ -3198,7 +3488,8 @@
         "object_date": "1850",
         "webpage": "http://www.metmuseum.org/art/collection/search/10793",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10793/32691/main-image",
-        "file_path": "data/met_art/None\\11.156_main-image"
+        "file_path": "data/met_art/None\\11.156",
+        "artist_display_name": "Asher Brown Durand"
     },
     {
         "object_number": "15.30.59",
@@ -3209,7 +3500,8 @@
         "object_date": "1845",
         "webpage": "http://www.metmuseum.org/art/collection/search/10786",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10786/33136/main-image",
-        "file_path": "data/met_art/None\\15.30.59_main-image"
+        "file_path": "data/met_art/None\\15.30.59",
+        "artist_display_name": "Asher Brown Durand"
     },
     {
         "object_number": "97.33",
@@ -3220,7 +3512,8 @@
         "object_date": "ca. 1779–81",
         "webpage": "http://www.metmuseum.org/art/collection/search/11707",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11707/36295/main-image",
-        "file_path": "data/met_art/None\\97.33_main-image"
+        "file_path": "data/met_art/None\\97.33",
+        "artist_display_name": "Charles Willson Peale"
     },
     {
         "object_number": "87.8.8",
@@ -3231,7 +3524,8 @@
         "object_date": "ca. 1878",
         "webpage": "http://www.metmuseum.org/art/collection/search/11227",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11227/48719/main-image",
-        "file_path": "data/met_art/None\\87.8.8_main-image"
+        "file_path": "data/met_art/None\\87.8.8",
+        "artist_display_name": "George Inness"
     },
     {
         "object_number": "11.116.4",
@@ -3242,7 +3536,8 @@
         "object_date": "ca. 1891",
         "webpage": "http://www.metmuseum.org/art/collection/search/11234",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11234/32634/main-image",
-        "file_path": "data/met_art/None\\11.116.4_main-image"
+        "file_path": "data/met_art/None\\11.116.4",
+        "artist_display_name": "George Inness"
     },
     {
         "object_number": "33.61",
@@ -3253,7 +3548,8 @@
         "object_date": "1845",
         "webpage": "http://www.metmuseum.org/art/collection/search/10159",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10159/34338/main-image",
-        "file_path": "data/met_art/None\\33.61_main-image"
+        "file_path": "data/met_art/None\\33.61",
+        "artist_display_name": "George Caleb Bingham"
     },
     {
         "object_number": "1993.324",
@@ -3264,7 +3560,8 @@
         "object_date": "1907",
         "webpage": "http://www.metmuseum.org/art/collection/search/14931",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/14931/34215/main-image",
-        "file_path": "data/met_art/None\\1993.324_main-image"
+        "file_path": "data/met_art/None\\1993.324",
+        "artist_display_name": "Thomas Anshutz"
     },
     {
         "object_number": "39.52",
@@ -3275,7 +3572,8 @@
         "object_date": "ca. 1820s",
         "webpage": "http://www.metmuseum.org/art/collection/search/11734",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/11734/32718/main-image",
-        "file_path": "data/met_art/None\\39.52_main-image"
+        "file_path": "data/met_art/None\\39.52",
+        "artist_display_name": "James Peale"
     },
     {
         "object_number": "1994.567",
@@ -3286,7 +3584,8 @@
         "object_date": "1890",
         "webpage": "http://www.metmuseum.org/art/collection/search/14930",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/14930/32440/restricted",
-        "file_path": "data/met_art/None\\1994.567_restricted"
+        "file_path": "data/met_art/None\\1994.567",
+        "artist_display_name": "Childe Hassam"
     },
     {
         "object_number": "1996.382",
@@ -3297,7 +3596,8 @@
         "object_date": "1913",
         "webpage": "http://www.metmuseum.org/art/collection/search/15583",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/15583/39864/restricted",
-        "file_path": "data/met_art/None\\1996.382_restricted"
+        "file_path": "data/met_art/None\\1996.382",
+        "artist_display_name": "Childe Hassam"
     },
     {
         "object_number": "21.164",
@@ -3308,7 +3608,8 @@
         "object_date": "ca. 1905",
         "webpage": "http://www.metmuseum.org/art/collection/search/19261",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/19261/32486/restricted",
-        "file_path": "data/met_art/None\\21.164_restricted"
+        "file_path": "data/met_art/None\\21.164",
+        "artist_display_name": "William James Glackens"
     },
     {
         "object_number": "07.160",
@@ -3319,7 +3620,8 @@
         "object_date": "begun 1795",
         "webpage": "http://www.metmuseum.org/art/collection/search/16584",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16584/33065/main-image",
-        "file_path": "data/met_art/None\\07.160_main-image"
+        "file_path": "data/met_art/None\\07.160",
+        "artist_display_name": "Gilbert Stuart"
     },
     {
         "object_number": "1977.243",
@@ -3330,7 +3632,8 @@
         "object_date": "ca. 1793–94",
         "webpage": "http://www.metmuseum.org/art/collection/search/12667",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12667/34238/main-image",
-        "file_path": "data/met_art/None\\1977.243_main-image"
+        "file_path": "data/met_art/None\\1977.243",
+        "artist_display_name": "Gilbert Stuart"
     },
     {
         "object_number": "23.101",
@@ -3341,7 +3644,8 @@
         "object_date": "1883–85",
         "webpage": "http://www.metmuseum.org/art/collection/search/10391",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10391/1905216/restricted",
-        "file_path": "data/met_art/None\\23.101_restricted"
+        "file_path": "data/met_art/None\\23.101",
+        "artist_display_name": "Mary Cassatt"
     },
     {
         "object_number": "22.16.17",
@@ -3352,7 +3656,8 @@
         "object_date": "ca. 1880–81",
         "webpage": "http://www.metmuseum.org/art/collection/search/10388",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10388/32483/restricted",
-        "file_path": "data/met_art/None\\22.16.17_restricted"
+        "file_path": "data/met_art/None\\22.16.17",
+        "artist_display_name": "Mary Cassatt"
     },
     {
         "object_number": "14.126.1",
@@ -3363,7 +3668,8 @@
         "object_date": "1838",
         "webpage": "http://www.metmuseum.org/art/collection/search/12702",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12702/33061/main-image",
-        "file_path": "data/met_art/None\\14.126.1_main-image"
+        "file_path": "data/met_art/None\\14.126.1",
+        "artist_display_name": "Thomas Sully"
     },
     {
         "object_number": "1979.395",
@@ -3374,7 +3680,8 @@
         "object_date": "1789",
         "webpage": "http://www.metmuseum.org/art/collection/search/10830",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10830/33064/main-image",
-        "file_path": "data/met_art/None\\1979.395_main-image"
+        "file_path": "data/met_art/None\\1979.395",
+        "artist_display_name": "Ralph Earl"
     },
     {
         "object_number": "65.49",
@@ -3385,7 +3692,8 @@
         "object_date": "1894",
         "webpage": "http://www.metmuseum.org/art/collection/search/10127",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10127/35311/restricted",
-        "file_path": "data/met_art/None\\65.49_restricted"
+        "file_path": "data/met_art/None\\65.49",
+        "artist_display_name": "Cecilia Beaux"
     },
     {
         "object_number": "2000.151",
@@ -3396,7 +3704,8 @@
         "object_date": "ca. 1826",
         "webpage": "http://www.metmuseum.org/art/collection/search/16687",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16687/33042/main-image",
-        "file_path": "data/met_art/None\\2000.151_main-image"
+        "file_path": "data/met_art/None\\2000.151",
+        "artist_display_name": "Rembrandt Peale"
     },
     {
         "object_number": "34.92",
@@ -3407,7 +3716,8 @@
         "object_date": "1871",
         "webpage": "http://www.metmuseum.org/art/collection/search/10819",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10819/33589/main-image",
-        "file_path": "data/met_art/None\\34.92_main-image"
+        "file_path": "data/met_art/None\\34.92",
+        "artist_display_name": "Thomas Eakins"
     },
     {
         "object_number": "17.172",
@@ -3418,7 +3728,8 @@
         "object_date": "1900",
         "webpage": "http://www.metmuseum.org/art/collection/search/10827",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10827/33433/main-image",
-        "file_path": "data/met_art/None\\17.172_main-image"
+        "file_path": "data/met_art/None\\17.172",
+        "artist_display_name": "Thomas Eakins"
     },
     {
         "object_number": "2002.259",
@@ -3429,18 +3740,20 @@
         "object_date": "1764",
         "webpage": "http://www.metmuseum.org/art/collection/search/17447",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/17447/33060/main-image",
-        "file_path": "data/met_art/None\\2002.259_main-image"
+        "file_path": "data/met_art/None\\2002.259",
+        "artist_display_name": "Lawrence Kilburn (or Kilbrunn)"
     },
     {
         "object_number": "14.76.6",
-        "title": "수월관음도 고려|Water-moon Avalokiteshvara",
+        "title": "수월관음도 고려|水月觀音圖 高麗|Water-moon Avalokiteshvara",
         "department": "Asian Art",
         "culture": "Korea",
         "period": "Goryeo dynasty (918–1392)",
         "object_date": "first half of the 14th century",
         "webpage": "http://www.metmuseum.org/art/collection/search/36029",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/36029/1838643/main-image",
-        "file_path": "data/met_art/Korea\\14.76.6_main-image"
+        "file_path": "data/met_art/Korea\\14.76.6",
+        "artist_display_name": "Unidentified Artist"
     },
     {
         "object_number": "41.138",
@@ -3451,7 +3764,8 @@
         "object_date": "mid-12th century",
         "webpage": "http://www.metmuseum.org/art/collection/search/40055",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/40055/184392/main-image",
-        "file_path": "data/met_art/China\\41.138_main-image"
+        "file_path": "data/met_art/China\\41.138",
+        "artist_display_name": "Unidentified Artist"
     },
     {
         "object_number": "2007.329",
@@ -3462,7 +3776,8 @@
         "object_date": "ca. 1383",
         "webpage": "http://www.metmuseum.org/art/collection/search/59669",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/59669/151340/main-image",
-        "file_path": "data/met_art/Japan\\2007.329_main-image"
+        "file_path": "data/met_art/Japan\\2007.329",
+        "artist_display_name": "Unidentified Artist"
     },
     {
         "object_number": "2008.312",
@@ -3473,7 +3788,8 @@
         "object_date": "ca. 1777–82",
         "webpage": "http://www.metmuseum.org/art/collection/search/456949",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/456949/894471/main-image",
-        "file_path": "data/met_art/None\\2008.312_main-image"
+        "file_path": "data/met_art/None\\2008.312",
+        "artist_display_name": "Bhawani Das"
     },
     {
         "object_number": "09.95",
@@ -3484,7 +3800,8 @@
         "object_date": "1859",
         "webpage": "http://www.metmuseum.org/art/collection/search/10481",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10481/33835/main-image",
-        "file_path": "data/met_art/None\\09.95_main-image"
+        "file_path": "data/met_art/None\\09.95",
+        "artist_display_name": "Frederic Edwin Church"
     },
     {
         "object_number": "15.30.67",
@@ -3495,7 +3812,8 @@
         "object_date": "1871",
         "webpage": "http://www.metmuseum.org/art/collection/search/10482",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10482/34224/main-image",
-        "file_path": "data/met_art/None\\15.30.67_main-image"
+        "file_path": "data/met_art/None\\15.30.67",
+        "artist_display_name": "Frederic Edwin Church"
     },
     {
         "object_number": "66.113",
@@ -3506,7 +3824,8 @@
         "object_date": "1865",
         "webpage": "http://www.metmuseum.org/art/collection/search/10586",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/10586/34290/main-image",
-        "file_path": "data/met_art/None\\66.113_main-image"
+        "file_path": "data/met_art/None\\66.113",
+        "artist_display_name": "Jasper Francis Cropsey"
     },
     {
         "object_number": "1997.149.9",
@@ -3517,7 +3836,8 @@
         "object_date": "1917",
         "webpage": "http://www.metmuseum.org/art/collection/search/486847",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/486847/1004403/restricted",
-        "file_path": "data/met_art/None\\1997.149.9_restricted"
+        "file_path": "data/met_art/None\\1997.149.9",
+        "artist_display_name": "Amedeo Modigliani"
     },
     {
         "object_number": "1975.1.736",
@@ -3528,7 +3848,8 @@
         "object_date": "1895",
         "webpage": "http://www.metmuseum.org/art/collection/search/459242",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/459242/1510701/restricted",
-        "file_path": "data/met_art/None\\1975.1.736_restricted"
+        "file_path": "data/met_art/None\\1975.1.736",
+        "artist_display_name": "Félix Vallotton"
     },
     {
         "object_number": "67.187.121",
@@ -3539,7 +3860,8 @@
         "object_date": "1919",
         "webpage": "http://www.metmuseum.org/art/collection/search/489559",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/489559/1011918/restricted",
-        "file_path": "data/met_art/None\\67.187.121_restricted"
+        "file_path": "data/met_art/None\\67.187.121",
+        "artist_display_name": "George Bellows"
     },
     {
         "object_number": "15.142.2",
@@ -3550,7 +3872,8 @@
         "object_date": "ca. 1912–14",
         "webpage": "http://www.metmuseum.org/art/collection/search/12138",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12138/32547/restricted",
-        "file_path": "data/met_art/None\\15.142.2_restricted"
+        "file_path": "data/met_art/None\\15.142.2",
+        "artist_display_name": "John Singer Sargent"
     },
     {
         "object_number": "16.53",
@@ -3561,7 +3884,8 @@
         "object_date": "1883–84",
         "webpage": "http://www.metmuseum.org/art/collection/search/12127",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/12127/2199429/restricted",
-        "file_path": "data/met_art/None\\16.53_restricted"
+        "file_path": "data/met_art/None\\16.53",
+        "artist_display_name": "John Singer Sargent"
     },
     {
         "object_number": "1998.365",
@@ -3572,28 +3896,7 @@
         "object_date": "1892",
         "webpage": "http://www.metmuseum.org/art/collection/search/16255",
         "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/16255/1362608/restricted",
-        "file_path": "data/met_art/None\\1998.365_restricted"
-    },
-    {
-        "object_number": "65.29.2",
-        "title": "薬師佛|Buddha of Medicine Bhaishajyaguru (Yaoshi fo)",
-        "department": "Asian Art",
-        "culture": "China",
-        "period": "Yuan dynasty (1271–1368)",
-        "object_date": "ca. 1319",
-        "webpage": "http://www.metmuseum.org/art/collection/search/42716",
-        "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/42716/174472/main-image",
-        "file_path": "data/met_art/China\\65.29.2_main-image"
-    },
-    {
-        "object_number": "25.224a–e",
-        "title": "北野天神縁起絵巻|Illustrated Legends of the Kitano Tenjin Shrine (Kitano Tenjin engi emaki)",
-        "department": "Asian Art",
-        "culture": "Japan",
-        "period": "Kamakura period (1185–1333)",
-        "object_date": "late 13th century",
-        "webpage": "http://www.metmuseum.org/art/collection/search/45428",
-        "image_url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/45428/191371/main-image",
-        "file_path": "data/met_art/Japan\\25.224a–e_main-image"
+        "file_path": "data/met_art/None\\1998.365",
+        "artist_display_name": "John Singer Sargent"
     }
 ]
