@@ -183,6 +183,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
 
     # 🔹 2. CNN이 작품을 인식하지 못한 경우 (Untitled 처리)
     if not artwork_info:
+        print("🎨 CNN이 작품을 인식하지 못했습니다. 시각적 정보만 활용합니다.")
         color_names = [get_color_name(c) for c in dominant_colors[:5]]
         dominant_colors_text = ", ".join(color_names)
         edges_detected = edges #= "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
@@ -229,37 +230,40 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
     # 🔹 3. 작품을 인식한 경우 (RAG 정보 활용)
     prompt_variables = {
         "title": title,
+        "artist": "Unidentified Artist", # 일단 작자 미상.
         "vlm_desc": vlm_desc,
         "dominant_colors": colors_text,
-        "edges_detected": "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
+        #"edges_detected": "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
     }
 
-    if artwork_info.get("artist"):
+    if artwork_info:
         artist = artwork_info.get("artist")
+        
+        print(title)
         
         title_translations, artist_translations = translate.create_translation_mappings(title, artist)
         
+        print(title_translations)
+        
         if title_translations:
-            prompt_variables["correct_title"] = title_translations
+            prompt_variables["title"] = title_translations
         if artist_translations:
-            prompt_variables["correct_artist"] = artist_translations
+            prompt_variables["artist"] = artist_translations
             
     if artwork_info.get("period"):
         prompt_variables["correct_period"] = artwork_info["period"]
     if artwork_info.get("webpage"):
         prompt_variables["webpage"] = artwork_info["webpage"]
-        
-    translate.create_translation_mappings()
 
     # 🔹 4. PromptTemplate을 사용하여 동적 프롬프트 구성
     # ✅ Prompt Template을 사용하여 프롬프트 구성
     prompt_template = PromptTemplate(
         input_variables=list(prompt_variables.keys()),
         template="""
-        {title}과(와) {correct_artist}에 관한 정보만 검색하세요. 색상명({dominant_colors})은 정확히 주어진 그대로 사용해야 합니다.
+        {title}과(와) {artist}에 관한 정보만 검색하세요. 색상명({dominant_colors})은 정확히 주어진 그대로 사용해야 합니다.
         
         "{title}"라는 작품을 감상하고 있어요.  
-        이 작품은 {correct_artist}이(가) {correct_period} 시기에 제작한 작품이에요.  
+        이 작품은 {artist}이(가) {correct_period} 시기에 제작한 작품이에요.  
 
         - 그림을 보면 {vlm_desc} 같은 특징이 있어요.  
         - 색감은 {dominant_colors} 계열이 주를 이루고 있어요. 색상 이름은 정확히 그대로 사용해주세요.

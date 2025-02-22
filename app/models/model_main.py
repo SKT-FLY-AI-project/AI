@@ -57,7 +57,8 @@ if __name__ == "__main__":
         # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png", # GardenatSainte-Adresse_monet - Detection 해야함
         #r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse, 역슬레시 바꿔
         #r"app/models/one_imageDetection/Van Gogh's The Starry Night.png"
-        r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png"       
+        #r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png" 
+        r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png"      
 
     ]
 
@@ -99,6 +100,8 @@ if __name__ == "__main__":
         # 테스트용입니다.
         #title = "The card players"
         #title = "Garden at Sainte-Adresse"
+        title = "Wheat Field with Cypresses"
+        print("작품 제목 변경 결과입니다.", title)
 
         # 🔹 LLM을 활용한 설명 생성
         rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)

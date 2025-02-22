@@ -1,4 +1,4 @@
-def create_translation_mappings(title=None, artist=None):
+def create_translation_mappings(title, artist):
     """
     영문 작가명과 작품명을 한국어로 변환하기 위한 매핑 사전을 생성합니다.
     """
@@ -460,12 +460,13 @@ def create_translation_mappings(title=None, artist=None):
         "Grapes and Bouquet" : "포도와 꽃다발"
     }
     
-    result = {}
-    
+
     if title is not None:
-        result["title"] = TITLE_TRANSLATIONS.get(title, title)
+        title = TITLE_TRANSLATIONS.get(title, title) # title이 있으면 찾아 바꾸고 아니면 원문 반환
+        print(title)
     
     if artist is not None:
-        result["artist"] = ARTIST_TRANSLATIONS.get(artist, artist)
+        artist = ARTIST_TRANSLATIONS.get(artist, artist) # artist가 있으면 찾아 바꾸고 아니면 원문 반환
+        print(artist)
     
-    return result
+    return title, artist
