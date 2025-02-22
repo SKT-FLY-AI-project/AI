@@ -13,6 +13,9 @@ from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
 from PIL import Image
 
+# 수제 번역 함수
+from .data import translate
+
 #from app.models.one_imageDetection.opencv_utils import get_color_name
 from one_imageDetection.opencv_utils import get_color_name
 from langchain.prompts import PromptTemplate
@@ -217,34 +220,49 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
         )
 
         return completion.choices[0].message.content.strip()
+    
+    # ✅ Fix: 색상 중복 제거
+    color_names = [get_color_name(c) for c in dominant_colors[:5]]
+    unique_colors = list(dict.fromkeys([color.strip() for name in color_names for color in name.split(',')]))
+    colors_text = ", ".join(unique_colors)
 
     # 🔹 3. 작품을 인식한 경우 (RAG 정보 활용)
     prompt_variables = {
         "title": title,
         "vlm_desc": vlm_desc,
-        "dominant_colors": ", ".join([get_color_name(c) for c in dominant_colors[:5]]),
+        "dominant_colors": colors_text,
         "edges_detected": "명확히 탐지됨" if np.sum(edges) > 10000 else "불명확하게 탐지됨"
     }
 
     if artwork_info.get("artist"):
-        prompt_variables["correct_artist"] = artwork_info["artist"]
+        artist = artwork_info.get("artist")
+        
+        title_translations, artist_translations = translate.create_translation_mappings(title, artist)
+        
+        if title_translations:
+            prompt_variables["correct_title"] = title_translations
+        if artist_translations:
+            prompt_variables["correct_artist"] = artist_translations
+            
     if artwork_info.get("period"):
         prompt_variables["correct_period"] = artwork_info["period"]
     if artwork_info.get("webpage"):
         prompt_variables["webpage"] = artwork_info["webpage"]
+        
+    translate.create_translation_mappings()
 
     # 🔹 4. PromptTemplate을 사용하여 동적 프롬프트 구성
     # ✅ Prompt Template을 사용하여 프롬프트 구성
     prompt_template = PromptTemplate(
         input_variables=list(prompt_variables.keys()),
         template="""
-        {title}, {correct_artist}, {dominant_colors}는 검색해서 **한국어로 치환**해서 적용하세요.
+        {title}과(와) {correct_artist}에 관한 정보만 검색하세요. 색상명({dominant_colors})은 정확히 주어진 그대로 사용해야 합니다.
         
         "{title}"라는 작품을 감상하고 있어요.  
         이 작품은 {correct_artist}이(가) {correct_period} 시기에 제작한 작품이에요.  
 
         - 그림을 보면 {vlm_desc} 같은 특징이 있어요.  
-        - 색감은 {dominant_colors} 계열이 주를 이루고 있어요. 
+        - 색감은 {dominant_colors} 계열이 주를 이루고 있어요. 색상 이름은 정확히 그대로 사용해주세요.
         
         이 작품의 분위기와 역사적 의미를 자연스럽게 설명해 주세요.  
         너무 학문적인 설명보다는, 편안한 대화처럼 표현해 주세요.
