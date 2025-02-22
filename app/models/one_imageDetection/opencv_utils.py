@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import colorsys
 
 # 이미지 로드 및 전처리
 def load_and_preprocess_image(image_path):
@@ -115,21 +116,126 @@ def extract_dominant_colors(image, k=5):
     dominant_colors = palette[np.argsort(-counts)]
     return dominant_colors.astype(int)
 
+
+# ✅ HSV 기반 색상 보정
+def adjust_hsv_lightness_and_saturation(rgb, lightness_factor=1.4, saturation_factor=1.3):
+    """
+    HSV 색 공간에서 명도(Value)와 채도(Saturation)을 조정하여  
+    사람이 인식하는 색감과 비슷하게 변환하는 함수.
+
+    - `lightness_factor`: 명도(Value) 조정 강도
+    - `saturation_factor`: 채도(Saturation) 조정 강도
+    """
+    # RGB → HSV 변환
+    rgb_array = np.array([[rgb]], dtype=np.uint8)
+    hsv = cv2.cvtColor(rgb_array, cv2.COLOR_RGB2HSV)
+
+    h, s, v = hsv[0, 0]  # 단일 픽셀 값 추출
+
+    # ✅ 명도(Value) 조정
+    if v < 150:  # 기존보다 어두운 색상은 더 밝게
+        v = min(v * lightness_factor, 255)
+    elif v > 220:  # 너무 밝은 색상은 과하지 않게 보정
+        v = min(v * 1.1, 255)
+
+    # ✅ 채도(Saturation) 증가하여 원색 계열을 더 살림
+    s = min(s * saturation_factor, 255)
+
+    # ✅ 특정 색 계열(파란색, 노란색, 초록색 등)에 대한 추가 보정
+    if 180 <= h <= 260:  # 파란색 계열
+        v = min(v * 1.4, 255)
+        s = min(s * 1.3, 255)
+    elif 40 <= h <= 80:  # 노란색 계열
+        v = min(v * 1.5, 255)
+        s = min(s * 1.4, 255)
+    elif 80 <= h <= 160:  # 초록색 계열
+        v = min(v * 1.4, 255)
+        s = min(s * 1.3, 255)
+
+    # HSV → RGB 변환
+    new_hsv = np.array([[[h, int(s), int(v)]]], dtype=np.uint8)
+    new_rgb = cv2.cvtColor(new_hsv, cv2.COLOR_HSV2RGB)[0, 0]
+
+    return tuple(new_rgb)
+
+# ✅ 색상명을 찾는 함수 (HSV 조정 적용)
 def get_color_name(rgb):
-    """ RGB 값을 가장 가까운 색상명으로 변환 """
+    """
+    RGB 값을 가장 가까운 색상명으로 변환 (HSV 보정 포함)
+    """
+    # ✅ HSV 명도/채도 조정 적용
+    adjusted_rgb = adjust_hsv_lightness_and_saturation(rgb)
+
+    color_categories = {
+        "푸른색": [
+            "blue", "skyblue", "deepskyblue", "dodgerblue", "steelblue", "navy",
+            "royalblue", "cornflowerblue", "mediumblue", "midnightblue", "lightskyblue",
+            "cadetblue", "powderblue", "slateblue", "darkblue"
+        ],
+        "초록색": [
+            "green", "limegreen", "forestgreen", "seagreen", "darkgreen",
+            "mediumseagreen", "springgreen", "palegreen", "chartreuse", "lawngreen",
+            "mediumaquamarine", "aquamarine", "lightgreen", "darkseagreen"
+        ],
+        "붉은색": [
+            "red", "firebrick", "crimson", "darkred", "indianred",
+            "lightcoral", "salmon", "darksalmon", "tomato"
+        ],
+        "노란색": [
+            "yellow", "gold", "khaki", "goldenrod", "lightgoldenrodyellow",
+            "lemonchiffon", "papayawhip", "moccasin", "wheat"
+        ],
+        "주황색": [
+            "orange", "darkorange", "coral", "lightsalmon", "sandybrown",
+            "chocolate", "burlywood"
+        ],
+        "보라색": [
+            "purple", "violet", "orchid", "mediumpurple", "darkorchid",
+            "plum", "thistle", "blueviolet", "darkviolet"
+        ],
+        "갈색": [
+            "brown", "saddlebrown", "peru", "tan", "rosybrown",
+            "chocolate", "sienna", "darkgoldenrod"
+        ],
+        "회색": [
+            "gray", "darkgray", "lightgray", "slategray", "gainsboro",
+            "dimgray", "lightslategray", "darkslategray"
+        ],
+        "어두운 색": [
+            "black", "dimgray", "darkslategray"
+        ],
+        "밝은 색": [
+            "white", "snow", "ivory", "whitesmoke", "floralwhite", "linen",
+            "beige", "seashell", "oldlace", "cornsilk", "antiquewhite",
+            "lavender", "honeydew", "azure", "mintcream", "aliceblue"
+        ],
+        "청록색": [
+            "cyan", "aqua", "turquoise", "darkturquoise", "lightseagreen",
+            "mediumturquoise", "paleturquoise"
+        ]
+    }
+
     min_dist = float('inf')
-    closest_color = "알 수 없는 색"
-    
+    closest_color = ""
+    closest_category = ""
+
     for name, hex in mcolors.CSS4_COLORS.items():
         r, g, b = mcolors.hex2color(hex)
         r, g, b = int(r * 255), int(g * 255), int(b * 255)
-        dist = np.sqrt((r - rgb[0]) ** 2 + (g - rgb[1]) ** 2 + (b - rgb[2]) ** 2)
-        
+        dist = np.sqrt((r - adjusted_rgb[0]) ** 2 + (g - adjusted_rgb[1]) ** 2 + (b - adjusted_rgb[2]) ** 2)
+
         if dist < min_dist:
             min_dist = dist
             closest_color = name
 
-    return closest_color
+    # ✅ 가장 가까운 색상을 대표 색상 계열로 변환
+    for category, colors in color_categories.items():
+        if any(closest_color.lower() in color for color in colors):
+            closest_category = category
+            break
+
+    return closest_category
+
 
 # 결과 시각화
 def display_results(image_path):
@@ -137,26 +243,32 @@ def display_results(image_path):
     painting_region = detect_painting_region(image)  # 밝기 조정 없이 원본 그대로 사용
     edges = detect_edges(image)
     dominant_colors = extract_dominant_colors(painting_region)
+    adjusted_colors = [adjust_hsv_lightness_and_saturation(tuple(color)) for color in dominant_colors]
     
     
-    
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(15, 6))
 
-    plt.subplot(1, 4, 1)
+    plt.subplot(1, 5, 1)
     plt.imshow(image)
     plt.title("Original Image")
     
-    plt.subplot(1, 4, 2)
+    plt.subplot(1, 5, 2)
     plt.imshow(painting_region)
     plt.title("Detected Painting Region")
 
-    plt.subplot(1, 4, 3)
+    plt.subplot(1, 5, 3)
     plt.imshow(edges, cmap='gray')
     plt.title("Edge Detection")
     
-    plt.subplot(1, 4, 4)
+    plt.subplot(1, 5, 4)
     plt.imshow([dominant_colors / 255])
-    plt.title("Dominant Colors (Original)")
+    plt.title("Dominant Colors")
+    
+    # 주요 색상 (명도 조정 후)
+    plt.subplot(1, 5, 5)
+    plt.imshow([np.array(adjusted_colors) / 255])
+    plt.title("Brightness Adjusted")
+    plt.axis("off")
 
     # 기존 plt.show() 대신 저장 방식으로 변경
     plt.show()

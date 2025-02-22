@@ -22,7 +22,7 @@ from sentence_transformers import SentenceTransformer, util
 
 # Hugging Face 모델 캐시 경로 설정
 os.environ['HF_HOME'] = "D:/huggingface_models"
-client = Groq(api_key="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")
+client = Groq(api_key="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")
 
 # 모델 정보 설정
 model_name = "Qwen/Qwen2.5-VL-3B-Instruct"
@@ -75,39 +75,36 @@ def search_artwork_by_title(title):
 
 import re
 
-# 정제 코드
-def clean_and_restore_spacing(text):
+def clean_and_restore_spacing(text, prompt):
     """
-    VLM(Qwen2.5-VL) 출력에서 불필요한 시스템 메시지 및 프롬프트 반복을 제거하고, 핵심 정보만 유지하는 함수.
+    VLM(Qwen2.5-VL) 출력에서 프롬프트와 겹치는 부분을 자동 감지하여 제거하는 함수.
     """
-    # ✅ 1. "system", "You are a helpful assistant." 같은 AI 시스템 메시지 제거
-    text = re.sub(r"(system|You are a helpful assistant\.)", "", text, flags=re.IGNORECASE)
+    # ✅ 1. 프롬프트 내용을 그대로 포함하는 부분 제거
+    prompt = prompt.strip()  # 앞뒤 공백 제거
+    text = text.strip()  # 앞뒤 공백 제거
 
-    # ✅ 2. "assistant" 같은 응답 태그 제거 (ex: "assistant 1. 주요 객체")
+    # ✅ 2. 프롬프트와 출력이 겹치는 경우 삭제
+    if prompt in text:
+        text = text.replace(prompt, "").strip()
+
+    # ✅ 3. "system", "You are a helpful assistant." 같은 AI 시스템 메시지 제거
+    text = re.sub(r"(system|You are a helpful assistant\.|user)", "", text, flags=re.IGNORECASE)
+
+    # ✅ 4. "assistant" 같은 응답 태그 제거 (ex: "assistant 1. 주요 객체")
     text = re.sub(r"assistant\s*\d*\.*", "", text, flags=re.IGNORECASE)
 
-    # ✅ 3. "이 이미지를 보고 ~ 설명하세요" 같은 프롬프트 반복 제거
-    text = re.sub(r"이 이미지를 보고.*?설명하세요\.", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"user\s*이\s*이미지를\s*보고.*?제공하세요\.", "", text, flags=re.IGNORECASE | re.DOTALL)
-    
-    # ✅ 4. VLM 프롬프트 제거 (프롬프트의 주요 문구 삭제)
-    text = re.sub(r"user\s*이\s*그림을\s*보고.*?묘사해주세요\.", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"설명은\s*반드시\s*\*\*.*?\*\*", "", text, flags=re.IGNORECASE)
-    
-    # ✅ 5. VLM 프롬프트의 예시 문장 제거 (예시가 그대로 포함될 경우)
-    text = re.sub(r'예를 들어, ".*?"', "", text, flags=re.DOTALL)
-
-    # ✅ 6. 공백 및 줄바꿈 정리
+    # ✅ 5. 공백 및 줄바꿈 정리
     text = re.sub(r"\s+", " ", text).strip()
 
-    # ✅ 7. 불필요한 기호(-, *, •) 정리 (일관되게 "-" 사용)
+    # ✅ 6. 불필요한 기호(-, *, •) 정리 (일관되게 "-" 사용)
     text = re.sub(r"[•*]", "-", text)
 
-    # ✅ 8. 한글과 영어/숫자 사이 띄어쓰기 복원
+    # ✅ 7. 한글과 영어/숫자 사이 띄어쓰기 복원
     text = re.sub(r"([가-힣])([a-zA-Z0-9])", r"\1 \2", text)  # 한글 + 영어/숫자
     text = re.sub(r"([a-zA-Z0-9])([가-힣])", r"\1 \2", text)  # 영어/숫자 + 한글
 
     return text
+
 
 # 이미지 설명 VLM
 def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어서 image로 바꿈.
@@ -124,10 +121,6 @@ def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어�
     단순한 키워드가 아니라, 실제로 보고 이야기하듯이 짧은 문장으로 설명해주세요.  
     각 요소를 개별적으로 나열하는 것이 아니라, 전체적인 장면을 자연스럽게 묘사해주세요.  
 
-    예를 들어,  
-    "바다 위에 하얀 깃발들이 휘날리고 있어요. 그 아래에는 사람들이 모여서 대화를 나누고 있네요."  
-    이런 식으로 이야기해 주세요.  
-
     - 어떤 사물이 가장 눈에 띄나요?  
     - 사람들은 무엇을 하고 있나요?  
     - 색상과 빛의 흐름은 어떤 느낌을 주나요?  
@@ -135,7 +128,8 @@ def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어�
 
     너무 길지 않게 2~3문장 정도로 설명해 주세요.
     설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
-    숫자, 특수문자, 한자는 포함할 수 없습니다.
+    ⚠️ **한자(漢字)는 절대 포함하지 마세요.** ⚠️  
+    한자가 포함될 경우, 다시 한글과 영어로만 설명해주세요.
     """
 
 
@@ -167,7 +161,7 @@ def generate_vlm_description_qwen(image): # input이 이미지로 알고 있어�
 
     # ✅ 결과 디코딩 및 세로 출력 문제 해결
     description = processor.batch_decode(outputs, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
-    description = clean_and_restore_spacing(description)
+    description = clean_and_restore_spacing(description, prompt) # 프롬프트를 받아야 정제 가능.
 
     return description
 
@@ -196,8 +190,8 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
             이 그림을 보면 어떤 느낌이 드나요?  
             색감과 분위기가 어떤 인상을 주는지 자연스럽게 설명해주세요.  
 
-            - 그림을 보면 {vlm_desc} 느낌이 강하게 들어요.  
-            - 색감은 {dominant_colors} 계열이 주를 이루고 있고,  
+            - 그림을 보면 {vlm_desc} 같은 특징이 있어요.  
+            - 색감은 {dominant_colors} 계열이 주를 이루고 있어요.  
             - 빛의 흐름을 보면 {edges_detected} 느낌이에요.  
 
             너무 딱딱한 설명보다는, 친구에게 그림을 소개하는 느낌으로  
@@ -218,7 +212,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
             model="qwen-2.5-coder-32b",
             messages=[{"role": "user", "content": formatted_prompt}],
             temperature=0.5,
-            max_tokens=1024,
+            max_tokens=512,
             top_p=0.95
         )
 
@@ -244,15 +238,16 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
     prompt_template = PromptTemplate(
         input_variables=list(prompt_variables.keys()),
         template="""
+        {title}, {correct_artist}, {dominant_colors}는 검색해서 **한국어로 치환**해서 적용하세요.
+        
         "{title}"라는 작품을 감상하고 있어요.  
         이 작품은 {correct_artist}이(가) {correct_period} 시기에 제작한 작품이에요.  
 
-        - 그림을 보면 {vlm_desc} 느낌이 강하게 들어요.  
-        - 색감은 {dominant_colors} 계열이 주를 이루고 있고,  
-        - 빛의 흐름을 보면 {edges_detected} 느낌이에요.  
-
+        - 그림을 보면 {vlm_desc} 같은 특징이 있어요.  
+        - 색감은 {dominant_colors} 계열이 주를 이루고 있어요. 
+        
         이 작품의 분위기와 역사적 의미를 자연스럽게 설명해 주세요.  
-        너무 학문적인 설명보다는, 편안한 대화처럼 표현해 주세요.  
+        너무 학문적인 설명보다는, 편안한 대화처럼 표현해 주세요.
         200~300자 정도로 간결하고 감성적으로 작성해 주세요.
         설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
         숫자, 특수문자, 한자는 포함할 수 없습니다.  
@@ -270,7 +265,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
         model="qwen-2.5-coder-32b",
         messages=[{"role": "user", "content": formatted_prompt}],
         temperature=0.5,
-        max_tokens=1024,
+        max_tokens=512,
         top_p=0.95
     )
 
