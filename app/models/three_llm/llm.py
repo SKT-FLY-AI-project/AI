@@ -213,7 +213,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
         )
 
         completion = client.chat.completions.create(
-            model="qwen-2.5-coder-32b",
+            model="qwen-2.5-32b",
             messages=[{"role": "user", "content": formatted_prompt}],
             temperature=0.5,
             max_tokens=512,
@@ -239,11 +239,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
     if artwork_info:
         artist = artwork_info.get("artist")
         
-        print(title)
-        
         title_translations, artist_translations = translate.create_translation_mappings(title, artist)
-        
-        print(title_translations)
         
         if title_translations:
             prompt_variables["title"] = title_translations
@@ -284,7 +280,7 @@ def generate_rich_description(title, vlm_desc, dominant_colors, edges):
     formatted_prompt = prompt_template.format(**filtered_prompt_variables)
 
     completion = client.chat.completions.create(
-        model="qwen-2.5-coder-32b",
+        model="qwen-2.5-32b",
         messages=[{"role": "user", "content": formatted_prompt}],
         temperature=0.5,
         max_tokens=512,
@@ -306,38 +302,8 @@ def text_to_speech(text, output_file="output.mp3"):
         os.system(f"start {output_file}")  # Windows (macOS: open, Linux: xdg-open)
     except Exception as e:
         print(f"음성 변환 중 오류 발생: {e}")
-
-
-########################### STEP 4 : 질문 답변 모드를 진행하는 함수 ###############################        
-def answer_user_question(image_title, vlm_description, dominant_colors, edges):
-    """사용자의 질문을 받아 LLM을 통해 답변을 생성하는 함수"""
-    while True:
-        user_question = input("\n❓ 추가 질문 (종료하려면 'exit' 입력): ")
-        if user_question.lower() == "exit":
-            print("📢 질문 모드 종료.")
-            break
         
-        # LLM에 전달할 프롬프트 생성
-        prompt = f"""
-        사용자는 '{image_title}' 작품에 대해 질문하고 있습니다.
-        작품 설명: {vlm_description}
-        주요 색상: {dominant_colors}
-        엣지 감지 결과: {edges}
-        
-        사용자의 질문: "{user_question}"
-        
-        위 정보를 기반으로 사용자의 질문에 대해 상세하고 유익한 답변을 제공하세요.
-        """
-        
-        # LLM을 이용한 답변 생성
-        answer = generate_rich_description(image_title, prompt, dominant_colors, edges)
-        print("\n💬 AI의 답변:")
-        print(answer)
-
-        # 음성 변환
-        text_to_speech(answer, output_file=f"answer_{image_title}.mp3")
-        
-########################### STEP 5 : 질문 답변 모드를 진행하는 함수 ###############################
+########################### STEP 5 : 대화 모드를 진행하는 함수 ###############################
 # 1. RAG
 # 1-1. VTS 질문지 RAG에서 질문을 가져오는 함수 (예시) : VTS_RAG_questions.json
 
@@ -368,6 +334,39 @@ def classify_user_input(user_input):
     elif any(keyword in user_input for keyword in keywords_feeling):
         return "feeling"  # 감상 표현 (1-2)
     return "unknown"
+
+
+# ✅ 2. 사용자의 질문에 대한 답변 생성 (LLM 활용)
+def answer_user_question(user_response, conversation_history, title, artist, rich_description):
+    
+    # 🔹 대화 맥락 정리
+    context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
+    
+    conversation_history.append(f"사용자: {user_response}")
+
+    prompt = f"""
+            사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
+            이전 대화 : 
+            {context}
+            사용자의 질문 : 
+            "{user_response}"
+            
+            작품 설명 : "{rich_description}"
+            사용자의 질문: "{user_response}"
+            
+            위 정보를 기반으로 상세하고 유익한 답변을 제공하세요.
+            """
+
+    completion = client.chat.completions.create(
+        model="qwen-2.5-coder-32b",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+        max_tokens=256,
+        top_p=0.95
+    )
+    
+    return completion.choices[0].message.content.strip()
+        
 
 # ✅ 3. 사용자의 응답을 분석하여 적절한 VTS 질문 추천
 def recommend_vts_question(user_response, previous_questions):
@@ -417,7 +416,7 @@ def generate_vts_response(user_input, conversation_history):
         model="qwen-2.5-coder-32b",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.5,
-        max_tokens=150,
+        max_tokens=256,
         top_p=0.95
     )
 
@@ -435,26 +434,52 @@ def generate_vts_response(user_input, conversation_history):
 
 
 # ✅ VTS 감상 대화 흐름 (피드백 + 질문 조합)
-def start_vts_conversation(image_title, vlm_description, dominant_colors, edges):
+def start_vts_conversation(title, rich_description, dominant_colors, edges):
     """VTS 기반 감상 대화 진행 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
 
     conversation_history = []  # 대화 히스토리 저장
     user_response = input("🎨 작품을 보고 떠오른 느낌이나 궁금한 점을 말해주세요 (종료: exit): ")
+    
+    artwork_info = search_artwork_by_title(title)
+    
+    if artwork_info:
+        artist = artwork_info.get("artist")
+        
+        title_translations, artist_translations = translate.create_translation_mappings(title, artist)
+        title, artist = title_translations, artist_translations
 
     while user_response.lower() != "exit":
-        # 🔹 대화 히스토리에 추가
-        conversation_history.append(f"사용자: {user_response}")
+        
+        # 질문 답변 종류 확인
+        input_type = classify_user_input(user_response)
+        
+        if input_type == "info":
+            # 🔹 대화 히스토리에 추가
+            conversation_history.append(f"사용자: {user_response}")
+            
+            answer = answer_user_question(user_response, conversation_history, title, rich_description, dominant_colors)
+            
+            conversation_history.append(f"AI: {answer}")
+            
+            print("\n[정보 답변]")
+            print(answer)
+            
+            user_response = input(f"🎨 혹시 더 궁금하신게 있으신가요? (종료: exit): ")
+        
+        elif input_type == "feeling":
+            # 🔹 대화 히스토리에 추가
+            conversation_history.append(f"사용자: {user_response}")
 
-        # 🔹 AI 반응 및 질문 생성
-        reaction, next_question = generate_vts_response(user_response, conversation_history)
+            # 🔹 AI 반응 및 질문 생성
+            reaction, next_question = generate_vts_response(user_response, conversation_history)
 
-        # 🔹 대화 히스토리에 추가
-        conversation_history.append(f"AI: {reaction}")
-        conversation_history.append(f"AI 질문: {next_question}")
+            # 🔹 대화 히스토리에 추가
+            conversation_history.append(f"AI: {reaction}")
+            conversation_history.append(f"AI 질문: {next_question}")
 
-        # 🔹 피드백 및 다음 질문 출력
-        print(f"\n💬 {reaction}")
-        user_response = input(f"🎨 {next_question} (종료: exit): ")
+            # 🔹 피드백 및 다음 질문 출력
+            print(f"\n💬 {reaction}")
+            user_response = input(f"🎨 {next_question} (종료: exit): ")
 
     print("📢 VTS 감상 모드 종료.")

@@ -38,11 +38,11 @@ import os
 
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_painting_region, detect_edges, extract_dominant_colors, display_results
 from two_cnn.cnn_test import predict_image
-from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, answer_user_question, start_vts_conversation
+from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, start_vts_conversation
 
 
 from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
-from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, answer_user_question, start_vts_conversation
+from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, start_vts_conversation
 
 
 if __name__ == "__main__":
@@ -116,7 +116,7 @@ if __name__ == "__main__":
         ################################# 여기는 추후 상황에 따라 밑의 함수를 돌릴 수 있도록 해야 한다고 생각함. ##########################
         
         # 🔹 4번: 사용자 질문 답변 처리
-        answer_user_question(title, rich_description[0], dominant_colors, edges)
+        # answer_user_question(title, rich_description[0], dominant_colors, edges) # 서비스 종료...
 
         # 🔹 5번: VTS 방식 감상 지원
         start_vts_conversation(title, rich_description[0], dominant_colors, edges)
