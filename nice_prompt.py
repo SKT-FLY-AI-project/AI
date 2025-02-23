@@ -444,3 +444,17 @@ def get_color_name(rgb):
         ]
     }
     
+    
+    # ✅ 사용자의 입력 유형 분석 (작품 정보 요구 vs 감상 표현)
+def classify_user_input(user_input):
+    """
+    사용자의 입력이 작품 설명을 요구하는지(1-1) vs 자신의 감상을 말하는지(1-2) 분류하는 함수.
+    """
+    keywords_info = ["이 작품", "설명", "배경", "작가", "의미", "당시 상황"]
+    keywords_feeling = ["느낌", "분위기", "인상적", "마음에 들어", "생각", "의견"]
+
+    if any(keyword in user_input for keyword in keywords_info):
+        return "info"  # 작품 설명 요청 (1-1)
+    elif any(keyword in user_input for keyword in keywords_feeling):
+        return "feeling"  # 감상 표현 (1-2)
+    return "unknown"

@@ -323,17 +323,116 @@ def load_vts_questions():
     
 # ✅ 사용자의 입력 유형 분석 (작품 정보 요구 vs 감상 표현)
 def classify_user_input(user_input):
-    """
-    사용자의 입력이 작품 설명을 요구하는지(1-1) vs 자신의 감상을 말하는지(1-2) 분류하는 함수.
-    """
-    keywords_info = ["이 작품", "설명", "배경", "작가", "의미", "당시 상황"]
-    keywords_feeling = ["느낌", "분위기", "인상적", "마음에 들어", "생각", "의견"]
+   """
+   미술작품 감상 관련 대화를 정보 요청과 감상 표현으로 분류하는 함수
+   """
+   keywords_info = {
+       # 작품 기본 정보
+       "무엇", "뭐", "어떤", "어떻게", "언제", "어디서", "누가", "왜",
+       "설명해", "알려줘", "가르쳐", "말해줘", "궁금해",
+       
+       # 작품 상세 정보
+       "제목", "년도", "시기", "크기", "소장", "전시", "보관",
+       "캔버스", "유화", "수채화", "판화", "소재", "재료",
+       "채색", "물감", "안료", "염료", "붓", "도구",
+       
+       # 작가 관련
+       "작가", "화가", "미술가", "예술가", "대가", "장인",
+       "유파", "화파", "학파", "스승", "제자", "영향",
+       "동시대", "같은 시기", "활동", "작품세계",
+       
+       # 작품 해석/의미
+       "의미", "상징", "해석", "메시지", "주제", "내용",
+       "모티프", "소재", "題材", "타이틀", "제재",
+       "구성", "구도", "배치", "화면", "장면",
+       
+       # 미술사/맥락
+       "미술사", "예술사", "당시", "시대", "운동", "사조",
+       "유파", "화파", "르네상스", "바로크", "인상주의",
+       "표현주의", "추상", "모더니즘", "컨템포러리",
+       
+       # 기법/표현
+       "기법", "테크닉", "기교", "화법", "묘사", "표현",
+       "원근법", "명암법", "농담", "채색", "스케치",
+       "데생", "드로잉", "터치", "붓질", "획", "선", "면",
+       "명암", "음영", "그라데이션", "질감", "마티에르"
+   }
+   
+   keywords_feeling = {
+       # 감상/인상
+       "느낌", "감정", "인상", "감동", "정서", "감성",
+       "분위기", "무드", "아우라", "기운", "기세",
+       "여운", "울림", "전율", "충격", "감흥",
+       
+       # 시각적 반응
+       "보이다", "눈에 띄다", "시선", "눈길", "주목",
+       "색감", "색채", "컬러", "톤", "색조", "색상",
+       "화려", "은은", "강렬", "부드럽", "차분", "고요",
+       
+       # 긍정적 평가
+       "좋다", "멋지다", "아름답", "우아", "품격", "기품",
+       "뛰어나다", "탁월", "완벽", "대단", "훌륭",
+       "세련", "정교", "섬세", "우수", "탁월", "빼어나",
+       
+       # 주관적 해석
+       "생각", "보입니다", "싶습니다", "것 같아요",
+       "연상", "떠올라요", "기억", "추억", "경험",
+       "공감", "이해", "와닿다", "닮았다", "유사",
+       
+       # 예술적 평가
+       "조화", "균형", "통일", "대비", "리듬", "율동",
+       "구성", "완성도", "독창", "창의", "혁신", "개성",
+       "특색", "특징", "개성", "독특", "참신", "획기적",
+       
+       # 감정 표현
+       "기쁘다", "슬프다", "평온", "불안", "고요", "역동",
+       "즐겁다", "우울하다", "따뜻", "차갑", "밝다", "어둡다",
+       "부드럽다", "거칠다", "강하다", "약하다"
+   }
 
-    if any(keyword in user_input for keyword in keywords_info):
-        return "info"  # 작품 설명 요청 (1-1)
-    elif any(keyword in user_input for keyword in keywords_feeling):
-        return "feeling"  # 감상 표현 (1-2)
-    return "unknown"
+   def contains_keyword(text, keyword):
+       """
+       더 정확한 키워드 매칭을 위한 함수
+       """
+       pattern = fr'(^|[^\w]){keyword}([^\w]|$)'  # 'r' 접두사 추가
+       return bool(re.search(pattern, text))
+
+   def analyze_sentence_ending(text):
+       """
+       문장 끝맺음을 분석하여 의도 파악을 돕는 함수
+       """
+       if text.strip().endswith(('?', '까요?', '나요?', '죠?')):
+           return "info"
+       elif text.strip().endswith(('네요', '어요', '아요', '!', '~')):
+           return "feeling"
+       return None
+
+   # 키워드 매칭 확인 (정확한 매칭 사용)
+   info_count = sum(1 for keyword in keywords_info if contains_keyword(user_input, keyword))
+   feeling_count = sum(1 for keyword in keywords_feeling if contains_keyword(user_input, keyword))
+   
+   # 문장 끝맺음 분석
+   ending_type = analyze_sentence_ending(user_input)
+   
+   # 가중치를 둔 최종 분류
+   if ending_type:
+       # 문장 끝맺음이 명확한 경우, 이를 우선 고려
+       if ending_type == "info" and info_count > 0:
+           return "info"
+       elif ending_type == "feeling" and feeling_count > 0:
+           return "feeling"
+   
+   # 키워드 기반 분류
+   if info_count > feeling_count:
+       return "info"
+   elif feeling_count > info_count:
+       return "feeling"
+   elif info_count > 0 and info_count == feeling_count:
+       # 동점인 경우 문장 끝맺음으로 판단
+       return ending_type if ending_type else "mixed"
+   else:
+       # 키워드가 없는 경우 문장 끝맺음으로 판단
+       return ending_type if ending_type else "unknown"
 
 
 # ✅ 2. 사용자의 질문에 대한 답변 생성 (LLM 활용)
@@ -355,6 +454,8 @@ def answer_user_question(user_response, conversation_history, title, artist, ric
             사용자의 질문: "{user_response}"
             
             위 정보를 기반으로 상세하고 유익한 답변을 제공하세요.
+            설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+            숫자, 특수문자, 한자는 포함할 수 없습니다.
             """
 
     completion = client.chat.completions.create(
@@ -410,6 +511,8 @@ def generate_vts_response(user_input, conversation_history):
     AI의 응답 형식:
     1. 반응: (사용자의 감상을 반영한 피드백)
     2. 질문: (VTS 기반의 적절한 추가 질문)
+    설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+    숫자, 특수문자, 한자는 포함할 수 없습니다.
     """
 
     completion = client.chat.completions.create(
@@ -454,7 +557,7 @@ def start_vts_conversation(title, rich_description, dominant_colors, edges):
         # 질문 답변 종류 확인
         input_type = classify_user_input(user_response)
         
-        if input_type == "info":
+        if input_type == ("info" or "mixed" or "unknown"): # 사실상 감성 빼고 다죠?
             # 🔹 대화 히스토리에 추가
             conversation_history.append(f"사용자: {user_response}")
             
