@@ -38,3 +38,7 @@ docker-compose.override.yml
 instance/
 
 ..github/
+
+# 모델 파일
+*.h5
+

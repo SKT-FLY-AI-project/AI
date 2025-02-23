@@ -9,8 +9,8 @@ import os
 from PIL import Image
 
 # 모델 로드
-#model = tf.keras.models.load_model(r"app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함.
-model = tf.keras.models.load_model(r"/content/drive/MyDrive/Project/AI/app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함. 절대 경로 필요.
+model = tf.keras.models.load_model(r"app/models/two_cnn/cnn_model_250222_1.h5") # '/' 로 형식 변경함.
+#model = tf.keras.models.load_model(r"/content/drive/MyDrive/Project/AI/app/models/two_cnn/cnn_model_250217_1.h5") # '/' 로 형식 변경함. 절대 경로 필요.
 
 
 ## .h5 대용량 모델 로드하기
@@ -49,7 +49,7 @@ test_image_path = r"app/models/two_cnn/data/cnn_test_data/test_unclassified_Mona
 # test_image_path = r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png"  # Confidence: 100.00%
 
 # 이미지 로드 및 전처리
-def preprocess_image(image_path, target_size=(150, 150)):
+def preprocess_image(image_path, target_size=(224, 224)): # VGG16 모델의 기본 입력 크기
     # `image_path`가 numpy 배열이면 변환
     if isinstance(image_path, np.ndarray):
         img = Image.fromarray(image_path)  # numpy 배열을 PIL 이미지로 변환

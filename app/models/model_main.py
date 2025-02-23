@@ -49,13 +49,16 @@ if __name__ == "__main__":
     # 🔹 테스트할 이미지 리스트
     test_images = [
 
-        # "app/models/one_imageDetection/London_CourtauldGallery_Cezanne's.png",      # Unknown title
+        #r"app/models/one_imageDetection/London_CourtauldGallery_Cezanne's.png",      # Unknown title
         # "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg",    # Unknown title
         # "app/models/one_imageDetection/Van Gogh's The Starry Night.png",            # Unknown title
-        # r"app\models\two_cnn\data\cnn_test_data\test_ViewofToledo_ElGreco.png",     # View of Toledo
+        #r"app/models/two_cnn/data/cnn_test_data/test_ViewofToledo_ElGreco.png",     # View of Toledo
         # r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png", # Garden at Sainte-Adresse
         # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png", # GardenatSainte-Adresse_monet - Detection 해야함
-        r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse, 역슬레시 바꿔
+        #r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse, 역슬레시 바꿔
+        #r"app/models/one_imageDetection/Van Gogh's The Starry Night.png"
+        #r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png" 
+        r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png"      
 
     ]
 
@@ -93,6 +96,12 @@ if __name__ == "__main__":
             title = list(title)[0]  # set을 리스트로 변환 후 첫 번째 값 가져오기
 
         print("작품 제목 추출 결과입니다.", title)
+        
+        # 테스트용입니다.
+        #title = "The card players"
+        #title = "Garden at Sainte-Adresse"
+        title = "Wheat Field with Cypresses"
+        print("작품 제목 변경 결과입니다.", title)
 
         # 🔹 LLM을 활용한 설명 생성
         rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)
@@ -111,3 +120,5 @@ if __name__ == "__main__":
 
         # 🔹 5번: VTS 방식 감상 지원
         start_vts_conversation(title, rich_description[0], dominant_colors, edges)
+        
+        

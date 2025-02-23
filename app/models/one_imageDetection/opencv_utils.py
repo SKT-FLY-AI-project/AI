@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import colorsys
 
 # 이미지 로드 및 전처리
 def load_and_preprocess_image(image_path):
@@ -115,21 +116,117 @@ def extract_dominant_colors(image, k=5):
     dominant_colors = palette[np.argsort(-counts)]
     return dominant_colors.astype(int)
 
-def get_color_name(rgb):
-    """ RGB 값을 가장 가까운 색상명으로 변환 """
-    min_dist = float('inf')
-    closest_color = "알 수 없는 색"
-    
-    for name, hex in mcolors.CSS4_COLORS.items():
-        r, g, b = mcolors.hex2color(hex)
-        r, g, b = int(r * 255), int(g * 255), int(b * 255)
-        dist = np.sqrt((r - rgb[0]) ** 2 + (g - rgb[1]) ** 2 + (b - rgb[2]) ** 2)
-        
-        if dist < min_dist:
-            min_dist = dist
-            closest_color = name
 
-    return closest_color
+# ✅ HSV 기반 색상 보정
+def adjust_hsv_lightness_and_saturation(rgb, lightness_factor=1.4, saturation_factor=1.3):
+    """
+    HSV 색 공간에서 명도(Value)와 채도(Saturation)을 조정하여  
+    사람이 인식하는 색감과 비슷하게 변환하는 함수.
+
+    - `lightness_factor`: 명도(Value) 조정 강도
+    - `saturation_factor`: 채도(Saturation) 조정 강도
+    """
+    # RGB → HSV 변환
+    rgb_array = np.array([[rgb]], dtype=np.uint8)
+    hsv = cv2.cvtColor(rgb_array, cv2.COLOR_RGB2HSV)
+
+    h, s, v = hsv[0, 0]  # 단일 픽셀 값 추출
+
+    # ✅ 명도(Value) 조정
+    if v < 150:  # 기존보다 어두운 색상은 더 밝게
+        v = min(v * lightness_factor, 255)
+    elif v > 220:  # 너무 밝은 색상은 과하지 않게 보정
+        v = min(v * 1.1, 255)
+
+    # ✅ 채도(Saturation) 증가하여 원색 계열을 더 살림
+    s = min(s * saturation_factor, 255)
+
+    # ✅ 특정 색 계열(파란색, 노란색, 초록색 등)에 대한 추가 보정
+    if 180 <= h <= 260:  # 파란색 계열
+        v = min(v * 1.4, 255)
+        s = min(s * 1.3, 255)
+    elif 40 <= h <= 80:  # 노란색 계열
+        v = min(v * 1.5, 255)
+        s = min(s * 1.4, 255)
+    elif 80 <= h <= 160:  # 초록색 계열
+        v = min(v * 1.4, 255)
+        s = min(s * 1.3, 255)
+
+    # HSV → RGB 변환
+    new_hsv = np.array([[[h, int(s), int(v)]]], dtype=np.uint8)
+    new_rgb = cv2.cvtColor(new_hsv, cv2.COLOR_HSV2RGB)[0, 0]
+
+    return tuple(new_rgb)
+
+def get_color_name(rgb):
+    """
+    RGB 값을 HSV 기반으로 사람이 인식하기 쉬운 색상 계열로 변환하는 함수.
+    """
+
+    # ✅ RGB → HSV 변환
+    hsv = cv2.cvtColor(np.uint8([[rgb]]), cv2.COLOR_RGB2HSV)[0][0]
+    h, s, v = hsv
+
+    # ✅ 색상 카테고리 정의 (HSV Hue 기준, 갈색을 넓히고 중복 해결)
+    color_categories = {
+        "푸른색": (90, 150),  # 푸른색 범위 확장 및 수정 (기존: 170, 270)
+        "하늘색": (150, 180),  # 하늘색 추가
+        "민트색": (170, 190),
+        "초록색": (45, 90),   # 초록색 범위 조정 (기존: 80, 150)
+        "노란색": (20, 45),   # 노란색 범위 조정 (기존: 50, 60)
+        "주황색": (10, 20),   # 주황색 범위 조정 (기존: 20, 50)
+        "붉은색": [(0, 10), (330, 360)],  # 붉은색 범위 조정
+        "보라색": (270, 330), # 보라색 범위 조정 (기존: 270, 290)
+        "갈색": (0, 20),      # 갈색 범위 수정 (기존: 250, 360) - 갈색은 낮은 채도/명도로 판단
+    }
+
+    result_colors = set()  # 다중 색상 결과를 담을 리스트 (중복 제거)
+
+    # ✅ 회색 및 밝기 계열 분류 (채도가 낮을 때)
+    if s < 40:  
+        if v < 80:
+            result_colors.add("어두운 색")
+        elif v > 200:
+            result_colors.add("밝은 색")
+        else:
+            result_colors.add("회색")
+    else:
+        # HSV의 H값은 0-179 범위인 경우가 있으므로 정규화
+        # OpenCV의 H는 0-179, S와 V는 0-255 범위
+        h_normalized = h * 2 if h <= 90 else h  # H값 정규화 (OpenCV에서는 0-180)
+        
+        # 색상 범주 매칭 로직 개선
+        for category, hue_range in color_categories.items():
+            if isinstance(hue_range, tuple):
+                if hue_range[0] <= h_normalized < hue_range[1]:
+                    result_colors.add(category)
+            elif isinstance(hue_range, list):
+                for hr in hue_range:
+                    if hr[0] <= h_normalized < hr[1]:
+                        result_colors.add(category)
+
+    # 채도와 명도에 따른 추가 분류
+    if s < 100 and v < 100:  # 채도와 명도가 낮은 경우 갈색 추가
+        result_colors.add("갈색")
+        # 회색 계열인 경우 제거
+        if "푸른색" in result_colors and s < 60:
+            result_colors.remove("푸른색")
+    
+    # 하늘색 보정 - 명도가 높고 채도가 낮은 경우
+    if "하늘색" in result_colors or "푸른색" in result_colors:
+        if v > 200 and s < 100:
+            if "하늘색" not in result_colors:
+                result_colors.add("하늘색")
+            if "푸른색" in result_colors:
+                result_colors.remove("푸른색")
+
+    # 최종 색상 리스트 정리 (중복 제거 + 정렬)
+    result_colors = sorted(result_colors)  # 정렬하여 일관된 순서 유지
+
+    # 최종 색상 리스트 반환
+    return ", ".join(result_colors) if result_colors else "회색"
+
+
 
 # 결과 시각화
 def display_results(image_path):
@@ -137,29 +234,36 @@ def display_results(image_path):
     painting_region = detect_painting_region(image)  # 밝기 조정 없이 원본 그대로 사용
     edges = detect_edges(image)
     dominant_colors = extract_dominant_colors(painting_region)
+    adjusted_colors = [adjust_hsv_lightness_and_saturation(tuple(color)) for color in dominant_colors] 
     
     
-    
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(15, 6))
 
-    plt.subplot(1, 4, 1)
+    plt.subplot(1, 5, 1)
     plt.imshow(image)
     plt.title("Original Image")
     
-    plt.subplot(1, 4, 2)
+    plt.subplot(1, 5, 2)
     plt.imshow(painting_region)
     plt.title("Detected Painting Region")
 
-    plt.subplot(1, 4, 3)
+    plt.subplot(1, 5, 3)
     plt.imshow(edges, cmap='gray')
     plt.title("Edge Detection")
     
-    plt.subplot(1, 4, 4)
+    plt.subplot(1, 5, 4)
     plt.imshow([dominant_colors / 255])
-    plt.title("Dominant Colors (Original)")
+    plt.title("Dominant Colors")
+    
+    # 주요 색상 (명도 조정 후)
+    plt.subplot(1, 5, 5)
+    plt.imshow([np.array(adjusted_colors) / 255])
+    plt.title("Brightness Adjusted")
+    plt.axis("off")
 
     # 기존 plt.show() 대신 저장 방식으로 변경
-    plt.savefig("/content/drive/MyDrive/Project/output_image.png") # 이거는 절대경로가 필요한 듯.
+    plt.show()
+    #plt.savefig("/content/drive/MyDrive/Project/output_image.png") # 이거는 절대경로가 필요한 듯.
     return edges, dominant_colors
 
 if __name__ == "__main__":
