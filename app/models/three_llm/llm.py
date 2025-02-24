@@ -20,6 +20,12 @@ from .data import translate
 from one_imageDetection.opencv_utils import get_color_name
 from langchain.prompts import PromptTemplate
 
+# pip install langchain-huggingface
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import TextLoader
+
 import random
 from sentence_transformers import SentenceTransformer, util
 
@@ -434,35 +440,97 @@ def classify_user_input(user_input):
        # 키워드가 없는 경우 문장 끝맺음으로 판단
        return ending_type if ending_type else "unknown"
 
+# 미술작품 RAG 관련 함수
+# 1. 텍스트 데이터 로드 및 인덱싱
+def create_vector_store(file_path="Art_RAG.txt"):
+    """미술 텍스트 데이터를 로드하고 벡터 스토어를 생성하는 함수"""
+    # 현재 스크립트 파일 위치 기준으로 데이터 파일 경로 설정
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(current_dir, "data")
+    absolute_file_path = os.path.join(data_dir, file_path)
+    
+    print(f"현재 스크립트 디렉토리: {current_dir}")
+    print(f"데이터 디렉토리: {data_dir}")
+    print(f"파일 경로: {absolute_file_path}")
+    
+    # 파일 존재 확인
+    if not os.path.exists(absolute_file_path):
+        raise FileNotFoundError(f"파일을 찾을 수 없습니다: {absolute_file_path}")
+    
+    # 파일 로드
+    print(f"파일을 로드합니다: {absolute_file_path}")
+    loader = TextLoader(absolute_file_path, encoding="utf-8")
+
+    documents = loader.load()
+
+    # 청크 분할
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200,
+        length_function=len,
+    )
+    chunks = text_splitter.split_documents(documents)
+
+    # 임베딩 모델 로드 (한국어 지원 모델 사용)
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="jhgan/ko-sroberta-multitask",
+        model_kwargs={'device': 'cpu'}
+    )
+
+    # FAISS 인덱스 생성
+    vector_store = FAISS.from_documents(chunks, embedding_model)
+
+    return vector_store
+
+# 2. 관련 문서 검색 함수
+def retrieve_relevant_info(vector_store, query, k=5):
+    """사용자 질문에 관련된 문서를 검색하는 함수"""
+    # 관련 문서 검색
+    relevant_docs = vector_store.similarity_search(query, k=k)
+    
+    # 검색된 문서 텍스트 추출
+    contexts = [doc.page_content for doc in relevant_docs]
+    
+    return "\n\n".join(contexts)
+
 
 # ✅ 2. 사용자의 질문에 대한 답변 생성 (LLM 활용)
-def answer_user_question(user_response, conversation_history, title, artist, rich_description):
-    
-    # 🔹 대화 맥락 정리
+def answer_user_question(user_response, conversation_history, title, artist, rich_description, vector_store):
+    """RAG를 활용하여 미술 작품 관련 질문에 답변하는 함수"""
+    # 대화 맥락 정리
     context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
     
-    conversation_history.append(f"사용자: {user_response}")
-
+    # RAG: 질문에 관련된 정보 검색
+    retrieved_info = retrieve_relevant_info(vector_store, user_response)
+    
+    # 프롬프트 구성
     prompt = f"""
-            사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
-            이전 대화 : 
-            {context}
-            사용자의 질문 : 
-            "{user_response}"
-            
-            작품 설명 : "{rich_description}"
-            사용자의 질문: "{user_response}"
-            
-            위 정보를 기반으로 상세하고 유익한 답변을 제공하세요.
-            설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
-            숫자, 특수문자, 한자는 포함할 수 없습니다.
-            """
+    사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
+    
+    이전 대화: 
+    {context}
+    
+    사용자의 질문: 
+    "{user_response}"
+    
+    작품 설명: 
+    "{rich_description}"
+    
+    관련 미술 자료:
+    {retrieved_info}
+    
+    위 정보를 기반으로 상세하고 유익한 답변을 제공하세요. 
+    관련 미술 자료에서 찾은 정보를 활용하되, 작품과 직접 관련이 없는 내용은 제외하세요.
+    설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+    숫자, 특수문자, 한자는 포함할 수 없습니다.
+    """
 
+    # LLM으로 답변 생성
     completion = client.chat.completions.create(
         model="qwen-2.5-coder-32b",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.5,
-        max_tokens=256,
+        max_tokens=512,
         top_p=0.95
     )
     
@@ -540,6 +608,9 @@ def generate_vts_response(user_input, conversation_history):
 def start_vts_conversation(title, rich_description, dominant_colors, edges):
     """VTS 기반 감상 대화 진행 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
+    
+    # 벡터 스토어 생성 (초기 1회만)
+    vector_store = create_vector_store()
 
     conversation_history = []  # 대화 히스토리 저장
     user_response = input("🎨 작품을 보고 떠오른 느낌이나 궁금한 점을 말해주세요 (종료: exit): ")
@@ -561,7 +632,14 @@ def start_vts_conversation(title, rich_description, dominant_colors, edges):
             # 🔹 대화 히스토리에 추가
             conversation_history.append(f"사용자: {user_response}")
             
-            answer = answer_user_question(user_response, conversation_history, title, rich_description, dominant_colors)
+            answer = answer_user_question(
+                user_response, 
+                conversation_history, 
+                title, 
+                artist, 
+                rich_description,
+                vector_store
+            )
             
             conversation_history.append(f"AI: {answer}")
             

@@ -458,3 +458,36 @@ def classify_user_input(user_input):
     elif any(keyword in user_input for keyword in keywords_feeling):
         return "feeling"  # 감상 표현 (1-2)
     return "unknown"
+
+
+def answer_user_question(user_response, conversation_history, title, artist, rich_description):
+    
+    # 🔹 대화 맥락 정리
+    context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
+    
+    conversation_history.append(f"사용자: {user_response}")
+
+    prompt = f"""
+            사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
+            이전 대화 : 
+            {context}
+            사용자의 질문 : 
+            "{user_response}"
+            
+            작품 설명 : "{rich_description}"
+            사용자의 질문: "{user_response}"
+            
+            위 정보를 기반으로 상세하고 유익한 답변을 제공하세요.
+            설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+            숫자, 특수문자, 한자는 포함할 수 없습니다.
+            """
+
+    completion = client.chat.completions.create(
+        model="qwen-2.5-coder-32b",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+        max_tokens=256,
+        top_p=0.95
+    )
+    
+    return completion.choices[0].message.content.strip()
