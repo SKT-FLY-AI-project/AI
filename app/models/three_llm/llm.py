@@ -20,6 +20,12 @@ from .data import translate
 from one_imageDetection.opencv_utils import get_color_name
 from langchain.prompts import PromptTemplate
 
+# pip install langchain-huggingface
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import TextLoader
+
 import random
 from sentence_transformers import SentenceTransformer, util
 
@@ -323,45 +329,208 @@ def load_vts_questions():
     
 # ✅ 사용자의 입력 유형 분석 (작품 정보 요구 vs 감상 표현)
 def classify_user_input(user_input):
-    """
-    사용자의 입력이 작품 설명을 요구하는지(1-1) vs 자신의 감상을 말하는지(1-2) 분류하는 함수.
-    """
-    keywords_info = ["이 작품", "설명", "배경", "작가", "의미", "당시 상황"]
-    keywords_feeling = ["느낌", "분위기", "인상적", "마음에 들어", "생각", "의견"]
+   """
+   미술작품 감상 관련 대화를 정보 요청과 감상 표현으로 분류하는 함수
+   """
+   keywords_info = {
+       # 작품 기본 정보
+       "무엇", "뭐", "어떤", "어떻게", "언제", "어디서", "누가", "왜",
+       "설명해", "알려줘", "가르쳐", "말해줘", "궁금해",
+       
+       # 작품 상세 정보
+       "제목", "년도", "시기", "크기", "소장", "전시", "보관",
+       "캔버스", "유화", "수채화", "판화", "소재", "재료",
+       "채색", "물감", "안료", "염료", "붓", "도구",
+       
+       # 작가 관련
+       "작가", "화가", "미술가", "예술가", "대가", "장인",
+       "유파", "화파", "학파", "스승", "제자", "영향",
+       "동시대", "같은 시기", "활동", "작품세계",
+       
+       # 작품 해석/의미
+       "의미", "상징", "해석", "메시지", "주제", "내용",
+       "모티프", "소재", "題材", "타이틀", "제재",
+       "구성", "구도", "배치", "화면", "장면",
+       
+       # 미술사/맥락
+       "미술사", "예술사", "당시", "시대", "운동", "사조",
+       "유파", "화파", "르네상스", "바로크", "인상주의",
+       "표현주의", "추상", "모더니즘", "컨템포러리",
+       
+       # 기법/표현
+       "기법", "테크닉", "기교", "화법", "묘사", "표현",
+       "원근법", "명암법", "농담", "채색", "스케치",
+       "데생", "드로잉", "터치", "붓질", "획", "선", "면",
+       "명암", "음영", "그라데이션", "질감", "마티에르"
+   }
+   
+   keywords_feeling = {
+       # 감상/인상
+       "느낌", "감정", "인상", "감동", "정서", "감성",
+       "분위기", "무드", "아우라", "기운", "기세",
+       "여운", "울림", "전율", "충격", "감흥",
+       
+       # 시각적 반응
+       "보이다", "눈에 띄다", "시선", "눈길", "주목",
+       "색감", "색채", "컬러", "톤", "색조", "색상",
+       "화려", "은은", "강렬", "부드럽", "차분", "고요",
+       
+       # 긍정적 평가
+       "좋다", "멋지다", "아름답", "우아", "품격", "기품",
+       "뛰어나다", "탁월", "완벽", "대단", "훌륭",
+       "세련", "정교", "섬세", "우수", "탁월", "빼어나",
+       
+       # 주관적 해석
+       "생각", "보입니다", "싶습니다", "것 같아요",
+       "연상", "떠올라요", "기억", "추억", "경험",
+       "공감", "이해", "와닿다", "닮았다", "유사",
+       
+       # 예술적 평가
+       "조화", "균형", "통일", "대비", "리듬", "율동",
+       "구성", "완성도", "독창", "창의", "혁신", "개성",
+       "특색", "특징", "개성", "독특", "참신", "획기적",
+       
+       # 감정 표현
+       "기쁘다", "슬프다", "평온", "불안", "고요", "역동",
+       "즐겁다", "우울하다", "따뜻", "차갑", "밝다", "어둡다",
+       "부드럽다", "거칠다", "강하다", "약하다"
+   }
 
-    if any(keyword in user_input for keyword in keywords_info):
-        return "info"  # 작품 설명 요청 (1-1)
-    elif any(keyword in user_input for keyword in keywords_feeling):
-        return "feeling"  # 감상 표현 (1-2)
-    return "unknown"
+   def contains_keyword(text, keyword):
+       """
+       더 정확한 키워드 매칭을 위한 함수
+       """
+       pattern = fr'(^|[^\w]){keyword}([^\w]|$)'  # 'r' 접두사 추가
+       return bool(re.search(pattern, text))
+
+   def analyze_sentence_ending(text):
+       """
+       문장 끝맺음을 분석하여 의도 파악을 돕는 함수
+       """
+       if text.strip().endswith(('?', '까요?', '나요?', '죠?')):
+           return "info"
+       elif text.strip().endswith(('네요', '어요', '아요', '!', '~')):
+           return "feeling"
+       return None
+
+   # 키워드 매칭 확인 (정확한 매칭 사용)
+   info_count = sum(1 for keyword in keywords_info if contains_keyword(user_input, keyword))
+   feeling_count = sum(1 for keyword in keywords_feeling if contains_keyword(user_input, keyword))
+   
+   # 문장 끝맺음 분석
+   ending_type = analyze_sentence_ending(user_input)
+   
+   # 가중치를 둔 최종 분류
+   if ending_type:
+       # 문장 끝맺음이 명확한 경우, 이를 우선 고려
+       if ending_type == "info" and info_count > 0:
+           return "info"
+       elif ending_type == "feeling" and feeling_count > 0:
+           return "feeling"
+   
+   # 키워드 기반 분류
+   if info_count > feeling_count:
+       return "info"
+   elif feeling_count > info_count:
+       return "feeling"
+   elif info_count > 0 and info_count == feeling_count:
+       # 동점인 경우 문장 끝맺음으로 판단
+       return ending_type if ending_type else "mixed"
+   else:
+       # 키워드가 없는 경우 문장 끝맺음으로 판단
+       return ending_type if ending_type else "unknown"
+
+# 미술작품 RAG 관련 함수
+# 1. 텍스트 데이터 로드 및 인덱싱
+def create_vector_store(file_path="Art_RAG.txt"):
+    """미술 텍스트 데이터를 로드하고 벡터 스토어를 생성하는 함수"""
+    # 현재 스크립트 파일 위치 기준으로 데이터 파일 경로 설정
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(current_dir, "data")
+    absolute_file_path = os.path.join(data_dir, file_path)
+    
+    print(f"현재 스크립트 디렉토리: {current_dir}")
+    print(f"데이터 디렉토리: {data_dir}")
+    print(f"파일 경로: {absolute_file_path}")
+    
+    # 파일 존재 확인
+    if not os.path.exists(absolute_file_path):
+        raise FileNotFoundError(f"파일을 찾을 수 없습니다: {absolute_file_path}")
+    
+    # 파일 로드
+    print(f"파일을 로드합니다: {absolute_file_path}")
+    loader = TextLoader(absolute_file_path, encoding="utf-8")
+
+    documents = loader.load()
+
+    # 청크 분할
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200,
+        length_function=len,
+    )
+    chunks = text_splitter.split_documents(documents)
+
+    # 임베딩 모델 로드 (한국어 지원 모델 사용)
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="jhgan/ko-sroberta-multitask",
+        model_kwargs={'device': 'cpu'}
+    )
+
+    # FAISS 인덱스 생성
+    vector_store = FAISS.from_documents(chunks, embedding_model)
+
+    return vector_store
+
+# 2. 관련 문서 검색 함수
+def retrieve_relevant_info(vector_store, query, k=5):
+    """사용자 질문에 관련된 문서를 검색하는 함수"""
+    # 관련 문서 검색
+    relevant_docs = vector_store.similarity_search(query, k=k)
+    
+    # 검색된 문서 텍스트 추출
+    contexts = [doc.page_content for doc in relevant_docs]
+    
+    return "\n\n".join(contexts)
 
 
 # ✅ 2. 사용자의 질문에 대한 답변 생성 (LLM 활용)
-def answer_user_question(user_response, conversation_history, title, artist, rich_description):
-    
-    # 🔹 대화 맥락 정리
+def answer_user_question(user_response, conversation_history, title, artist, rich_description, vector_store):
+    """RAG를 활용하여 미술 작품 관련 질문에 답변하는 함수"""
+    # 대화 맥락 정리
     context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
     
-    conversation_history.append(f"사용자: {user_response}")
-
+    # RAG: 질문에 관련된 정보 검색
+    retrieved_info = retrieve_relevant_info(vector_store, user_response)
+    
+    # 프롬프트 구성
     prompt = f"""
-            사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
-            이전 대화 : 
-            {context}
-            사용자의 질문 : 
-            "{user_response}"
-            
-            작품 설명 : "{rich_description}"
-            사용자의 질문: "{user_response}"
-            
-            위 정보를 기반으로 상세하고 유익한 답변을 제공하세요.
-            """
+    사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
+    
+    이전 대화: 
+    {context}
+    
+    사용자의 질문: 
+    "{user_response}"
+    
+    작품 설명: 
+    "{rich_description}"
+    
+    관련 미술 자료:
+    {retrieved_info}
+    
+    위 정보를 기반으로 상세하고 유익한 답변을 제공하세요. 
+    관련 미술 자료에서 찾은 정보를 활용하되, 작품과 직접 관련이 없는 내용은 제외하세요.
+    설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+    숫자, 특수문자, 한자는 포함할 수 없습니다.
+    """
 
+    # LLM으로 답변 생성
     completion = client.chat.completions.create(
         model="qwen-2.5-coder-32b",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.5,
-        max_tokens=256,
+        max_tokens=512,
         top_p=0.95
     )
     
@@ -410,6 +579,8 @@ def generate_vts_response(user_input, conversation_history):
     AI의 응답 형식:
     1. 반응: (사용자의 감상을 반영한 피드백)
     2. 질문: (VTS 기반의 적절한 추가 질문)
+    설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+    숫자, 특수문자, 한자는 포함할 수 없습니다.
     """
 
     completion = client.chat.completions.create(
@@ -437,6 +608,9 @@ def generate_vts_response(user_input, conversation_history):
 def start_vts_conversation(title, rich_description, dominant_colors, edges):
     """VTS 기반 감상 대화 진행 함수"""
     print("\n🖼️ VTS 감상 모드 시작!")
+    
+    # 벡터 스토어 생성 (초기 1회만)
+    vector_store = create_vector_store()
 
     conversation_history = []  # 대화 히스토리 저장
     user_response = input("🎨 작품을 보고 떠오른 느낌이나 궁금한 점을 말해주세요 (종료: exit): ")
@@ -454,11 +628,18 @@ def start_vts_conversation(title, rich_description, dominant_colors, edges):
         # 질문 답변 종류 확인
         input_type = classify_user_input(user_response)
         
-        if input_type == "info":
+        if input_type == ("info" or "mixed" or "unknown"): # 사실상 감성 빼고 다죠?
             # 🔹 대화 히스토리에 추가
             conversation_history.append(f"사용자: {user_response}")
             
-            answer = answer_user_question(user_response, conversation_history, title, rich_description, dominant_colors)
+            answer = answer_user_question(
+                user_response, 
+                conversation_history, 
+                title, 
+                artist, 
+                rich_description,
+                vector_store
+            )
             
             conversation_history.append(f"AI: {answer}")
             
