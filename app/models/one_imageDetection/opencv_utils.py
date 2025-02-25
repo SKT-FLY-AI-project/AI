@@ -264,7 +264,7 @@ def display_results(image_path):
     # 기존 plt.show() 대신 저장 방식으로 변경
     plt.show()
     #plt.savefig("/content/drive/MyDrive/Project/output_image.png") # 이거는 절대경로가 필요한 듯.
-    return edges, dominant_colors
+    return edges, adjusted_colors
 
 if __name__ == "__main__":
     image_path = r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"

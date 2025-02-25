@@ -42,3 +42,9 @@ instance/
 # 모델 파일
 *.h5
 
+# 기타 잔여물
+*.mp3
+*.txt
+*.pdf
+*.pkl
+
