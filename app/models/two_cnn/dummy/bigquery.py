@@ -25,11 +25,11 @@ from google.cloud import bigquery
 
 def query_metart():
     # Specify your Google Cloud project to connect to
-    client = bigquery.Client(project="profound-ship-403907")
+    client = bigquery.Client(project="{change-to-your-project-id}")
 
     query_job = client.query("""
         #standardSQL
-        SELECT object_number, title, department, culture, period, object_date, link_resource
+        SELECT object_number, title, department, culture, period, object_date, link_resource, artist_display_name
         FROM `bigquery-public-data.the_met.objects`
         WHERE is_highlight = TRUE            -- Boolean 타입 비교 시 문자열 없이 TRUE로 작성
         AND link_resource IS NOT NULL      -- 이미지 URL이 있는 데이터만 포함
@@ -37,13 +37,14 @@ def query_metart():
         AND (classification = "Prints"     --  19개. 
             OR classification = "Drawings"   --  78개.
             OR classification = "Paintings") -- 231개.
-        ; -- 총 328개. """)
+        AND artist_display_name IS NOT NULL -- (-2)개.
+        ; -- 총 326개. """)
 
     results = query_job.result()  # Waits for job to complete.
 
     for row in results:
         # print(row[0:3]) # 첫 3개의 필드만 출력 # row[0:3]는 department, culture, link_resource만 출력
-        print(f"( u'{row['object_number']}', u'{row['title']}', u'{row['department']}', u'{row['culture']}', u'{row['period']}',u'{row['object_date']}', u'{row['link_resource']}' )")
+        print(f"( u'{row['object_number']}', u'{row['title']}', u'{row['department']}', u'{row['culture']}', u'{row['period']}',u'{row['object_date']}', u'{row['link_resource']}', u'{row['artist_display_name']}' )")
 
 
 

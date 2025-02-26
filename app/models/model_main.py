@@ -41,10 +41,6 @@ from two_cnn.cnn_test import predict_image
 from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, start_vts_conversation
 
 
-from one_imageDetection.opencv_utils import load_and_preprocess_image, detect_edges, extract_dominant_colors, display_results
-from three_llm.llm import generate_vlm_description_qwen, generate_rich_description, text_to_speech, start_vts_conversation
-
-
 if __name__ == "__main__":
     # 🔹 테스트할 이미지 리스트
     test_images = [
@@ -52,13 +48,40 @@ if __name__ == "__main__":
         #r"app/models/one_imageDetection/London_CourtauldGallery_Cezanne's.png",      # Unknown title
         # "app/models/one_imageDetection/London_CourtauldGallery_Manet'sABar.jpg",    # Unknown title
         # "app/models/one_imageDetection/Van Gogh's The Starry Night.png",            # Unknown title
-        #r"app/models/two_cnn/data/cnn_test_data/test_ViewofToledo_ElGreco.png",     # View of Toledo
+        # r"app/models/two_cnn/data/cnn_test_data/test_ViewofToledo_ElGreco.png",     # View of Toledo
         # r"app\models\two_cnn\data\cnn_test_data\test_GardenatSainte-Adresse_monet.png", # Garden at Sainte-Adresse
         # r"app\models\one_imageDetection\GardenatSainte-Adresse_monet.png", # GardenatSainte-Adresse_monet - Detection 해야함
         #r"app/models/one_imageDetection/GardenatSainte-Adresse_monet.png"           # Garden at Sainte-Adresse, 역슬레시 바꿔
         #r"app/models/one_imageDetection/Van Gogh's The Starry Night.png"
         #r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png" 
-        r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png"      
+        # r"app/models/one_imageDetection/test_WheatFieldwithCypresses_VanGogh.png" 
+        
+        
+        # DEMO : 여름의 베퇴유                
+        # "app/models/one_imageDetection/test_demo_mone_summer.png"
+
+        # "app/models/one_imageDetection/test_demo_mone_summer.png" 
+        # "app/models/one_imageDetection/test_demo_mone_summer_left.png" # Confidence: 99.99%
+        # "app/models/one_imageDetection/test_demo_mone_summer_right.png"
+        # "app/models/one_imageDetection/test_demo_mone_summer_top.png" # Confidence: 99.57%
+        # "app/models/one_imageDetection/test_demo_mone_summer_bottom.png" # Confidence: 98.59%
+        # "app/models/one_imageDetection/test_demo_mone_summer_inside.png" # Confidence: 99.87%
+
+        # DEMO : 별이 빛나는 밤
+        # "app/models/one_imageDetection/test_demo_TheStarryNight.png" 
+        # "app/models/one_imageDetection/test_demo_TheStarryNight_left.png" 
+        # "app/models/one_imageDetection/test_demo_TheStarryNight_right.png" 
+        # "app/models/one_imageDetection/test_demo_TheStarryNight_top.png"     
+        # "app/models/one_imageDetection/test_demo_TheStarryNight_bottom.png"  # Confidence: 95.21%
+
+        # DEMO : 미모사 향기 가득한 베니스
+        # "app/models/one_imageDetection/test_demo_미모사.jpg"
+        # "app/models/one_imageDetection/test_demo_미모사_detected.jpg"
+        "app/models/one_imageDetection/real_demo_미모사1.jpg" # 배경 많아도 99.62%
+        # "app/models/one_imageDetection/real_demo_미모사2.jpg"
+        # "app/models/one_imageDetection/real_demo_미모사3.jpg"
+        # "app/models/one_imageDetection/real_demo_미모사4.jpg" # 비닐에 있어도, 98.22%
+        # "app/models/one_imageDetection/real_demo_미모사5.jpg" # Unclassified # 너~무 멀어서 그런듯~~     
 
     ]
 
@@ -100,8 +123,8 @@ if __name__ == "__main__":
         # 테스트용입니다.
         #title = "The card players"
         #title = "Garden at Sainte-Adresse"
-        title = "Wheat Field with Cypresses"
-        print("작품 제목 변경 결과입니다.", title)
+        # title = "Wheat Field with Cypresses"
+        # print("작품 제목 변경 결과입니다.", title)
 
         # 🔹 LLM을 활용한 설명 생성
         rich_description = generate_rich_description(title, vlm_descriptions[0], dominant_colors, edges)
