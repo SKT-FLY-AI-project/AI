@@ -444,3 +444,96 @@ def get_color_name(rgb):
         ]
     }
     
+    
+    # ✅ 사용자의 입력 유형 분석 (작품 정보 요구 vs 감상 표현)
+def classify_user_input(user_input):
+    """
+    사용자의 입력이 작품 설명을 요구하는지(1-1) vs 자신의 감상을 말하는지(1-2) 분류하는 함수.
+    """
+    keywords_info = ["이 작품", "설명", "배경", "작가", "의미", "당시 상황"]
+    keywords_feeling = ["느낌", "분위기", "인상적", "마음에 들어", "생각", "의견"]
+
+    if any(keyword in user_input for keyword in keywords_info):
+        return "info"  # 작품 설명 요청 (1-1)
+    elif any(keyword in user_input for keyword in keywords_feeling):
+        return "feeling"  # 감상 표현 (1-2)
+    return "unknown"
+
+
+def answer_user_question(user_response, conversation_history, title, artist, rich_description):
+    
+    # 🔹 대화 맥락 정리
+    context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
+    
+    conversation_history.append(f"사용자: {user_response}")
+
+    prompt = f"""
+            사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
+            이전 대화 : 
+            {context}
+            사용자의 질문 : 
+            "{user_response}"
+            
+            작품 설명 : "{rich_description}"
+            사용자의 질문: "{user_response}"
+            
+            위 정보를 기반으로 상세하고 유익한 답변을 제공하세요.
+            설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+            숫자, 특수문자, 한자는 포함할 수 없습니다.
+            """
+
+    completion = client.chat.completions.create(
+        model="qwen-2.5-coder-32b",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+        max_tokens=256,
+        top_p=0.95
+    )
+    
+    return completion.choices[0].message.content.strip()
+
+
+# 일단 25년 2월 25일 기준 최신 코드 였음. (지금 바꾸고 있음.)
+def answer_user_question(user_response, conversation_history, title, artist, rich_description, vector_store):
+    """RAG를 활용하여 미술 작품 관련 질문에 답변하는 함수"""
+    # 대화 맥락 정리
+    context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
+    
+    # RAG: 질문에 관련된 정보 검색
+    retrieved_info = retrieve_relevant_info(vector_store, user_response)
+    print(retrieved_info)
+    
+    # 프롬프트 구성
+    prompt = f"""
+    사용자는 '{artist}'의 '{title}' 작품에 대해 질문하고 있습니다.
+    
+    이전 대화: 
+    {context}
+    
+    사용자의 질문: 
+    "{user_response}"
+    
+    작품 설명: 
+    "{rich_description}"
+    
+    관련 미술 자료:
+    {retrieved_info}
+    
+    위 정보를 기반으로 유익한 답변을 제공하세요.
+    관련 미술 자료에서 찾은 정보를 활용하되, 작품과 직접 관련이 없는 내용은 제외하세요.
+    200~300자 정도로 간결하게 작성해 주세요.
+    설명은 반드시 **한글(가-힣)과 영어(a-z)만 사용하여 작성해야 합니다.**
+    숫자, 특수문자, 한자는 포함할 수 없습니다.
+    **검색해서 진위여부가 확실하게 검증된 답변만 작성하세요**
+    """
+
+    # LLM으로 답변 생성
+    completion = client.chat.completions.create(
+        model="qwen-2.5-coder-32b",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+        max_tokens=512,
+        top_p=0.95
+    )
+    
+    return completion.choices[0].message.content.strip()
