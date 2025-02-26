@@ -75,13 +75,14 @@ if __name__ == "__main__":
         # "app/models/one_imageDetection/test_demo_TheStarryNight_bottom.png"  # Confidence: 95.21%
 
         # DEMO : 미모사 향기 가득한 베니스
-        # "app/models/one_imageDetection/test_demo_미모사.jpg"
+        "app/models/one_imageDetection/test_demo_미모사.jpg"
         # "app/models/one_imageDetection/test_demo_미모사_detected.jpg"
-        "app/models/one_imageDetection/real_demo_미모사1.jpg" # 배경 많아도 99.62%
+        #"app/models/one_imageDetection/real_demo_미모사1.jpg" # 배경 많아도 99.62%
         # "app/models/one_imageDetection/real_demo_미모사2.jpg"
         # "app/models/one_imageDetection/real_demo_미모사3.jpg"
         # "app/models/one_imageDetection/real_demo_미모사4.jpg" # 비닐에 있어도, 98.22%
-        # "app/models/one_imageDetection/real_demo_미모사5.jpg" # Unclassified # 너~무 멀어서 그런듯~~     
+        #"app/models/one_imageDetection/real_demo_미모사5.jpg" # Unclassified # 너~무 멀어서 그런듯~~   
+        #"app/models/one_imageDetection/kiss_2.png"
 
     ]
 
