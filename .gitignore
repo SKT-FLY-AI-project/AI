@@ -2,6 +2,7 @@
 venv/
 env/
 .venv/
+venv2/
 
 # Python 캐시 파일
 __pycache__/
@@ -37,3 +38,13 @@ docker-compose.override.yml
 instance/
 
 ..github/
+
+# 모델 파일
+*.h5
+
+# 기타 잔여물
+*.mp3
+*.txt
+*.pdf
+*.pkl
+
