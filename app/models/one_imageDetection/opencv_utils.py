@@ -9,7 +9,7 @@ import colorsys
 
 # 이미지 로드 및 전처리
 def load_and_preprocess_image(image_path):
-    image = cv2.imread(image_path)
+    image = cv2.imdecode(np.fromfile(image_path, dtype=np.uint8), cv2.IMREAD_COLOR)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     return image
 
@@ -184,12 +184,20 @@ def get_color_name(rgb):
 
     # ✅ 회색 및 밝기 계열 분류 (채도가 낮을 때)
     if s < 40:  
-        if v < 80:
-            result_colors.add("어두운 색")
-        elif v > 200:
-            result_colors.add("밝은 색")
+        if 180 <= h <= 260:  # 원래 파란색 계열이면 회색 대신 파란색 유지
+            result_colors.add("푸른색")
+        elif 80 <= h <= 160:  # 초록색 계열이면 초록색 유지
+            result_colors.add("초록색")
         else:
-            result_colors.add("회색")
+            if v < 80:
+                result_colors.add("어두운 색")
+            elif v > 200:
+                result_colors.add("밝은 색")
+            else:
+                if 180 <= h <= 260:  # 파란색 계열이면 하늘색으로 유지
+                    result_colors.add("하늘색")
+                else:
+                    result_colors.add("회색")
     else:
         # HSV의 H값은 0-179 범위인 경우가 있으므로 정규화
         # OpenCV의 H는 0-179, S와 V는 0-255 범위
@@ -205,6 +213,12 @@ def get_color_name(rgb):
                     if hr[0] <= h_normalized < hr[1]:
                         result_colors.add(category)
 
+    # 노란색과 갈색의 구분
+    if 0 <= h <= 20 and s < 100 and v < 150:  # 낮은 채도, 낮은 명도일 때만 갈색
+        result_colors.add("갈색")
+    elif 20 <= h <= 45:  # 노란색은 범위 유지
+        result_colors.add("노란색")
+
     # 채도와 명도에 따른 추가 분류
     if s < 100 and v < 100:  # 채도와 명도가 낮은 경우 갈색 추가
         result_colors.add("갈색")
@@ -214,10 +228,10 @@ def get_color_name(rgb):
     
     # 하늘색 보정 - 명도가 높고 채도가 낮은 경우
     if "하늘색" in result_colors or "푸른색" in result_colors:
-        if v > 200 and s < 100:
+        if v > 200 and s < 100 and h < 200:  # h가 200 이상이면 푸른색 유지
             if "하늘색" not in result_colors:
                 result_colors.add("하늘색")
-            if "푸른색" in result_colors:
+            if "푸른색" in result_colors and h < 200:
                 result_colors.remove("푸른색")
 
     # 최종 색상 리스트 정리 (중복 제거 + 정렬)
@@ -253,12 +267,14 @@ def display_results(image_path):
     
     plt.subplot(1, 5, 4)
     plt.imshow([dominant_colors / 255])
+    print([dominant_colors / 255])
     plt.title("Dominant Colors")
     
     # 주요 색상 (명도 조정 후)
     plt.subplot(1, 5, 5)
     plt.imshow([np.array(adjusted_colors) / 255])
     plt.title("Brightness Adjusted")
+    print([np.array(adjusted_colors) / 255])
     plt.axis("off")
 
     # 기존 plt.show() 대신 저장 방식으로 변경

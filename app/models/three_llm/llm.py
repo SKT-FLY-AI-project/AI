@@ -479,14 +479,17 @@ def find_top_k_similar(query_sentence, sentence_dict, embeddings, model, top_k=2
     return results
 
 # 2. 관련 문서 검색 함수
-def retrieve_relevant_info(precomputed_data, query, top_k=5, threshold=0.75):
+def retrieve_relevant_info(precomputed_data, query, title, artist, top_k=20, threshold=0.45):
     """
-    미리 전처리된 데이터에서, query와 가장 유사한 상위 top_k 개의 문장을 찾아
+    미리 전처리된 데이터에서, title과 artist 정보를 포함한 검색 쿼리와 가장 유사한 상위 top_k 개의 문장을 찾아
     각 문장의 출처 인덱스와 함께 문자열 형태로 반환합니다.
     """
+    # title과 artist 정보를 포함한 통합 쿼리 생성
+    combined_query = f"{title} {artist} {query}"
+    
     sentence_dict = precomputed_data["sentence_dict"]
     embeddings = precomputed_data["embeddings"]
-    results = find_top_k_similar(query, sentence_dict, embeddings, embedding_model, top_k=top_k, threshold=threshold)
+    results = find_top_k_similar(combined_query, sentence_dict, embeddings, embedding_model, top_k=top_k, threshold=threshold)
     
     if results:
         formatted_results = "\n".join([f"Source [{key}]: {sentence} (유사도: {sim_score:.2f})"
@@ -502,7 +505,7 @@ def answer_user_question(user_response, conversation_history, title, artist, ric
     context = "\n".join(conversation_history[-3:])  # 최근 3개만 유지 (메모리 최적화)
     
     # RAG: 질문에 관련된 정보 검색
-    retrieved_info = retrieve_relevant_info(precomputed_data, user_response, top_k=5, threshold=0.75)
+    retrieved_info = retrieve_relevant_info(precomputed_data, user_response, title, artist, top_k=20, threshold=0.45)
     print(retrieved_info)
     
     # 프롬프트 구성
