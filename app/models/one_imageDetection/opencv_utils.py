@@ -126,20 +126,6 @@ def detect_edges(image):
     processed_edges = cv2.morphologyEx(combined_edges, cv2.MORPH_CLOSE, kernel)
 
     return processed_edges
-# def detect_edges(image):
-#     image = detect_painting_region(image)
-#     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-#     # Adaptive Thresholding 적용하여 대비 강화 
-#     # # Canny(100, 200) 만으로도 대부분의 경우 잘 작동하지만, 배경과 작품의 명암 차이가 적은 경우 문제가 발생할 수 있다.
-#     # 이런 경우 Adaptive Thresholding을 추가하면 작품의 영역을 더 명확하게 구분할 수 있다.
-#     thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
-#                                    cv2.THRESH_BINARY_INV, 11, 2)
-    
-#     # Canny Edge Detection 적용
-#     edges = cv2.Canny(gray, 100, 200)
-#     # Thresholding과 Edge Detection 결합
-#     combined_edges = cv2.bitwise_or(thresh, edges)
-#     return combined_edges
 
 # 주요 색상 추출
 def extract_dominant_colors(image, k=5):
@@ -198,6 +184,7 @@ def adjust_hsv_lightness_and_saturation(rgb, lightness_factor=1.4, saturation_fa
 def get_color_name(rgb):
     """
     RGB 값을 HSV 기반으로 사람이 인식하기 쉬운 색상 계열로 변환하는 함수.
+    푸른색 인식률 개선 버전.
     """
 
     # ✅ RGB → HSV 변환
@@ -206,24 +193,42 @@ def get_color_name(rgb):
 
     # ✅ 색상 카테고리 정의 (HSV Hue 기준, 갈색을 넓히고 중복 해결)
     color_categories = {
-        "푸른색": (90, 150),  # 푸른색 범위 확장 및 수정 (기존: 170, 270)
-        "하늘색": (150, 180),  # 하늘색 추가
-        "민트색": (170, 190),
-        "초록색": (45, 90),   # 초록색 범위 조정 (기존: 80, 150)
-        "노란색": (20, 45),   # 노란색 범위 조정 (기존: 50, 60)
-        "주황색": (10, 20),   # 주황색 범위 조정 (기존: 20, 50)
-        "붉은색": [(0, 10), (330, 360)],  # 붉은색 범위 조정
-        "보라색": (270, 330), # 보라색 범위 조정 (기존: 270, 290)
-        "갈색": (0, 20),      # 갈색 범위 수정 (기존: 250, 360) - 갈색은 낮은 채도/명도로 판단
+        "푸른색": (85, 165),  # 푸른색 범위 확장 (기존: 90, 150)
+        "하늘색": (150, 190),  # 하늘색 범위 확장 (기존: 150, 180)
+        "민트색": (170, 195),
+        "초록색": (45, 90),   
+        "노란색": (20, 45),   
+        "주황색": (10, 20),   
+        "붉은색": [(0, 10), (330, 360)],  
+        "보라색": (265, 330), # 보라색 범위 조정 (기존: 270, 330)
+        "갈색": (0, 20),      
     }
 
     result_colors = set()  # 다중 색상 결과를 담을 리스트 (중복 제거)
 
+    # HSV의 H값은 0-179 범위인 경우가 있으므로 정규화
+    # OpenCV의 H는 0-179, S와 V는 0-255 범위
+    h_normalized = h * 2 if h <= 90 else h  # H값 정규화 (OpenCV에서는 0-180)
+    
+    # ✅ 푸른색 계열 우선 검사 (회색 판단 전)
+    is_blue_range = False
+    if (85 <= h_normalized < 165) or (180 <= h_normalized <= 260):
+        is_blue_range = True
+        
     # ✅ 회색 및 밝기 계열 분류 (채도가 낮을 때)
-    if s < 40:  
-        if 180 <= h <= 260:  # 원래 파란색 계열이면 회색 대신 파란색 유지
+    # 푸른색 계열은 더 낮은 채도(30)에서도 푸른색으로 인식
+    if is_blue_range and s < 30:
+        if v > 150:  # 명도가 높으면 하늘색
+            result_colors.add("하늘색")
+        else:
             result_colors.add("푸른색")
-        elif 80 <= h <= 160:  # 초록색 계열이면 초록색 유지
+    elif s < 40:  # 다른 색상들의 채도 기준
+        if is_blue_range:  # 푸른색 범위면 푸른색 유지
+            if v > 180:
+                result_colors.add("하늘색")
+            else:
+                result_colors.add("푸른색")
+        elif 80 <= h_normalized <= 160:  # 초록색 계열이면 초록색 유지
             result_colors.add("초록색")
         else:
             if v < 80:
@@ -231,16 +236,9 @@ def get_color_name(rgb):
             elif v > 200:
                 result_colors.add("밝은 색")
             else:
-                if 180 <= h <= 260:  # 파란색 계열이면 하늘색으로 유지
-                    result_colors.add("하늘색")
-                else:
-                    result_colors.add("회색")
+                result_colors.add("회색")
     else:
-        # HSV의 H값은 0-179 범위인 경우가 있으므로 정규화
-        # OpenCV의 H는 0-179, S와 V는 0-255 범위
-        h_normalized = h * 2 if h <= 90 else h  # H값 정규화 (OpenCV에서는 0-180)
-        
-        # 색상 범주 매칭 로직 개선
+        # 색상 범주 매칭 로직
         for category, hue_range in color_categories.items():
             if isinstance(hue_range, tuple):
                 if hue_range[0] <= h_normalized < hue_range[1]:
@@ -257,25 +255,109 @@ def get_color_name(rgb):
         result_colors.add("노란색")
 
     # 채도와 명도에 따른 추가 분류
-    if s < 100 and v < 100:  # 채도와 명도가 낮은 경우 갈색 추가
+    if s < 100 and v < 100 and not is_blue_range:  # 푸른색 범위가 아닐 때만 갈색 추가
         result_colors.add("갈색")
-        # 회색 계열인 경우 제거
-        if "푸른색" in result_colors and s < 60:
-            result_colors.remove("푸른색")
-    
-    # 하늘색 보정 - 명도가 높고 채도가 낮은 경우
-    if "하늘색" in result_colors or "푸른색" in result_colors:
-        if v > 200 and s < 100 and h < 200:  # h가 200 이상이면 푸른색 유지
+        
+    # 푸른색과 하늘색 보정 - 명도에 따른 구분
+    if "푸른색" in result_colors or "하늘색" in result_colors:
+        if v > 180:  # 명도가 높으면 하늘색
             if "하늘색" not in result_colors:
                 result_colors.add("하늘색")
-            if "푸른색" in result_colors and h < 200:
+            if "푸른색" in result_colors and h_normalized < 180:
                 result_colors.remove("푸른색")
+        elif v < 120 and s > 50:  # 명도가 낮고 채도가 충분하면 진한 푸른색
+            if "하늘색" in result_colors:
+                result_colors.remove("하늘색")
+            if "푸른색" not in result_colors:
+                result_colors.add("푸른색")
 
     # 최종 색상 리스트 정리 (중복 제거 + 정렬)
     result_colors = sorted(result_colors)  # 정렬하여 일관된 순서 유지
 
     # 최종 색상 리스트 반환
     return ", ".join(result_colors) if result_colors else "회색"
+
+# def get_color_name(rgb):
+#     """
+#     RGB 값을 HSV 기반으로 사람이 인식하기 쉬운 색상 계열로 변환하는 함수.
+#     """
+
+#     # ✅ RGB → HSV 변환
+#     hsv = cv2.cvtColor(np.uint8([[rgb]]), cv2.COLOR_RGB2HSV)[0][0]
+#     h, s, v = hsv
+
+#     # ✅ 색상 카테고리 정의 (HSV Hue 기준, 갈색을 넓히고 중복 해결)
+#     color_categories = {
+#         "푸른색": (90, 150),  # 푸른색 범위 확장 및 수정 (기존: 170, 270)
+#         "하늘색": (150, 180),  # 하늘색 추가
+#         "민트색": (170, 190),
+#         "초록색": (45, 90),   # 초록색 범위 조정 (기존: 80, 150)
+#         "노란색": (20, 45),   # 노란색 범위 조정 (기존: 50, 60)
+#         "주황색": (10, 20),   # 주황색 범위 조정 (기존: 20, 50)
+#         "붉은색": [(0, 10), (330, 360)],  # 붉은색 범위 조정
+#         "보라색": (270, 330), # 보라색 범위 조정 (기존: 270, 290)
+#         "갈색": (0, 20),      # 갈색 범위 수정 (기존: 250, 360) - 갈색은 낮은 채도/명도로 판단
+#     }
+
+#     result_colors = set()  # 다중 색상 결과를 담을 리스트 (중복 제거)
+
+#     # ✅ 회색 및 밝기 계열 분류 (채도가 낮을 때)
+#     if s < 40:  
+#         if 180 <= h <= 260:  # 원래 파란색 계열이면 회색 대신 파란색 유지
+#             result_colors.add("푸른색")
+#         elif 80 <= h <= 160:  # 초록색 계열이면 초록색 유지
+#             result_colors.add("초록색")
+#         else:
+#             if v < 80:
+#                 result_colors.add("어두운 색")
+#             elif v > 200:
+#                 result_colors.add("밝은 색")
+#             else:
+#                 if 180 <= h <= 260:  # 파란색 계열이면 하늘색으로 유지
+#                     result_colors.add("하늘색")
+#                 else:
+#                     result_colors.add("회색")
+#     else:
+#         # HSV의 H값은 0-179 범위인 경우가 있으므로 정규화
+#         # OpenCV의 H는 0-179, S와 V는 0-255 범위
+#         h_normalized = h * 2 if h <= 90 else h  # H값 정규화 (OpenCV에서는 0-180)
+        
+#         # 색상 범주 매칭 로직 개선
+#         for category, hue_range in color_categories.items():
+#             if isinstance(hue_range, tuple):
+#                 if hue_range[0] <= h_normalized < hue_range[1]:
+#                     result_colors.add(category)
+#             elif isinstance(hue_range, list):
+#                 for hr in hue_range:
+#                     if hr[0] <= h_normalized < hr[1]:
+#                         result_colors.add(category)
+
+#     # 노란색과 갈색의 구분
+#     if 0 <= h <= 20 and s < 100 and v < 150:  # 낮은 채도, 낮은 명도일 때만 갈색
+#         result_colors.add("갈색")
+#     elif 20 <= h <= 45:  # 노란색은 범위 유지
+#         result_colors.add("노란색")
+
+#     # 채도와 명도에 따른 추가 분류
+#     if s < 100 and v < 100:  # 채도와 명도가 낮은 경우 갈색 추가
+#         result_colors.add("갈색")
+#         # 회색 계열인 경우 제거
+#         if "푸른색" in result_colors and s < 60:
+#             result_colors.remove("푸른색")
+    
+#     # 하늘색 보정 - 명도가 높고 채도가 낮은 경우
+#     if "하늘색" in result_colors or "푸른색" in result_colors:
+#         if v > 200 and s < 100 and h < 200:  # h가 200 이상이면 푸른색 유지
+#             if "하늘색" not in result_colors:
+#                 result_colors.add("하늘색")
+#             if "푸른색" in result_colors and h < 200:
+#                 result_colors.remove("푸른색")
+
+#     # 최종 색상 리스트 정리 (중복 제거 + 정렬)
+#     result_colors = sorted(result_colors)  # 정렬하여 일관된 순서 유지
+
+#     # 최종 색상 리스트 반환
+#     return ", ".join(result_colors) if result_colors else "회색"
 
 
 
